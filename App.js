@@ -111,7 +111,6 @@ function App() {
       id: '2',
       name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      
       avgRating: 4.8,
       ratings: 2989,
       price: 32.98,
@@ -122,7 +121,6 @@ function App() {
       id: '3',
       name: "shoes",
       image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-       
       avgRating: 3.8,
       ratings: 2989,
       price: 4206.9,
@@ -132,7 +130,6 @@ function App() {
       id: '4',
       name: "nike shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      
       price: 99.98,
       oldPrice: 120.06,
       categories: [2, 5, 6],
@@ -141,7 +138,6 @@ function App() {
       id: '5',
       name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      
       avgRating: 4.8,
       ratings: 2989,
       price: 32.98,
@@ -182,8 +178,7 @@ function App() {
   return (
     <productContext.Provider value={{ product:[ products , setProducts]}}> 
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
-      
-       <discountContext.provider value={{discount:[discounts, setDiscounts]}}> 
+       {/* <discountContext.provider value={{discount:[discounts, setDiscounts]}}>  */}
     
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
@@ -196,8 +191,7 @@ function App() {
     </NavigationContainer>
 
     
-    </discountContext.provider>
-    
+    {/* </discountContext.provider> */}
     </categoryContext.Provider>
     </productContext.Provider>
   );

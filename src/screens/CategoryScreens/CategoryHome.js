@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet,FlatList, Button } from 'react-native';
-import Categoryitem from '../../components/CategoryItem'
+import CategoryItem from '../../components/CategoryItem'
 import {categoryContext} from '../../../App';
 
 
@@ -15,7 +15,7 @@ function CategoryHome({navigation}) {
         {/* <Text style={{fontSize:50, color:'#12b520'}}>Categories</Text> */}
            <FlatList
             data={categories}
-            renderItem={({item}) => <Categoryitem item={item}/>}
+            renderItem={({item}) => <CategoryItem item={item}/>}
             keyExtractor={(item, index) => item.id }
             // horizontal 
             // showsHorizontalScrollIndicator={false}
