@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
 import ProductStack from './ProductStack';
-import CategoryStack from './ProductStack';
+import CategoryStack from './CategoryStack';
 import  DiscountStack from './DiscountStack';
 import  ItemsButton  from './ItemsButton';
  
@@ -13,11 +13,13 @@ const Stack = createStackNavigator();
 
 function ItemsStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerStyle:{backgroundColor:'#12b520'}
+
+    }} >
       <Stack.Screen name="Items" component={ItemsButton}/>
-      <Stack.Screen name="Product" component={ProductStack} />
-      <Stack.Screen name="Category" component={CategoryStack} />
-      <Stack.Screen name="Discounts" component={DiscountStack} />
+      <Stack.Screen options={{headerShown:false}} name="Product" component={ProductStack}/>
+      <Stack.Screen options={{headerShown:false}} name="Category" component={CategoryStack}/>
+      <Stack.Screen options={{headerShown:false}} name="Discounts" component={DiscountStack}/>
     </Stack.Navigator>
   );
 }

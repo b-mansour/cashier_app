@@ -5,7 +5,7 @@ import HomeScreen from './src/screens/HomeScreen/Home';
 import ReceiptScreen from './src/screens/ReceiptScreen/Receipt';
 import  CartScreen from './src/screens//CartScreen/cart';
 import ItemsScreen from './src/screens/ItemsScreen/Item';
-import ItemsStack from './src/router/ItemsStack';
+import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
 import settingsScreen from './src/screens/settingsScreen/settings';
 
 const Drawer = createDrawerNavigator();
@@ -13,37 +13,54 @@ const Drawer = createDrawerNavigator();
   export const productContext = React.createContext();
   export const categoryContext = React.createContext();
   export const receiptContext = React.createContext();
+  export const discountContext = React.createContext();
 
 function App() {
 
+   const discountsData = [
+    {
+      id: 1,
+      name: "dscount1",
+      value: 10
+       
+  },
 
+  {
+      id: 2,
+      name: "discount2",
+      value: 20
+      
+   },
 
-
-   
-
+  {
+      id: 3,
+      name: "discount3",
+      value: 30
+  },
+];
 
 
   const categoryData = [
     {
         id: 1,
-        name: "shoes",
+        name: "Vegetables",
          
     },
   
     {
         id: 2,
-        name: "men",
+        name: "Fruits",
         
      },
     {
         id: 3,
-        name: "women",
+        name: "dairies",
          
          
     },
     {
         id: 4,
-        name: "children",
+        name: "Drinks",
          
     },
     {
@@ -82,7 +99,7 @@ function App() {
   const productsData =  [
     {
       id: '1',
-      title: "sneaker",
+      name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       avgRating: 4,
       ratings: 1325,
@@ -92,7 +109,7 @@ function App() {
     },
     {
       id: '2',
-      title: "red shoes",
+      name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       avgRating: 4.8,
@@ -103,7 +120,7 @@ function App() {
     },
     {
       id: '3',
-      title: "shoes",
+      name: "shoes",
       image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
        
       avgRating: 3.8,
@@ -113,7 +130,7 @@ function App() {
     },
     {
       id: '4',
-      title: "nike shoes",
+      name: "nike shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       price: 99.98,
@@ -122,7 +139,7 @@ function App() {
     },
     {
       id: '5',
-      title: "red shoes",
+      name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       avgRating: 4.8,
@@ -133,9 +150,8 @@ function App() {
     },
     {
       id: '6',
-      title: "puma shoes",
+      name: "puma shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      
       avgRating: 4.8,
       ratings: 2989,
       price: 99.98,
@@ -144,7 +160,7 @@ function App() {
     },
     {
       id: '7',
-      title: "sneaker",
+      name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       avgRating: 4,
       ratings: 1325,
@@ -158,17 +174,16 @@ function App() {
 
 
     const [categories, setCategories] = React.useState(categoryData);
-    const [products, setProducts] = React.useState(productsData);
-    const [receipts, setReceipts] = React.useState([]);
+    const [products, setProducts] = React.useState(productsData); 
+    const [discounts, setDiscounts] = React.useState(discountsData);
 
 
-
-   
 
   return (
     <productContext.Provider value={{ product:[ products , setProducts]}}> 
-    <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
-    < receiptContext.Provider value={{ product:[ receipts , setReceipts]}}>
+     <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
+      
+       <discountContext.provider value={{discount:[discounts, setDiscounts]}}> 
     
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
@@ -179,8 +194,10 @@ function App() {
          <Drawer.Screen name="Settings" component={settingsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
+
     
-    </ receiptContext.Provider>
+    </discountContext.provider>
+    
     </categoryContext.Provider>
     </productContext.Provider>
   );

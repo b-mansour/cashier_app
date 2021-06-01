@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
+import { View, Text , Pressable, StyleSheet } from 'react-native';
 import {productContext} from '../../../App';
 import {categoryContext} from '../../../App';
  

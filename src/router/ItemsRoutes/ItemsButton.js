@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     pressable: {
         flexDirection: 'column',
         borderWidth: 1,
-        borderColor: '#d1d1d1',
         borderRadius: 10,
         backgroundColor: '#fff',
         marginVertical: 5,

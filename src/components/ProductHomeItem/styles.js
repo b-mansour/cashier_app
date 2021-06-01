@@ -4,12 +4,11 @@ const styles = StyleSheet.create({
   root: {
     flexDirection: 'column',
     borderWidth: 1,
-    borderColor: '#12b520',
+    borderColor: '#d1d1d1',
     borderRadius: 10,
     backgroundColor: '#fff',
     marginVertical: 5,
-    marginHorizontal:5,
-    padding:5
+    marginHorizontal:5
   },
   image: {
     flex: 2,

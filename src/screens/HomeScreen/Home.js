@@ -6,66 +6,11 @@ import {categoryContext} from '../../../App';
 
  function HomeScreen() {
 
-  // const categoryData = [
-  //   {
-  //       id: 1,
-  //       name: "shoes",
-         
-  //   },
-  
-  //   {
-  //       id: 2,
-  //       name: "men",
-        
-  //    },
-  //   {
-  //       id: 3,
-  //       name: "women",
-         
-         
-  //   },
-  //   {
-  //       id: 4,
-  //       name: "children",
-         
-  //   },
-  //   {
-  //       id: 5,
-  //       name: "accessories",
-        
-  //   },
-  //   {
-  //       id: 6,
-  //       name: "furniture",
-         
-  //   },
-  //   {
-  //       id: 7,
-  //       name: "Snacks",
-        
-  //   },
-  //   {
-  //       id: 8,
-  //       name: "Sushi",
-         
-  //   },
-  //   {
-  //       id: 9,
-  //       name: "Desserts",
-         
-  //   },
-  //   {
-  //       id: 10,
-  //       name: "Drinks",
-        
-  //   },
-  
-  // ];
 
   const productsData =  [
     {
       id: '1',
-      title: "sneaker",
+      name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       avgRating: 4,
       ratings: 1325,
@@ -75,7 +20,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '2',
-      title: "red shoes",
+      name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       avgRating: 4.8,
@@ -86,7 +31,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '3',
-      title: "shoes",
+      name: "shoes",
       image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
        
       avgRating: 3.8,
@@ -96,7 +41,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '4',
-      title: "nike shoes",
+      name: "nike shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       price: 99.98,
@@ -105,7 +50,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '5',
-      title: "red shoes",
+      name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       avgRating: 4.8,
@@ -116,7 +61,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '6',
-      title: "puma shoes",
+      name: "puma shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
       avgRating: 4.8,
@@ -127,7 +72,7 @@ import {categoryContext} from '../../../App';
     },
     {
       id: '7',
-      title: "sneaker",
+      name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       avgRating: 4,
       ratings: 1325,
@@ -171,8 +116,8 @@ import {categoryContext} from '../../../App';
                     paddingBottom: 6,
                     paddingHorizontal:6,
                     borderWidth: 2,
-                    borderColor:'#2B435D',
-                    backgroundColor: (selectedCategory?.id == item.id) ? '#2B435D' : '#fff',
+                    borderColor:'#12b520',
+                    backgroundColor: (selectedCategory?.id == item.id) ? '#12b520' : '#fff',
                     borderRadius: 10,
                     alignItems: "center",
                     justifyContent: "center",
@@ -185,7 +130,7 @@ import {categoryContext} from '../../../App';
                 <Text
                     style={{
                         marginTop: 2,
-                        color: (selectedCategory?.id == item.id) ?  '#fff' : '#2B435D',
+                        color: (selectedCategory?.id == item.id) ?  '#fff' : '#12b520',
                         fontWeight:'bold'
                     }}
                 >
@@ -216,7 +161,6 @@ import {categoryContext} from '../../../App';
 
       {renderMainCategories()}
 
-<Text style={{fontSize:20, color: '#2B435D'}}>New Arrivals</Text>
       {/* Render Product Componet */}
       <FlatList
         data={products}
