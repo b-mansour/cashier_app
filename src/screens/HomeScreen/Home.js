@@ -170,7 +170,7 @@ import {cartContext} from '../../../App';
         <Feather style={{fontSize:30}} name="menu"></Feather>
         </Pressable>
    
-       <Pressable onPress={() => {}}>
+       <Pressable onPress={() => navigation.navigate('CartScreen')}>
           <Ionicons style={{fontSize:25}} name="cart-outline">{cartItems.length}</Ionicons>
        </Pressable>
        

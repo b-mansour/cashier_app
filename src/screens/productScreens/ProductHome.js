@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, FlatList, Pressable, StyleSheet, ScrollView} from 'react-native';
+import { Button, View, FlatList, Pressable, StyleSheet, ScrollView, Text} from 'react-native';
 import ProductHomeItem from '../../components/ProductHomeItem';
 import {productContext} from '../../../App';
 
@@ -17,6 +17,7 @@ export default function ProductHome({navigation}) {
          onPress={() =>  navigation.navigate('اضافة منتج جديد')}
         
       />
+  
   
   
         {/* Render Product Componet */}

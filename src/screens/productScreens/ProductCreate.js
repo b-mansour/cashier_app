@@ -22,6 +22,12 @@ export default function ProductCreate() {
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
               keyboardType='numeric'
              />
+
+             
      </View>
     )
 }
+
+
+
+
