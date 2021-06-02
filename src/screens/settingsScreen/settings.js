@@ -1,39 +1,45 @@
-import React from 'react'; 
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
+ 
 
-function settingsScreen({navigation}) {
+
+// const Stack = createStackNavigator();
+
+function Settings({navigation}) {
     return (
 
-        <View>
-        <Pressable    onPress={() => navigation.navigate('Home')}  style={styles.container} >
-            <Text>Printers</Text>
-        </Pressable>
+     <View> 
 
-        <Pressable style={styles.container}>
-            <Text>General</Text>
-        </Pressable>      
-    </View>
+      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Printers')}> 
+       <Text style={{fontSize:20}}>Printers</Text>
+      </Pressable>
+
+      <Pressable style={styles.pressable} onPress={() => navigation.navigate('General')}> 
+       <Text style={{fontSize:20}}>General</Text>
+      </Pressable>
+
+      </View>
+    
+        
     )
 }
 
 
 
 const styles = StyleSheet.create({
-
-    container:  { flexDirection: 'column',
-    borderWidth: 1,
-    borderColor: '#d1d1d1',
-    borderRadius:10,
-    height:50,
-    justifyContent: 'center',
-    paddingLeft: 30,
-    backgroundColor: '#bfc6c7',
-    marginVertical: 5,
-    marginHorizontal:5
-}
-
+    pressable: {
+        flexDirection: 'column',
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        marginVertical: 5,
+        marginHorizontal:5,
+        height:50,
+        borderColor: '#12b520',
+        alignItems: 'center',
+        justifyContent:'center'
+      }
 })
 
-
-
-export default  settingsScreen; 
+export default  Settings;

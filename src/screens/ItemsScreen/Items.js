@@ -6,7 +6,7 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-nati
 
 // const Stack = createStackNavigator();
 
-export default function ItemsButton({navigation}) {
+export default function Items({navigation}) {
     return (
 
      <View> 
@@ -22,20 +22,7 @@ export default function ItemsButton({navigation}) {
        <Text style={{fontSize:20}}>Discounts</Text>
       </Pressable>
       </View>
-      
-
-      
-
-        
-            // <Stack.Navigator>
-
-            //   <Stack.Screen name="ItemsHome" component={Home} />
-            //   <Stack.Screen name="Notifications" component={Notifications} />
-            //   <Stack.Screen name="Profile" component={Profile} />
-            //   <Stack.Screen name="Settings" component={Settings} />
-
-
-            // </Stack.Navigator>
+    
         
     )
 }

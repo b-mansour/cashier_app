@@ -12,7 +12,7 @@ const Drawer = createDrawerNavigator();
 
   export const productContext = React.createContext();
   export const categoryContext = React.createContext();
-  export const receiptContext = React.createContext();
+  export const cartContext = React.createContext([]);
   export const discountContext = React.createContext();
 
 function App() {
@@ -106,6 +106,7 @@ function App() {
       price: 20.98,
       oldPrice: 24.06,
       categories: [5, 7],
+      quantity: 1 
     },
     {
       id: '2',
@@ -116,6 +117,7 @@ function App() {
       price: 32.98,
       oldPrice: 34.06,
       categories: [2, 4, 6],
+      quantity: 1 
     },
     {
       id: '3',
@@ -125,6 +127,7 @@ function App() {
       ratings: 2989,
       price: 4206.9,
       categories: [2, 4, 5],
+      quantity: 1 
     },
     {
       id: '4',
@@ -133,6 +136,7 @@ function App() {
       price: 99.98,
       oldPrice: 120.06,
       categories: [2, 5, 6],
+      quantity: 1 
     },
     {
       id: '5',
@@ -143,6 +147,7 @@ function App() {
       price: 32.98,
       oldPrice: 34.06,
       categories: [2, 4, 6],
+      quantity: 1 
     },
     {
       id: '6',
@@ -153,6 +158,7 @@ function App() {
       price: 99.98,
       oldPrice: 120.06,
       categories: [1,5],
+      quantity: 1 
     },
     {
       id: '7',
@@ -163,6 +169,7 @@ function App() {
       price: 20.98,
       oldPrice: 24.06,
       categories: [5, 7],
+      quantity: 1 
     },
   ];
 
@@ -172,26 +179,29 @@ function App() {
     const [categories, setCategories] = React.useState(categoryData);
     const [products, setProducts] = React.useState(productsData); 
     const [discounts, setDiscounts] = React.useState(discountsData);
+    const [cartItems, setCartItems] = React.useState([]);
 
 
 
   return (
     <productContext.Provider value={{ product:[ products , setProducts]}}> 
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
-       {/* <discountContext.provider value={{discount:[discounts, setDiscounts]}}>  */}
-    
+       <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
+       <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}> 
+        
+
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen } />
-        <Drawer.Screen name="Receipt" component={ReceiptScreen} />
-        <Drawer.Screen name="Item" component={ItemsStack} />
-        <Drawer.Screen name="Cart" component={CartScreen} />
-         <Drawer.Screen name="Settings" component={settingsScreen} />
+        <Drawer.Screen name="Home" component={HomeScreen }/>
+        <Drawer.Screen name="Receipt" component={ReceiptScreen}/>
+        <Drawer.Screen name="Item" component={ItemsStack}/>
+        <Drawer.Screen name="Cart" component={CartScreen}/>
+         <Drawer.Screen name="Settings" component={settingsScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
 
-    
-    {/* </discountContext.provider> */}
+   </cartContext.Provider>
+    </discountContext.Provider>
     </categoryContext.Provider>
     </productContext.Provider>
   );

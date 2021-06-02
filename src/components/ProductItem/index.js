@@ -8,7 +8,7 @@ import styles from './styles';
 
  
 
-const ProductItem = ({item}) => {
+const ProductItem = ({item, cartItems, setCartItems}) => {
 
   
   const navigation = useNavigation();
@@ -17,10 +17,43 @@ const ProductItem = ({item}) => {
   //   navigation.navigate('ProductDetails', {item}); 
   // };
 
+  let onadd = () => {
+    var cartItem = {
+      id: item.id,
+      name: item.name,
+      price: item.price ,
+      quantity: item.quantity 
+      
+   }
+
+    console.log('2')
+
+    for(let i=0 ; i < cartItems.length ; i++){
+
+      console.log('3')
+      if(cartItems[i].id === cartItem.id){
+        cartItems[i].quantity = cartItems[i].quantity + 1;
+          // cartItems.splice(i,1);
+          console.log('4');
+        
+        // setCartItems(currentItems => [...currentItems,cartItem]);
+        return
+      }
+     
+     
+  }
+  
+    console.log('5')
+    // setCartItems([...cartItems,route.params.item])
+    setCartItems(currentItems => [...currentItems,cartItem]);
+    console.log(cartItems);
+  }
+
   return (
 
-    <Pressable onPress={() =>  {}} style={styles.root}>
+    <View  style={styles.root}>
       <TouchableOpacity
+      onPress={onadd}
       style={{
         width: 30,
         height: 30, 
@@ -33,12 +66,12 @@ const ProductItem = ({item}) => {
       <Ionicons style={{fontSize:20}} name="cart"></Ionicons>
       </TouchableOpacity>
         <View>
-        <Image style={styles.image} source={{uri: item.image}} />
+        <Image style={styles.image} source={{uri: item.image}}/>
         </View>
         <Text style={{left:'50%'}}>{item.title}</Text> 
         <Text style={{left:'50%', fontWeight:'bold'}}>SR:{item.price}</Text>
         
-    </Pressable>
+    </View>
   );
 };
 

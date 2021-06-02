@@ -1,10 +1,14 @@
 import React from 'react';
-import {  View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import {  View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView , Pressable } from 'react-native';
+import Feather  from 'react-native-vector-icons/Feather';
+import Ionicons  from 'react-native-vector-icons/Ionicons';
 import ProductItem from '../../components/ProductItem';
 import {productContext} from '../../../App';
 import {categoryContext} from '../../../App';
+import {cartContext} from '../../../App';
 
- function HomeScreen() {
+
+ function HomeScreen({navigation}) {
 
 
   const productsData =  [
@@ -90,6 +94,9 @@ import {categoryContext} from '../../../App';
   const {category} = React.useContext(categoryContext);
   const [ categories, setCategories] = category;
 
+  const {Cart} = React.useContext(cartContext);
+  const [ cartItems, setCartItems] = Cart;
+
 
 
  
@@ -158,13 +165,25 @@ import {categoryContext} from '../../../App';
 
   return (
     <ScrollView style={styles.page}>
+      <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+        <Pressable  onPress={() => navigation.toggleDrawer()}>
+        <Feather style={{fontSize:30}} name="menu"></Feather>
+        </Pressable>
+   
+       <Pressable onPress={() => {}}>
+          <Ionicons style={{fontSize:25}} name="cart-outline">{cartItems.length}</Ionicons>
+       </Pressable>
+       
+      </View>
+
+       
 
       {renderMainCategories()}
 
       {/* Render Product Componet */}
       <FlatList
         data={products}
-        renderItem={({item}) => <ProductItem item={item} />}
+        renderItem={({item}) => <ProductItem cartItems={cartItems} setCartItems={setCartItems} item={item} />}
         keyExtractor={(item, index) => item.id }
         numColumns={2}
         // horizontal 
