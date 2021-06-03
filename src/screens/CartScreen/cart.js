@@ -1,12 +1,14 @@
 import React from 'react';
-import { Button, View, Text , FlatList } from 'react-native';
+import { Button, View, Text , FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import {cartContext} from '../../../App';
-import CartItem from '../../components/CartItem'
+import CartItem from '../../components/CartItem';
 
  function CartScreen() {
 
   const {Cart} = React.useContext(cartContext);
   const [ cartItems, setCartItems] = Cart;
+
+  var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
 
  return (
         <View>
@@ -20,6 +22,17 @@ import CartItem from '../../components/CartItem'
             // showsVerticalScrollIndicator={false}
           />
 
+          <View>
+          <Text style={{fontSize:30}}>total price is {totalPrice.toFixed(2)}</Text>
+           {/* <Text style={{fontSize:30}}>total price is {Number((totalPrice).toFixed(3))}</Text> */}
+          </View>
+
+           
+    
+           <TouchableOpacity style={styles.checkout} >
+             <Text style={{color:'#fff' }}>Check Out</Text>
+           </TouchableOpacity>
+
       </View>
    
     )
@@ -28,6 +41,24 @@ import CartItem from '../../components/CartItem'
  
 
 export default CartScreen;
+
+
+
+const styles = StyleSheet.create({
+
+  checkout: {
+    marginTop:20,
+    alignSelf:'center',
+     backgroundColor:'#12b520',
+      width:200, height:50, 
+      alignItems:'center',
+      justifyContent:'center',
+      borderRadius:10
+     
+    }
+
+
+})
 
 
 

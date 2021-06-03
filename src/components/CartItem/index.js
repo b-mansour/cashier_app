@@ -15,6 +15,7 @@ const CartItem = ({item, cartItems}) => {
   // const onPress = () => {
   //   navigation.navigate('ProductDetails', {item}); 
   // };
+
   
 
   return (
@@ -27,8 +28,7 @@ const CartItem = ({item, cartItems}) => {
       <Text>{item.quantity}</Text>
     </View>
 <Text>{item.price * item.quantity}</Text>
-
-</View>
+ </View>
 </ScrollView> 
         
         

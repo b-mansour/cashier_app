@@ -4,8 +4,14 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextI
 export default function ProductCreate() {
 
 
-    const [name, setname] = React.useState('');
+    const [name, setName] = React.useState('');
     const [price, setPrice] = React.useState()
+
+
+    submit = () => {
+        console.log(name);
+        console.log(price);
+    }
 
     return (
         <View>
@@ -13,15 +19,21 @@ export default function ProductCreate() {
         <TextInput
               value={name} 
               placeholder='اسم المنتج'
+              onChangeText={ value => setName(value)}
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
              /> 
         
         <TextInput
               value={price}
               placeholder='سعر المنتج'
+              onChangeText={ value => setPrice(value)}
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
               keyboardType='numeric'
              />
+
+             <Pressable onPress={submit}>
+                 <Text>create</Text>
+             </Pressable>
 
              
      </View>

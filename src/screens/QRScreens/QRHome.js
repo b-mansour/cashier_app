@@ -3,10 +3,8 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-nati
 
 export default function QRHome() {
     return (
-        <View>
-
-            <Text> this is  QR home </Text>
-            
-        </View>
+    <View>
+        <Text> this is  QR home </Text>
+    </View>
     )
 }
