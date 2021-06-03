@@ -15,7 +15,7 @@ export default function HomeStack() {
         
     <Stack.Navigator>
       <Stack.Screen name="HomeScreen" options={{headerShown:false}} component={HomeScreen}/>
-      <Stack.Screen name="CartScreen" component={CartScreen} />
+      <Stack.Screen name="CartScreen" component={CartScreen}/>
     </Stack.Navigator>
         
     )

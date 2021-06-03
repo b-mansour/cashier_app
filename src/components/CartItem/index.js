@@ -27,10 +27,7 @@ const CartItem = ({item, cartItems}) => {
       <Text>{item.quantity}</Text>
     </View>
 <Text>{item.price * item.quantity}</Text>
- 
 
-         
-      
 </View>
 </ScrollView> 
         

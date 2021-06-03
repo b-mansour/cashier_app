@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import ReceiptScreen from './src/screens/ReceiptScreen/Receipt';
 import  CartScreen from './src/screens//CartScreen/cart';
 import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
-import settingsScreen from './src/screens/settingsScreen/settings';
+import SettingsStack from './src/router/SettingsRoutes/SettingsStack';
 import HomeStack from './src/router/HomeStack/HomeStack'
 
 const Drawer = createDrawerNavigator();
@@ -195,7 +195,7 @@ function App() {
         <Drawer.Screen name="Receipt" component={ReceiptScreen}/>
         <Drawer.Screen name="Item" component={ItemsStack}/>
         <Drawer.Screen name="Cart" component={CartScreen}/>
-         <Drawer.Screen name="Settings" component={settingsScreen}/>
+         <Drawer.Screen name="Settings" component={SettingsStack}/>
       </Drawer.Navigator>
     </NavigationContainer>
 

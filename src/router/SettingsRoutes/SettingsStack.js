@@ -1,13 +1,14 @@
 import React from 'react';
-import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
-import ProductStack from '../ItemsRoutes/ProductStack';
-import CategoryStack from '../ItemsRoutes/CategoryStack';
-import  DiscountStack from '../ItemsRoutes/DiscountStack';
-import  Settings  from '../../screens/settingsScreen/settings';
+import {createStackNavigator} from '@react-navigation/stack';
+import  PrinterStack from './PrinterStack';
+import  QRStack from './QRStack';
+import  GeneralStack from './QRStack';
+import Settings from '../../screens/settingsScreen/settings'
+ 
  
 
 
-import { createStackNavigator } from '@react-navigation/stack';
+ 
 
 const Stack = createStackNavigator();
 
@@ -18,8 +19,10 @@ function SettingsStack() {
 
     }} >
       <Stack.Screen name="Settings" component={Settings}/>
-      <Stack.Screen options={{headerShown:false}} name="PrintersStack" component={PrintersStack}/>
-      <Stack.Screen options={{headerShown:false}} name="GeneralStack" component={GeneralStack}/>
+      <Stack.Screen options={{headerShown:false}} name="Printer" component={PrinterStack}/>
+      <Stack.Screen options={{headerShown:false}} name="QR" component={QRStack}/>
+      <Stack.Screen options={{headerShown:false}} name="General" component={GeneralStack}/>
+       
     </Stack.Navigator>
   );
 }

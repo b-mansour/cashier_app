@@ -11,13 +11,19 @@ function Settings({navigation}) {
 
      <View> 
 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Printers')}> 
+      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Printer')}> 
        <Text style={{fontSize:20}}>Printers</Text>
       </Pressable>
 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('General')}> 
-       <Text style={{fontSize:20}}>General</Text>
+      <Pressable style={styles.pressable} onPress = {() => navigation.navigate('QR')}> 
+        <Text style={{fontSize:20}}> QR </Text>
       </Pressable>
+      
+
+      <Pressable style={styles.pressable} onPress={() => navigation.navigate('General')}> 
+       <Text style={{fontSize:20}}> General </Text>
+      </Pressable>
+
 
       </View>
     

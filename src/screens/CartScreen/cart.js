@@ -5,15 +5,10 @@ import CartItem from '../../components/CartItem'
 
  function CartScreen() {
 
-
-
   const {Cart} = React.useContext(cartContext);
   const [ cartItems, setCartItems] = Cart;
 
-  
-
-
-    return (
+ return (
         <View>
         {/* <Text style={{fontSize:50, color:'#12b520'}}>Categories</Text> */}
            <FlatList
