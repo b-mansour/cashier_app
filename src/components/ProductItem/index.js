@@ -68,7 +68,8 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
         <View>
         <Image style={styles.image} source={{uri: item.image}}/>
         </View>
-        <Text style={{left:'50%'}}>{item.title}</Text> 
+        <Text style={{left:'50%'}}>{item.name}</Text> 
+        <Text style={{left:'50%'}}>{item.id}</Text> 
         <Text style={{left:'50%', fontWeight:'bold'}}>SR:{item.price}</Text>
         
     </View>

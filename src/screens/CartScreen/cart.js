@@ -21,18 +21,18 @@ import CartItem from '../../components/CartItem';
             // showsHorizontalScrollIndicator={false}
             // showsVerticalScrollIndicator={false}
           />
+ 
 
           <View>
           <Text style={{fontSize:30}}>total price is {totalPrice.toFixed(2)}</Text>
            {/* <Text style={{fontSize:30}}>total price is {Number((totalPrice).toFixed(3))}</Text> */}
           </View>
-
+ 
            
     
-           <TouchableOpacity style={styles.checkout} >
-             <Text style={{color:'#fff' }}>Check Out</Text>
+          <TouchableOpacity style={styles.checkout}>
+             <Text style={{color:'#fff'}}>Check Out</Text>
            </TouchableOpacity>
-
       </View>
    
     )

@@ -17,7 +17,7 @@ const CategoryItem = ({item}) => {
 
   return (
 
-    <Pressable onPress={() => navigation.navigate('CategoryEdit')} style={styles.root}>
+    <Pressable onPress={() => navigation.navigate('CategoryEdit', item)} style={styles.root}>
       
         <View style={{ alignItems:'center'}}>
         <Text>{item.name}</Text> 

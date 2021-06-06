@@ -1,12 +1,24 @@
 import React from 'react';
-import { View, Text , Pressable, StyleSheet,Button } from 'react-native';
+import { View, Text , Pressable, StyleSheet,Button, TextInput } from 'react-native';
 
-function CategoryEdit({navigation}) {
+function CategoryEdit({route}) {
+
+    const [name, setname] = React.useState(route.params.name);
+    const [description, setDescription] = React.useState(route.params.description);
+
+
     return (
         <View>
-             <Text> Edit new Category</Text> 
 
-    
+        <TextInput
+              value={name} 
+              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+             /> 
+        
+        <TextInput
+              value={description}
+              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+             />
         </View>
     )
 }

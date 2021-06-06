@@ -23,6 +23,7 @@ import {cartContext} from '../../../App';
       price: 20.98,
       oldPrice: 24.06,
       categories: [5, 7],
+      quantity: 1 
     },
     {
       id: '2',
@@ -33,6 +34,7 @@ import {cartContext} from '../../../App';
       price: 32.98,
       oldPrice: 34.06,
       categories: [2, 4, 6],
+      quantity: 1 
     },
     {
       id: '3',
@@ -42,6 +44,7 @@ import {cartContext} from '../../../App';
       ratings: 2989,
       price: 4206.9,
       categories: [2, 4, 5],
+      quantity: 1 
     },
     {
       id: '4',
@@ -50,6 +53,7 @@ import {cartContext} from '../../../App';
       price: 99.98,
       oldPrice: 120.06,
       categories: [2, 5, 6],
+      quantity: 1 
     },
     {
       id: '5',
@@ -60,6 +64,7 @@ import {cartContext} from '../../../App';
       price: 32.98,
       oldPrice: 34.06,
       categories: [2, 4, 6],
+      quantity: 1 
     },
     {
       id: '6',
@@ -70,6 +75,7 @@ import {cartContext} from '../../../App';
       price: 99.98,
       oldPrice: 120.06,
       categories: [1,5],
+      quantity: 1 
     },
     {
       id: '7',
@@ -80,9 +86,9 @@ import {cartContext} from '../../../App';
       price: 20.98,
       oldPrice: 24.06,
       categories: [5, 7],
+      quantity: 1 
     },
   ];
-
 
 
   const {product} = React.useContext(productContext);
@@ -95,16 +101,16 @@ import {cartContext} from '../../../App';
   const [ cartItems, setCartItems] = Cart;
 
 
-  const [isLoading, setIsLoading] = React.useState(true)
+  // const [isLoading, setIsLoading] = React.useState(true)
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/10')
-    .then( res => { return res.json()})
-    .then( data => {
-      console.log(data);
-      setIsLoading(false)
-    })
-  },[])
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/todos/1')
+  //   .then( res => { return res.json()})
+  //   .then( data => {
+  //     console.log(data);
+  //     setIsLoading(false)
+  //   })
+  // },[])
 
 
 
@@ -175,7 +181,7 @@ import {cartContext} from '../../../App';
   return (
     <ScrollView style={styles.page}>
 
-      {isLoading && <ActivityIndicator size="large" color='#12b520'/>}
+      {/* {isLoading && <ActivityIndicator size="large" color='#12b520'/>} */}
       <View style={{flexDirection:'row', justifyContent:'space-between'}}>
         <Pressable  onPress={() => navigation.toggleDrawer()}>
         <Feather style={{fontSize:30}} name="menu"></Feather>
@@ -206,17 +212,10 @@ import {cartContext} from '../../../App';
 }
 
 
-
-
-
-
-
 const styles = StyleSheet.create({
   page: {
     padding: 10,
   },
-
-
 
   container: {
     flex: 1,
