@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput } from 'react-native';
+import {View, TextInput } from 'react-native';
+import Button from '../../components/Button/index';
 
  function DiscountCreate() {
 
@@ -22,6 +23,8 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextI
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
               keyboardType='numeric'
              />
+
+<Button   onPress={()=> {}} title='اضافة'/>
      </View>
     )
 }

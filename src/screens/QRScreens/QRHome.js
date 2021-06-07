@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text , FlatList, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { Button, View, Text , FlatList, TouchableOpacity, StyleSheet, Alert,Linking } from 'react-native';
 import QRCodeScanner from  "react-native-qrcode-scanner"
 
 export default function QRHome() {
@@ -16,7 +16,7 @@ export default function QRHome() {
             containerStyle={{backgroundColor:'#fff'}}
             onRead={ifScanned}
             reactivate={true}
-            permissionDialogMessage= 'need permission to access canera'
+            permissionDialogMessage= 'need permission to access camera'
             reactivateTimeout={10}
             showMarker={true}
             markerStyle= {{borderColor:'#fff', borderRadius:10}}

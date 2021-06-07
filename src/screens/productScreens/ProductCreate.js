@@ -1,21 +1,52 @@
 import React from 'react';
-import { Button, View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput } from 'react-native';
+import {View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
+import Button from '../../components/Button/index';
+import ImagePicker from 'react-native-image-crop-picker';
+ 
 
 export default function ProductCreate() {
 
 
-    const [name, setName] = React.useState('');
+    const [name, setName] = React.useState();
     const [price, setPrice] = React.useState();
     const [cost, setCost] = React.useState();
+    const [image, setImage] = React.useState();
     const [barcode, setBarcode] = React.useState();
 
 
-    var submit = () => {
-        console.log(name);
-        console.log(price);
+    newProduct = {
+      name : name,
+      price : price,
+      cost : cost, 
+      image : image,
+      barcode : barcode
     }
+
+    const takePhotoFromCamera = () => {
+      ImagePicker.openCamera({
+        width: 300,
+        height: 400,
+        cropping: true,
+      }).then(image => {
+        console.log(image);
+        setImage(image.path)
+      });
+    }
+
+    const ChoosePhoto = () => {
+      ImagePicker.openPicker({
+        width: 300,
+        height: 400,
+        cropping: true
+      }).then(image => {
+        console.log(image);
+        setImage(image.path)
+      });
+    }
+
+
 
 
     const {category} = React.useContext(categoryContext);
@@ -51,14 +82,14 @@ export default function ProductCreate() {
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {categories.map( option => (
-          <Picker.Item label={option.name} value={option.name} />
+          <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
       </Picker>
 
           <TextInput
               value={cost}
               placeholder='سعر التكلفة'
-              onChangeText={ value => setPrice(value)}
+              onChangeText={ value => setCost(value)}
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
               keyboardType='numeric'
              />
@@ -66,16 +97,18 @@ export default function ProductCreate() {
         <TextInput
               value={barcode}
               placeholder='رقم الباركود'
-              onChangeText={ value => setPrice(value)}
+              onChangeText={ value =>  setBarcode(value)}
               style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
               keyboardType='numeric'
-             />
- 
+             />  
+
+            
+           <Button   onPress={takePhotoFromCamera} title='Take photo from camera'/> 
+           <Button   onPress={ChoosePhoto} title='Choose photo'/> 
+           <Button   onPress={()=> {}} title='اضافة'/>  
 
 
-             <Pressable onPress={submit}>
-                 <Text>create</Text>
-             </Pressable>
+           
 
              
      </View>

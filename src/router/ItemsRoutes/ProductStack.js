@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ProductHome from '../../screens/productScreens/ProductHome';
 import ProductCreate from '../../screens/productScreens/ProductCreate';
 import ProductEdit from '../../screens/productScreens/ProductEdit';
+import ProductCamera from '../../screens/productScreens/ProductCamera';
 
  
 
@@ -19,6 +20,7 @@ export default function ProductStack() {
       {/* <Stack.Screen name="ProductCreate" component={ProductCreate} /> */}
       <Stack.Screen name='اضافة منتج جديد'  component={ProductCreate} />
       <Stack.Screen name="ProductEdit" component={ProductEdit} />
+      <Stack.Screen name="ProductCamera" component={ProductCamera}/>
     </Stack.Navigator>
         
     )

@@ -10,7 +10,7 @@ export default function ProductHome({navigation}) {
     
 
     return (
-<ScrollView style={styles.page}>
+<View style={styles.page}>
 
 <Button
         title="create new product"
@@ -31,7 +31,7 @@ export default function ProductHome({navigation}) {
           // showsVerticalScrollIndicator={false}
         />
       
-      </ScrollView>
+      </View>
     )
 }
 

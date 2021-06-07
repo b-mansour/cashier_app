@@ -2,6 +2,7 @@ import React from 'react';
 import ProductStack from './ProductStack';
 import CategoryStack from './CategoryStack';
 import  DiscountStack from './DiscountStack';
+import {Button} from 'react-native';
 import  Items  from '../../screens/ItemsScreen/Items';
  
 
@@ -16,7 +17,7 @@ function ItemsStack() {
     <Stack.Navigator screenOptions={{ headerStyle:{backgroundColor:'#12b520'}
 
     }} >
-      <Stack.Screen name="Items" component={Items}/>
+      <Stack.Screen   name="Items" component={Items}/>
       <Stack.Screen options={{headerShown:false}} name="Product" component={ProductStack}/>
       <Stack.Screen options={{headerShown:false}} name="Category" component={CategoryStack}/>
       <Stack.Screen options={{headerShown:false}} name="Discounts" component={DiscountStack}/>
@@ -25,3 +26,16 @@ function ItemsStack() {
 }
 
 export default ItemsStack;
+
+
+
+// options={{
+         
+//   headerLeft: () => (
+//     <Button
+//       onPress={() => console.warn('This is a button!')}
+//       title="Info"
+//       color="#fff"
+//     />
+//   ),
+// }}

@@ -179,7 +179,7 @@ import {cartContext} from '../../../App';
 
 
   return (
-    <ScrollView style={styles.page}>
+    <View style={styles.page}>
 
       {/* {isLoading && <ActivityIndicator size="large" color='#12b520'/>} */}
       <View style={{flexDirection:'row', justifyContent:'space-between'}}>
@@ -207,7 +207,7 @@ import {cartContext} from '../../../App';
         // showsHorizontalScrollIndicator={false}
         // showsVerticalScrollIndicator={false}
       />
-    </ScrollView>
+    </View>
   )
 }
 
