@@ -4,6 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
+import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
  
 
 export default function ProductCreate() {
@@ -16,8 +17,9 @@ export default function ProductCreate() {
     const [barcode, setBarcode] = React.useState();
 
 
-    newProduct = {
+    var newProduct = {
       name : name,
+      category: category,
       price : price,
       cost : cost, 
       image : image,
@@ -94,13 +96,20 @@ export default function ProductCreate() {
               keyboardType='numeric'
              />
 
+<View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20}}> 
         <TextInput
               value={barcode}
               placeholder='رقم الباركود'
               onChangeText={ value =>  setBarcode(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={{ fontSize:20}}
               keyboardType='numeric'
+              
              />  
+
+<MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
+
+
+</View>
 
             
            <Button   onPress={takePhotoFromCamera} title='Take photo from camera'/> 

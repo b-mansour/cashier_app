@@ -9,18 +9,30 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-nati
 export default function Items({navigation}) {
     return (
 
-     <View> 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Product')}> 
-       <Text style={{fontSize:20}}>Products</Text>
-      </Pressable>
+<View style={{flexDirection:'row', flexWrap: "wrap", justifyContent:'center', marginTop:20}}> 
+      
 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Category')}> 
-       <Text style={{fontSize:20}}>Categories</Text>
+     
+      <Pressable style={styles.root} onPress={() => navigation.navigate('Product')}> 
+       <Text style={{fontSize:20, color:'#fff'}}>Products</Text>
       </Pressable>
+      
 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('Discounts')}> 
-       <Text style={{fontSize:20}}>Discounts</Text>
+       
+
+      <Pressable style={styles.root} onPress={() => navigation.navigate('Category')}> 
+       <Text style={{fontSize:20, color:'#fff'}}>Categories</Text>
       </Pressable>
+    
+
+
+    
+    <Pressable style={styles.root} onPress={() => navigation.navigate('Discounts')}> 
+       <Text style={{fontSize:20, color:'#fff'}}>Discounts</Text>
+      </Pressable>
+      
+
+
       </View>
     
         
@@ -41,5 +53,21 @@ const styles = StyleSheet.create({
         borderColor: '#12b520',
         alignItems: 'center',
         justifyContent:'center'
-      }
+      },
+
+       
+      root: {
+          flexDirection: 'column',
+          borderWidth: 1,
+          borderColor: '#d1d1d1',
+          borderRadius: 10,
+          backgroundColor: '#12b520',
+          marginVertical: 5,
+          marginHorizontal:5,
+          height:150,
+          width: 150,
+          alignItems: 'center',
+          justifyContent:'center'
+          
+        },
 })

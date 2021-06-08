@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, View, FlatList, Pressable, StyleSheet, ScrollView, Text} from 'react-native';
 import ProductHomeItem from '../../components/ProductHomeItem';
 import {productContext} from '../../../App';
+ 
 
 export default function ProductHome({navigation}) {
 
@@ -12,14 +13,6 @@ export default function ProductHome({navigation}) {
     return (
 <View style={styles.page}>
 
-<Button
-        title="create new product"
-         onPress={() =>  navigation.navigate('اضافة منتج جديد')}
-        
-      />
-  
-  
-  
         {/* Render Product Componet */}
         <FlatList
           data={products}

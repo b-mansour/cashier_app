@@ -11,23 +11,14 @@ function CategoryHome({navigation}) {
   const [ categories, setCategories] = category;
 
     return (
-        <View>
-        {/* <Text style={{fontSize:50, color:'#12b520'}}>Categories</Text> */}
+        <View style={{alignItems:'center', marginTop:20}}>
            <FlatList
             data={categories}
             renderItem={({item}) => <CategoryItem item={item}/>}
             keyExtractor={(item, index) => item.id }
-            // horizontal 
-            // showsHorizontalScrollIndicator={false}
-            // showsVerticalScrollIndicator={false}
+            numColumns={3}
           />
-
-<Button
-        title="create new category"
-         onPress={() =>  navigation.navigate('CategoryCreate')}
-        
-      />
-      </View>
+          </View>
     )
 }
 

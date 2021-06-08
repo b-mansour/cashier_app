@@ -18,77 +18,75 @@ import {cartContext} from '../../../App';
       id: '1',
       name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 4,
-      ratings: 1325,
       price: 20.98,
-      oldPrice: 24.06,
+      cost:15,
       categories: [5, 7],
-      quantity: 1 
+      quantity: 1 ,
+      barcode:'123456789'
     },
     {
       id: '2',
       name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 4.8,
-      ratings: 2989,
       price: 32.98,
-      oldPrice: 34.06,
+      cost:20,
       categories: [2, 4, 6],
-      quantity: 1 
+      quantity: 1 ,
+      barcode:'123456789'
     },
     {
       id: '3',
       name: "shoes",
       image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 3.8,
-      ratings: 2989,
-      price: 4206.9,
+      price: 46.9,
+      cost:20,
       categories: [2, 4, 5],
-      quantity: 1 
+      quantity: 1 ,
+      barcode:'123456789'
     },
     {
       id: '4',
       name: "nike shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       price: 99.98,
-      oldPrice: 120.06,
+      cost:70,
       categories: [2, 5, 6],
-      quantity: 1 
+      quantity: 1,
+      barcode:'123456789'
     },
     {
       id: '5',
       name: "red shoes",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 4.8,
-      ratings: 2989,
       price: 32.98,
-      oldPrice: 34.06,
+      cost:20,
       categories: [2, 4, 6],
-      quantity: 1 
+      quantity: 1 ,
+      barcode:'123456789'
     },
     {
       id: '6',
       name: "puma shoes",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 4.8,
-      ratings: 2989,
       price: 99.98,
-      oldPrice: 120.06,
-      categories: [1,5],
-      quantity: 1 
+      cost: 16,
+      categories: [1,5,6],
+      quantity: 1 ,
+      barcode:'123456789'
     },
     {
       id: '7',
       name: "sneaker",
       image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      avgRating: 4,
-      ratings: 1325,
       price: 20.98,
-      oldPrice: 24.06,
+      cost: 16,
       categories: [5, 7],
-      quantity: 1 
+      quantity: 1 ,
+      barcode:'123456789'
     },
   ];
+
+
 
 
   const {product} = React.useContext(productContext);
