@@ -5,7 +5,7 @@ import {productContext} from '../../../App';
 
 
 
-function  ReceiptScreen({ navigation }) {
+function  ReceiptHome({ navigation }) {
 
 
 
@@ -15,11 +15,10 @@ function  ReceiptScreen({ navigation }) {
 
   return (
 
-  <View>
-    <Text style={{fontSize:50, color:'#12b520'}}>Receipts</Text>
+  <View> 
        <FlatList
         data={products}
-        renderItem={({item}) => <ReceiptItem item={item} />}
+        renderItem={({item}) => <ReceiptItem navigation={navigation} item={item} />}
         keyExtractor={(item, index) => item.id }
         // horizontal 
         // showsHorizontalScrollIndicator={false}
@@ -28,7 +27,7 @@ function  ReceiptScreen({ navigation }) {
   </View>
   );
 }
-export default ReceiptScreen;
+export default ReceiptHome;
 
 
 

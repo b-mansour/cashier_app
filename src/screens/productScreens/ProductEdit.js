@@ -4,6 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
+import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
  
 
 export default function ProductEdit({route}) {
@@ -67,7 +68,7 @@ export default function ProductEdit({route}) {
               value={name} 
               placeholder='اسم المنتج'
               onChangeText={ value => setName(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
              /> 
 
         
@@ -75,7 +76,7 @@ export default function ProductEdit({route}) {
               value={price.toString()}
               placeholder='سعر المنتج'
               onChangeText={ value => setPrice(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
               keyboardType='numeric'
              />
 
@@ -91,17 +92,27 @@ export default function ProductEdit({route}) {
               value={cost.toString()}
               placeholder='سعر التكلفة'
               onChangeText={ value => setCost(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
               keyboardType='numeric'
              />
 
+<View style={{flexDirection:'row', justifyContent: 'center',
+    alignItems: 'center', marginTop:20}}> 
         <TextInput
               value={barcode}
               placeholder='رقم الباركود'
               onChangeText={ value =>  setBarcode(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={{width:'80%', borderWidth:1,
+              borderRadius:10, marginRight:10, borderColor:'#12b520'}}
+              // style={styles.input}
               keyboardType='numeric'
+              
              />  
+
+<MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
+
+
+        </View>   
 
             
            <Button   onPress={takePhotoFromCamera} title='Take photo from camera'/> 
@@ -115,6 +126,23 @@ export default function ProductEdit({route}) {
      </View>
     )
 }
+
+
+
+const styles =   StyleSheet.create({
+  input: {
+    marginTop:20,
+    width:'90%',
+    borderWidth:1,
+    borderRadius:10,
+    alignSelf:'center',
+    borderColor:'#12b520',
+    fontSize:20
+
+}
+  
+
+})
 
 
 

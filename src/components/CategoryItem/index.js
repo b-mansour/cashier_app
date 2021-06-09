@@ -16,18 +16,16 @@ const CategoryItem = ({item}) => {
   // };
 
   return (
- 
-    <Pressable onPress={() => navigation.navigate('CategoryEdit', item)} style={styles.root}>
-        
-        <View style={{ alignItems:'center'}}>
-        <Text>{item.name}</Text>
-         
-        <Image style={styles.image} source={{uri:item.image}}/>
-    
+    <Pressable onPress={() => navigation.navigate('CategoryEdit', item)} style={ {marginTop:20}}>  
+        <Text style={{alignSelf:'center', fontWeight:'bold'}} >{item.name}</Text> 
+    <View  style={styles.root}>
+     
+      <View>
+      <Image style={styles.image} source={{uri: item.image}}/>
+      </View>
+       
     </View>
-        
-        
-    </Pressable>
+    </Pressable> 
      
   );
 };

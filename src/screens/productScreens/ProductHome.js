@@ -21,7 +21,7 @@ export default function ProductHome({navigation}) {
           numColumns={2}
         //   horizontal 
           // showsHorizontalScrollIndicator={false}
-          // showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         />
       
       </View>

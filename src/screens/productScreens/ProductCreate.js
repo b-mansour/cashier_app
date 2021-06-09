@@ -6,8 +6,10 @@ import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
  
+ 
+ 
 
-export default function ProductCreate() {
+export default function ProductCreate({navigation}) {
 
 
     const [name, setName] = React.useState();
@@ -68,7 +70,7 @@ export default function ProductCreate() {
               value={name} 
               placeholder='اسم المنتج'
               onChangeText={ value => setName(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
              /> 
 
         
@@ -76,7 +78,7 @@ export default function ProductCreate() {
               value={price}
               placeholder='سعر المنتج'
               onChangeText={ value => setPrice(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
               keyboardType='numeric'
              />
 
@@ -92,38 +94,50 @@ export default function ProductCreate() {
               value={cost}
               placeholder='سعر التكلفة'
               onChangeText={ value => setCost(value)}
-              style={{ borderBottomWidth:2, borderBottomColor:'#12b520', fontSize:20}}
+              style={styles.input}
               keyboardType='numeric'
              />
 
-<View style={{flexDirection:'row',justifyContent:'space-around', marginTop:20}}> 
+<View style={{flexDirection:'row', justifyContent: 'center',
+    alignItems: 'center', marginTop:20}}> 
         <TextInput
               value={barcode}
               placeholder='رقم الباركود'
               onChangeText={ value =>  setBarcode(value)}
-              style={{ fontSize:20}}
+              style={{width:'80%', borderWidth:1,
+              borderRadius:10, marginRight:10, borderColor:'#12b520'}}
+              // style={styles.input}
               keyboardType='numeric'
               
              />  
-
+<Pressable onPress={() => navigation.navigate('BarcodeScanner')}> 
 <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
-
-
-</View>
-
-            
-           <Button   onPress={takePhotoFromCamera} title='Take photo from camera'/> 
-           <Button   onPress={ChoosePhoto} title='Choose photo'/> 
-           <Button   onPress={()=> {}} title='اضافة'/>  
-
-
+</Pressable>
+</View>   
+           <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
+           <Button onPress={ChoosePhoto} title='Choose photo'/> 
+           <Button onPress={()=> {}} title='اضافة'/>  
            
-
-             
-     </View>
+       </View>
     )
 }
 
+
+
+const styles =   StyleSheet.create({
+  input: {
+    marginTop:20,
+    width:'90%',
+    borderWidth:1,
+    borderRadius:10,
+    alignSelf:'center',
+    borderColor:'#12b520',
+    fontSize:20
+
+}
+  
+
+})
 
 
 

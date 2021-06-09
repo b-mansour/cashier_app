@@ -1,7 +1,7 @@
 import   React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import ReceiptScreen from './src/screens/ReceiptScreen/Receipt';
+import ReceiptStack from './src/router/ReceiptStack';
 import  CartScreen from './src/screens//CartScreen/cart';
 import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
 import SettingsStack from './src/router/SettingsRoutes/SettingsStack';
@@ -44,40 +44,40 @@ function App() {
     {
         id: 1,
         name: "Vegetables",
-        image:'https://images.unsplash.com/photo-1557844352-761f2565b576?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dmVnZXRhYmxlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+        image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
     },
   
     {
         id: 2,
         name: "Fruits",
-        image: 'https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGZydWl0c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        image: 'https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGZydWl0c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
         
      },
     {
         id: 3,
         name: "dairies",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
          
     },
     {
         id: 4,
         name: "Drinks",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
     },
     {
         id: 5,
         name: "accessories",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
         
     },
     {
         id: 6,
         name: "furniture",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
          
     },
@@ -201,7 +201,7 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Home"  component={HomeStack}/>
-        <Drawer.Screen name="Receipt" component={ReceiptScreen}/>
+        <Drawer.Screen name="Receipt" component={ReceiptStack}/>
         <Drawer.Screen name="Item" component={ItemsStack}/>
         <Drawer.Screen name="Cart" component={CartScreen}/>
         <Drawer.Screen name="Settings" component={SettingsStack}/>

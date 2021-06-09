@@ -14,10 +14,11 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    flex: 2,
-    height: 50,
-    width: 50,
-    resizeMode: 'contain',
+    
+    height: 98,
+    width: 98,
+    borderRadius:10,
+    resizeMode: 'cover',
   },
   rightContainer: {
     padding: 10,

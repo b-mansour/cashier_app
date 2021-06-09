@@ -12,7 +12,8 @@ import { Text,View, StyleSheet ,Image} from 'react-native';
 // } from 'react-native-paper';
 import {
     DrawerContentScrollView,
-    DrawerItem
+    DrawerItem,
+    DrawerItemList
 } from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -30,6 +31,7 @@ export function DrawerContent(props) {
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
+                 
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection:'row',marginTop: 15}}>
@@ -81,7 +83,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Profile"
+                            label="Receipt"
                             onPress={() => {props.navigation.navigate('Receipt')}}
                         />
                         <DrawerItem 

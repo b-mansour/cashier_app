@@ -17,6 +17,7 @@ function CategoryHome({navigation}) {
             renderItem={({item}) => <CategoryItem item={item}/>}
             keyExtractor={(item, index) => item.id }
             numColumns={3}
+            showsVerticalScrollIndicator={false}
           />
           </View>
     )
