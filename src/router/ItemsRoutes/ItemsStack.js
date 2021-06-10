@@ -24,13 +24,10 @@ function ItemsStack({navigation}) {
       headerLeft: () => ( 
         <Menu  navigation={navigation} /> 
       ),
-      // title:'my items'
+      title:'المنتجات'
 
      }}  
-     name="Items" component={Items}/>
-
-
-
+     name = "Items" component={Items}/>
     <Stack.Screen options={{headerShown:false}} name="Product" component={ProductStack}/>
       <Stack.Screen options={{headerShown:false}} name="Category" component={CategoryStack}/>
       <Stack.Screen options={{headerShown:false}} name="Discounts" component={DiscountStack}/>

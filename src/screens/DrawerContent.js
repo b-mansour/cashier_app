@@ -22,7 +22,7 @@ import AntDesign  from  'react-native-vector-icons/AntDesign';
 
 // import{ AuthContext } from '../components/context';
 
-export function DrawerContent(props) {
+export function DrawerContent(props){
 
     // const paperTheme = useTheme();
 
@@ -138,14 +138,14 @@ export function DrawerContent(props) {
             {/* <Drawer.Section style={styles.bottomDrawerSection}> */}
             <View style={styles.bottomDrawerSection}> 
                 <DrawerItem 
-                    icon={({color, size}) => (
-                        <Icon 
-                        name="exit-to-app" 
-                        color={color}
-                        size={size}
-                        />
-                    )}
-                    label="Sign Out"
+                    // icon={({color, size}) => (
+                    //     <Icon 
+                    //     name="exit-to-app" 
+                    //     color={color}
+                    //     size={size}
+                    //     />
+                    // )}
+                    label="version 1.0"
                     onPress={() => {}}
                 />
                 </View>

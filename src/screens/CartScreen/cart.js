@@ -1,8 +1,9 @@
 import React from 'react';
-import {  View, Text , FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import {cartContext} from '../../../App';
 import CartItem from '../../components/CartItem';
-import Button from '../../components/Button/index'
+import Button from '../../components/Button/index';
+import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
 
  function CartScreen(){
 
@@ -34,7 +35,10 @@ import Button from '../../components/Button/index'
     <Button title='checkout'/> 
     </View>
   } else {
-    cart = <Text>cart is empty</Text>
+    cart =  <View style={{alignItems:'center', flex:1, justifyContent:'center'}}>
+            <MaterialIcons style={{fontSize:70, color:"gray"}} name="shopping-cart"></MaterialIcons>
+            <Text style={{fontSize:20, color:"gray"}}>لا يوجد شيء في السلة</Text>
+            </View>
   }
 
   return (

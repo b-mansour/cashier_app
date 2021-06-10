@@ -24,6 +24,7 @@ import {cartContext} from '../../../App';
       quantity: 1 ,
       barcode:'123456789'
     },
+
     {
       id: '2',
       name: "red shoes",
@@ -34,6 +35,7 @@ import {cartContext} from '../../../App';
       quantity: 1 ,
       barcode:'123456789'
     },
+
     {
       id: '3',
       name: "shoes",
@@ -44,6 +46,7 @@ import {cartContext} from '../../../App';
       quantity: 1 ,
       barcode:'123456789'
     },
+
     {
       id: '4',
       name: "nike shoes",
@@ -54,6 +57,7 @@ import {cartContext} from '../../../App';
       quantity: 1,
       barcode:'123456789'
     },
+
     {
       id: '5',
       name: "red shoes",
@@ -64,6 +68,7 @@ import {cartContext} from '../../../App';
       quantity: 1 ,
       barcode:'123456789'
     },
+
     {
       id: '6',
       name: "puma shoes",
@@ -74,6 +79,7 @@ import {cartContext} from '../../../App';
       quantity: 1 ,
       barcode:'123456789'
     },
+    
     {
       id: '7',
       name: "sneaker",
@@ -185,7 +191,7 @@ import {cartContext} from '../../../App';
         <Feather style={{fontSize:30}} name="menu"></Feather>
         </Pressable>
    
-       <Pressable onPress={() => navigation.navigate('CartScreen')}>
+       <Pressable onPress={() => navigation.navigate('CartStack')}>
           <Ionicons style={{fontSize:25}} name="cart-outline">{cartItems.length}</Ionicons>
        </Pressable>
        

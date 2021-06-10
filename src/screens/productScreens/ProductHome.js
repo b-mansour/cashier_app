@@ -12,18 +12,16 @@ export default function ProductHome({navigation}) {
 
     return (
 <View style={styles.page}>
-
         {/* Render Product Componet */}
         <FlatList
           data={products}
-          renderItem={({item}) => <ProductHomeItem item={item} />}
+          renderItem={({item}) => <ProductHomeItem item={item}/>}
           keyExtractor={(item, index) => item.id }
           numColumns={2}
         //   horizontal 
           // showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         />
-      
       </View>
     )
 }

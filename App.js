@@ -2,11 +2,11 @@ import   React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import ReceiptStack from './src/router/ReceiptStack';
-import  CartScreen from './src/screens//CartScreen/cart';
 import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
 import SettingsStack from './src/router/SettingsRoutes/SettingsStack';
 import HomeStack from './src/router/HomeStack/HomeStack';
 import {DrawerContent} from './src/screens/DrawerContent'
+import CartStack from './src/router/HomeStack/CartStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -201,9 +201,9 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Home"  component={HomeStack}/>
-        <Drawer.Screen name="Receipt" component={ReceiptStack}/>
+        <Drawer.Screen name="Receipt"  component={ReceiptStack}/>
         <Drawer.Screen name="Item" component={ItemsStack}/>
-        <Drawer.Screen name="Cart" component={CartScreen}/>
+        <Drawer.Screen name="Cart" component={CartStack}/>
         <Drawer.Screen name="Settings" component={SettingsStack}/>
       </Drawer.Navigator>
     </NavigationContainer>

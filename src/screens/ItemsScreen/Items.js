@@ -14,21 +14,21 @@ export default function Items({navigation}) {
 
      
       <Pressable style={styles.root} onPress={() => navigation.navigate('Product')}> 
-       <Text style={{fontSize:20, color:'#fff'}}>Products</Text>
+       <Text style={{fontSize:20, color:'#fff'}}>المنتجات</Text>
       </Pressable>
       
 
        
 
       <Pressable style={styles.root} onPress={() => navigation.navigate('Category')}> 
-       <Text style={{fontSize:20, color:'#fff'}}>Categories</Text>
+       <Text style={{fontSize:20, color:'#fff'}}>الفئات</Text>
       </Pressable>
     
 
 
     
     <Pressable style={styles.root} onPress={() => navigation.navigate('Discounts')}> 
-       <Text style={{fontSize:20, color:'#fff'}}>Discounts</Text>
+       <Text style={{fontSize:20, color:'#fff'}}>الخصومات</Text>
       </Pressable>
       
 
@@ -38,7 +38,6 @@ export default function Items({navigation}) {
         
     )
 }
-
 
 
 const styles = StyleSheet.create({

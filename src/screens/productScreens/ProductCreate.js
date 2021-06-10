@@ -7,7 +7,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
  
  
- 
+export const barcodeContext = React.createContext();
 
 export default function ProductCreate({navigation}) {
 
@@ -17,6 +17,8 @@ export default function ProductCreate({navigation}) {
     const [cost, setCost] = React.useState();
     const [image, setImage] = React.useState();
     const [barcode, setBarcode] = React.useState();
+
+    
 
 
     var newProduct = {
@@ -62,6 +64,8 @@ export default function ProductCreate({navigation}) {
 
 
     return (
+
+      <barcodeContext.Provider value={{ Barcode:[ barcode, setBarcode]}}>
         <View>
 
 
@@ -110,15 +114,16 @@ export default function ProductCreate({navigation}) {
               keyboardType='numeric'
               
              />  
-<Pressable onPress={() => navigation.navigate('BarcodeScanner')}> 
-<MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
-</Pressable>
-</View>   
+      <Pressable onPress={() => navigation.navigate('BarcodeScanner')}> 
+     <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
+    </Pressable>
+    </View>   
            <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
            <Button onPress={()=> {}} title='اضافة'/>  
            
        </View>
+       </barcodeContext.Provider>
     )
 }
 

@@ -19,7 +19,7 @@ const ProductItem = ({item}) => {
 
   return (
 
-    <Pressable onPress={() => navigation.navigate('ProductEdit', item)} style={styles.root}>
+    <Pressable onPress={() => navigation.navigate('ProductEdit',item)} style={styles.root}>
       {/* <TouchableOpacity
       style={{
         width: 30,

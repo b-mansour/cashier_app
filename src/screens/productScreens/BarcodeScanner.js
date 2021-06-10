@@ -20,9 +20,13 @@ this.state = {
 torchOn: false
 }
 }
+
+
 onBarCodeRead = (e) => {
 Alert.alert("Barcode value is" + e.data, "Barcode type is" + e.type);
 }
+
+
 render() {
 return (
 <View style={styles.container}>

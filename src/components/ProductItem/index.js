@@ -21,6 +21,7 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
     var cartItem = {
       id: item.id,
       name: item.name,
+      image: item.image,
       price: item.price ,
       quantity: item.quantity 
       
