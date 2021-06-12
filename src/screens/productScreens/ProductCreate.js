@@ -65,11 +65,8 @@ export default function ProductCreate({navigation}) {
 
     return (
 
-      <barcodeContext.Provider value={{ Barcode:[ barcode, setBarcode]}}>
+      <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
         <View>
-
-
-
         <TextInput
               value={name} 
               placeholder='اسم المنتج'
@@ -117,12 +114,14 @@ export default function ProductCreate({navigation}) {
       <Pressable onPress={() => navigation.navigate('BarcodeScanner')}> 
      <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
     </Pressable>
+
     </View>   
            <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
            <Button onPress={()=> {}} title='اضافة'/>  
            
        </View>
+
        </barcodeContext.Provider>
     )
 }
@@ -137,12 +136,11 @@ const styles =   StyleSheet.create({
     borderRadius:10,
     alignSelf:'center',
     borderColor:'#12b520',
-    fontSize:20
+    fontSize:20,
+    color:'#000'
 
 }
-  
-
-})
+});
 
 
 

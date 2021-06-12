@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput } from 'react-native';
+import {View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput,TouchableOpacity } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
+import  AntDesign  from 'react-native-vector-icons/AntDesign';
  
 
 export default function ProductEdit({route}) {
@@ -120,7 +121,9 @@ export default function ProductEdit({route}) {
            <Button   onPress={()=> {}} title='اضافة'/>  
 
 
-           
+           <TouchableOpacity style={styles.footer} >
+    <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
+    </TouchableOpacity>
 
              
      </View>
@@ -137,9 +140,21 @@ const styles =   StyleSheet.create({
     borderRadius:10,
     alignSelf:'center',
     borderColor:'#12b520',
-    fontSize:20
-
-}
+    fontSize:20,
+    color:'#000'
+},
+footer: {
+  // position:'absolute',
+  // top:'90%',
+  left:'80%',
+  height: 40,
+  width: 40,
+  marginBottom:10,
+  borderRadius:50,
+  backgroundColor:'#9e0913',
+  alignItems:'center',
+  justifyContent:'center'
+},
   
 
 })

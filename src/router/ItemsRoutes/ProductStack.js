@@ -19,11 +19,13 @@ export default function ProductStack({navigation}) {
     <Stack.Navigator screenOptions={{headerTitleAlign:'center'}}>
       <Stack.Screen name="ProductHome" options={{
        headerRight: () => (<AddButton routeName ='ProductCreate'  navigation={navigation}/>),
+       title:'المنتجات'
       }}
+
        component={ProductHome}/>
        
-      <Stack.Screen name='ProductCreate'  component={ProductCreate} />
-      <Stack.Screen name="ProductEdit" component={ProductEdit} />
+      <Stack.Screen name='ProductCreate' options={{title:'اضافة منتج جديد'}}  component={ProductCreate} />
+      <Stack.Screen name="ProductEdit" options={{title:'تعديل المنتج'}} component={ProductEdit} />
       <Stack.Screen name="BarcodeScanner" component={BarcodeScan}/>
     </Stack.Navigator>
         

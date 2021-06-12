@@ -4,9 +4,12 @@ import QRCodeScanner from  "react-native-qrcode-scanner"
 
 export default function QRHome() {
 
+  const [barcode ,setBarcode] = React.useState();
+
  ifScanned = (e) => {
      Linking.openURL(e.data).catch(err => 
         Alert.alert('invalid qr code', e.data));
+        setBarcode(e.data)
  }
 
 
@@ -26,8 +29,9 @@ export default function QRHome() {
                 </TouchableOpacity>
               }
               /> 
-            
+             <Text>{barcode}</Text>
         </View>
+        
     )
 }
 

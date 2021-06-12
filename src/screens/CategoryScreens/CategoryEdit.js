@@ -1,11 +1,42 @@
 import React from 'react';
-import { View, Text ,  StyleSheet,  TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Image} from 'react-native';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
+import Button from '../../components/Button/index';
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 function CategoryEdit({route}) {
 
     const [name, setName] = React.useState(route.params.name);
-    const [description, setDescription] = React.useState(route.params.description);
+    const [image, setImage] = React.useState(route.params.image);
+    // const [description, setDescription] = React.useState(route.params.description);
+
+
+    const takePhotoFromCamera = () => {
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
+          cropping: true,
+        }).then(image => {
+          console.log(image);
+          setImage(image.path)
+        });
+      }
+  
+      const ChoosePhoto = () => {
+        ImagePicker.openPicker({
+          width: 300,
+          height: 400,
+          cropping: true
+        }).then(image => {
+          console.log(image);
+          setImage(image.path)
+        });
+
+        console.log(image);
+      }
+  
+
 
 
     return (
@@ -25,30 +56,38 @@ function CategoryEdit({route}) {
         
 
     <View style={styles.contentContainer}> 
-
-    <View> 
         <TextInput
               value={name} 
               style={styles.input}
               onChangeText={val => { setName(val)}}
              /> 
         
-        <TextInput
+        {/* <TextInput
               value={description}
               style={styles.input}
-             />
+             /> */}
+              <Image style={{alignSelf:'center',flex:1,width:200, height:200}}  source={{uri:image}}/>
 
-         </View>
+              
 
     </View>
+    
+    
+          <View> 
+          <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
+           <Button onPress={ChoosePhoto} title='Choose photo'/> 
+           <Button onPress={()=> {}} title='تعديل'/> 
+           </View> 
 
     <TouchableOpacity style={styles.footer} >
-<AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
-   
-</TouchableOpacity>
+    <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
+    </TouchableOpacity>
 </View>
     )
 }
+
+
+
 
 
 var styles = StyleSheet.create({
@@ -83,7 +122,8 @@ var styles = StyleSheet.create({
         borderRadius:10,
         alignSelf:'center',
         borderColor:'#12b520',
-        fontSize:20
+        fontSize:20,
+        color:'#000'
 
     }
 });

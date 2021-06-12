@@ -5,8 +5,11 @@ import ReceiptStack from './src/router/ReceiptStack';
 import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
 import SettingsStack from './src/router/SettingsRoutes/SettingsStack';
 import HomeStack from './src/router/HomeStack/HomeStack';
-import {DrawerContent} from './src/screens/DrawerContent'
+import {DrawerContent} from './src/screens/DrawerContent';
 import CartStack from './src/router/HomeStack/CartStack';
+import Entypo from  'react-native-vector-icons/Entypo';
+import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
+import Feather  from 'react-native-vector-icons/Feather';
 
 const Drawer = createDrawerNavigator();
 
@@ -43,65 +46,65 @@ function App() {
   const categoryData = [
     {
         id: 1,
-        name: "Vegetables",
+        name: "الخضار",
         image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
     },
   
     {
         id: 2,
-        name: "Fruits",
+        name: "الفواكه",
         image: 'https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGZydWl0c3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
         
      },
     {
         id: 3,
-        name: "dairies",
+        name: "الاجبان",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
          
     },
     {
         id: 4,
-        name: "Drinks",
+        name: "المشروبات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
     },
     {
         id: 5,
-        name: "accessories",
+        name: "المخبوزات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       
         
     },
     {
         id: 6,
-        name: "furniture",
+        name: "المثلجات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
          
          
     },
     {
         id: 7,
-        name: "Snacks",
+        name: "الخردوات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
         
     },
     {
         id: 8,
-        name: "Sushi",
+        name: "ادوات النظافة",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
          
     },
     {
         id: 9,
-        name: "Desserts",
+        name: "الحلويات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
          
     },
     {
         id: 10,
-        name: "Drinks",
+        name: "تشيبس",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
         
     },
@@ -192,7 +195,7 @@ function App() {
 
 
   return (
-    <productContext.Provider value={{ product:[ products , setProducts]}}> 
+    <productContext.Provider value={{product:[products ,setProducts]}}> 
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
        <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
        <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}> 
@@ -200,11 +203,74 @@ function App() {
 
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="Home"  component={HomeStack}/>
-        <Drawer.Screen name="Receipt"  component={ReceiptStack}/>
-        <Drawer.Screen name="Item" component={ItemsStack}/>
-        <Drawer.Screen name="Cart" component={CartStack}/>
-        <Drawer.Screen name="Settings" component={SettingsStack}/>
+
+        <Drawer.Screen name="Home" 
+           options={{
+            title: 'الرئيسية',
+            drawerIcon: ({focused, size}) => (
+               <Entypo
+                  name="home"
+                  size={size}
+                  color={focused ? '#7cc' : '#ccc'}
+               />
+            ),
+         }}
+         component={HomeStack}/>
+
+
+        <Drawer.Screen name="Receipt" 
+        options={{
+          title:'الفواتير',
+          drawerIcon: ({focused, size}) => (
+             <FontAwesome5
+                name="money-bill"
+                size={size}
+                color={focused ? '#7cc' : '#ccc'}
+             />
+          ),
+       }}
+         component={ReceiptStack}/>
+
+        <Drawer.Screen name="Item" 
+         options={{
+          title:'المنتجات',
+          drawerIcon: ({focused, size}) => (
+             <FontAwesome5
+                name="sitemap"
+                size={size}
+                color={focused ? '#7cc' : '#ccc'}
+             />
+          ),
+       }}
+        component={ItemsStack}/>
+
+        {/* <Drawer.Screen name="Cart" 
+         options={{
+          title:'السلة',
+          drawerIcon: ({focused, size}) => (
+             <Entypo
+                name="shopping-cart"
+                size={size}
+                color={focused ? '#7cc' : '#ccc'}
+             />
+          ),
+       }}
+        component={CartStack}/> */}
+
+
+        <Drawer.Screen name="Settings"
+         options={{
+          title:'الضبط',
+          drawerIcon: ({focused, size}) => (
+             <Feather
+                name="settings"
+                size={size}
+                color={focused ? '#7cc' : '#ccc'}
+             />
+          ),
+       }}
+      component={SettingsStack}/>
+
       </Drawer.Navigator>
     </NavigationContainer>
 

@@ -8,7 +8,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 function CategoryEdit({route}) {
 
     const [name, setName] = React.useState();
-    const [description, setDescription] = React.useState();
+    // const [description, setDescription] = React.useState();
     const [image, setImage] = React.useState();
 
 
@@ -56,11 +56,11 @@ function CategoryEdit({route}) {
               onChangeText={val => { setName(val)}}
              /> 
         
-        <TextInput
+        {/* <TextInput
               value={description}
               style={styles.input}
               onChangeText={val => { setDescription(val)}}
-             />
+             /> */}
 
          </View>
 
@@ -109,7 +109,8 @@ var styles = StyleSheet.create({
         borderRadius:10,
         alignSelf:'center',
         borderColor:'#12b520',
-        fontSize:20
+        fontSize:20,
+        color:'#000'
 
     }
 

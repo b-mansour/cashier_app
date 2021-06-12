@@ -18,11 +18,11 @@ export default function CategorytStack({navigation}) {
               <Stack.Screen name="CategoryHome" 
                 options={{
                 headerRight: () => (<AddButton routeName = "CategoryCreate"  navigation={navigation}/>),
+                title:'الفئات'
                }}
                 component={CategoryHome}/>
-              <Stack.Screen name="CategoryCreate" component={CategoryCreate}/>
-              <Stack.Screen name="CategoryEdit" component={CategoryEdit} />
-              
+              <Stack.Screen name="CategoryCreate" options={{title:'اضافة فئة جديدة'}} component={CategoryCreate}/>
+              <Stack.Screen name="CategoryEdit"  options={{title:'تعديل الفئة'}} component={CategoryEdit}/>
             </Stack.Navigator>
         
     )

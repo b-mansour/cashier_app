@@ -1,15 +1,5 @@
 import React from 'react';
 import { Text,View, StyleSheet ,Image} from 'react-native';
-// import {
-//     useTheme,
-//     Avatar,
-//     Title,
-//     Caption,
-//     Paragraph,
-//     Drawer,
-//     TouchableRipple,
-//     Switch
-// } from 'react-native-paper';
 import {
     DrawerContentScrollView,
     DrawerItem,
@@ -20,18 +10,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from  'react-native-vector-icons/Ionicons';
 import AntDesign  from  'react-native-vector-icons/AntDesign';
 
-// import{ AuthContext } from '../components/context';
+ 
 
 export function DrawerContent(props){
-
-    // const paperTheme = useTheme();
-
-    // const { signOut, toggleTheme } = React.useContext(AuthContext);
 
     return(
         <View style={{flex:1}}>
             <DrawerContentScrollView {...props}>
-                 
+               
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection:'row',marginTop: 15}}>
@@ -50,19 +36,11 @@ export function DrawerContent(props){
                             </View>
                         </View>
 
-                        {/* <View style={styles.row}>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
-                                <Caption style={styles.caption}>Following</Caption>
-                            </View>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
-                                <Caption style={styles.caption}>Followers</Caption>
-                            </View>
-                        </View> */}
+                      
                     </View>
+                    <DrawerItemList  {...props}/>
 
-                    {/* <Drawer.Section style={styles.drawerSection}> */}
+{/*                     
                     <View style={styles.drawerSection}>
                         <DrawerItem 
                             icon={({color, size}) => (
@@ -121,21 +99,11 @@ export function DrawerContent(props){
                             label="Settings"
                             onPress={() => {props.navigation.navigate('Settings')}}
                         />
-                        </View> 
-                    {/* </Drawer.Section> */}
-                    {/* <Drawer.Section title="Preferences">
-                        <TouchableRipple onPress={() => {toggleTheme()}}>
-                            <View style={styles.preference}>
-                                <Text>Dark Theme</Text>
-                                <View pointerEvents="none">
-                                    <Switch value={paperTheme.dark}/>
-                                </View>
-                            </View>
-                        </TouchableRipple>
-                    </Drawer.Section> */}
+                        </View>  */}
+
                 </View>
             </DrawerContentScrollView>
-            {/* <Drawer.Section style={styles.bottomDrawerSection}> */}
+    
             <View style={styles.bottomDrawerSection}> 
                 <DrawerItem 
                     // icon={({color, size}) => (
@@ -145,7 +113,7 @@ export function DrawerContent(props){
                     //     size={size}
                     //     />
                     // )}
-                    label="version 1.0"
+                    label="رقم الاصدار 1.0"
                     onPress={() => {}}
                 />
                 </View>
