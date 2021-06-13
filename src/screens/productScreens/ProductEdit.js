@@ -116,9 +116,9 @@ export default function ProductEdit({route}) {
         </View>   
 
             
-           <Button   onPress={takePhotoFromCamera} title='Take photo from camera'/> 
-           <Button   onPress={ChoosePhoto} title='Choose photo'/> 
-           <Button   onPress={()=> {}} title='اضافة'/>  
+           <Button   onPress={takePhotoFromCamera} title='تصوير من الكاميرا '/> 
+           <Button   onPress={ChoosePhoto} title='اختيار صورة'/> 
+           <Button   onPress={()=> {}} title='تعديل المنتج'/>  
 
 
            <TouchableOpacity style={styles.footer} >

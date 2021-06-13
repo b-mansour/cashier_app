@@ -5,9 +5,12 @@ import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
+import { barcodeContext } from '../../../App';
+ 
+
  
  
-export const barcodeContext = React.createContext();
+// export const barcodeContext = React.createContext();
 
 export default function ProductCreate({navigation}) {
 
@@ -16,7 +19,11 @@ export default function ProductCreate({navigation}) {
     const [price, setPrice] = React.useState();
     const [cost, setCost] = React.useState();
     const [image, setImage] = React.useState();
-    const [barcode, setBarcode] = React.useState();
+    // const [barcode, setBarcode] = React.useState();
+
+
+    const {barcodee} = React.useContext(barcodeContext)
+    const [ barcode, setBarcode] = barcodee;
 
     
 
@@ -64,8 +71,9 @@ export default function ProductCreate({navigation}) {
 
 
     return (
-
-      <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
+      
+      // <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
+      <View>
         <View>
         <TextInput
               value={name} 
@@ -111,18 +119,19 @@ export default function ProductCreate({navigation}) {
               keyboardType='numeric'
               
              />  
-      <Pressable onPress={() => navigation.navigate('BarcodeScanner')}> 
+      <Pressable onPress={() => navigation.navigate('BarcodeScanner', )}> 
      <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
     </Pressable>
 
     </View>   
-           <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
-           <Button onPress={ChoosePhoto} title='Choose photo'/> 
-           <Button onPress={()=> {}} title='اضافة'/>  
+           <Button onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
+           <Button onPress={ChoosePhoto} title='اختيار صورة'/> 
+           <Button onPress={()=> {}} title='اضافةالمنتج'/>  
            
        </View>
+      </View>
 
-       </barcodeContext.Provider>
+      //  </barcodeContext.Provider>
     )
 }
 
@@ -137,8 +146,7 @@ const styles =   StyleSheet.create({
     alignSelf:'center',
     borderColor:'#12b520',
     fontSize:20,
-    color:'#000'
-
+    color:'black'
 }
 });
 

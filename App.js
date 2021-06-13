@@ -17,6 +17,7 @@ const Drawer = createDrawerNavigator();
   export const categoryContext = React.createContext();
   export const cartContext = React.createContext([]);
   export const discountContext = React.createContext();
+  export const barcodeContext = React.createContext();
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     {
       id: 1,
       name: "dscount1",
+      type:['amount','percentage'],
       value: 10
        
   },
@@ -31,6 +33,7 @@ function App() {
   {
       id: 2,
       name: "discount2",
+      type:['amount','percentage'],
       value: 20
       
    },
@@ -38,6 +41,7 @@ function App() {
   {
       id: 3,
       name: "discount3",
+      type:['amount','percentage'],
       value: 30
   },
 ];
@@ -191,6 +195,7 @@ function App() {
     const [products, setProducts] = React.useState(productsData); 
     const [discounts, setDiscounts] = React.useState(discountsData);
     const [cartItems, setCartItems] = React.useState([]);
+    const [barcode, setBarcode] = React.useState('');
 
 
 
@@ -199,6 +204,7 @@ function App() {
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
        <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
        <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}> 
+       <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
         
 
     <NavigationContainer>
@@ -273,7 +279,7 @@ function App() {
 
       </Drawer.Navigator>
     </NavigationContainer>
-
+    </barcodeContext.Provider>
    </cartContext.Provider>
     </discountContext.Provider>
     </categoryContext.Provider>

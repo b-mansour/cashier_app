@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, View, Text , FlatList, TouchableOpacity, StyleSheet, Alert,Linking } from 'react-native';
-import QRCodeScanner from  "react-native-qrcode-scanner"
+import QRCodeScanner from  "react-native-qrcode-scanner";
 
 export default function QRHome() {
 
@@ -66,13 +66,4 @@ const styles = StyleSheet.create({
 
 
 
-// import React from 'react';
-// import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
-
-// export default function QRHome() {
-//     return (
-//     <View>
-//         <Text> this is  QR home </Text>
-//     </View>
-//     )
-// }
+ 

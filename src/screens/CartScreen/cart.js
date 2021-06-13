@@ -30,7 +30,7 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
    />
      <View>
      {/* <Text style={{fontSize:30}}>total price is{totalPrice.toFixed(2)}</Text> */}
-    <Text style={{fontSize:30}}>total price is {Number((totalPrice).toFixed(3))}</Text>
+    <Text style={{fontSize:30}}> اجمالي السعر {Number((totalPrice).toFixed(3))}</Text>
      </View>
     <Button title='checkout'/> 
     </View>

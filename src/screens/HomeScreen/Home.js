@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {  View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView , Pressable,ActivityIndicator } from 'react-native';
+import {  View, Text, FlatList, TouchableOpacity, StyleSheet,TextInput, Pressable,ActivityIndicator } from 'react-native';
 import Feather  from 'react-native-vector-icons/Feather';
 import Ionicons  from 'react-native-vector-icons/Ionicons';
 import ProductItem from '../../components/ProductItem';
@@ -116,6 +116,13 @@ import {cartContext} from '../../../App';
   //   })
   // },[])
 
+  // const [filterdProducts, setFilteredProdcts] = React.useState(products);
+  const searchProduct = (somethingtoSearch) => {
+    setProducts(products.filter( i => i.name.includes(somethingtoSearch)));
+    console.log(somethingtoSearch);
+
+  }
+
 
 
  
@@ -126,7 +133,7 @@ import {cartContext} from '../../../App';
     function onSelectCategory(category) {
       //filter restaurant
       let productList = productsData.filter(a => a.categories.includes(category.id))
-  
+      // setProducts(null)
       setProducts(productList)
   
       setSelectedCategory(category)
@@ -135,7 +142,7 @@ import {cartContext} from '../../../App';
 
 
   function renderMainCategories() {
-    const renderItem = ({ item }) => {
+    const renderItem = ({item}) => {
         return (
             <TouchableOpacity
                 style={{
@@ -201,6 +208,13 @@ import {cartContext} from '../../../App';
 
       {renderMainCategories()}
 
+      <TextInput
+       
+              placeholder='اسم المنتج'
+              onChangeText={ text => searchProduct(text)}
+              style={styles.input}
+             /> 
+
       {/* Render Product Componet */}
       <FlatList
         data={products}
@@ -234,7 +248,19 @@ shadow: {
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 1,
+},
+
+input: {
+  width:'100%',
+  borderWidth:1,
+  borderRadius:10,
+  alignSelf:'center',
+  borderColor:'#12b520',
+  fontSize:20,
+  color:'#000'
+
 }
+
 });
 
 
