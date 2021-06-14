@@ -13,7 +13,13 @@ const Stack = createStackNavigator();
 export default function CategorytStack({navigation}) {
     return (
 
-            <Stack.Navigator  screenOptions={{headerTitleAlign:'center'}} >
+            <Stack.Navigator screenOptions={{ 
+              headerStyle: {
+              backgroundColor: '#12b520',
+              }, 
+               headerTintColor:'#fff', 
+               headerTitleAlign:'center'
+               }} >
 
               <Stack.Screen name="CategoryHome" 
                 options={{

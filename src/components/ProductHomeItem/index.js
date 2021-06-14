@@ -39,8 +39,8 @@ const ProductItem = ({item}) => {
         </View>
 
        <View style={{flexDirection:'row', justifyContent:'space-between' }}>
-       <Text style={{ fontWeight:'bold' }}>cost:{item.cost}</Text>
-        <Text style={{ fontWeight:'bold' }}>SR:{item.price}</Text>
+       <Text style={{ margin:5, fontWeight:'bold' }}>cost:{item.cost}</Text>
+        <Text style={{ margin:5, fontWeight:'bold' }}>SR:{item.price}</Text>
        </View>
         
        

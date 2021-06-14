@@ -21,11 +21,14 @@ const Drawer = createDrawerNavigator();
 
 function App() {
 
+
+  // const discountTypes = ['amount','percentage'],
+
    const discountsData = [
     {
       id: 1,
-      name: "dscount1",
-      type:['amount','percentage'],
+      name: "dscount",
+      type: 'percentage',
       value: 10
        
   },
@@ -33,7 +36,7 @@ function App() {
   {
       id: 2,
       name: "discount2",
-      type:['amount','percentage'],
+      type:'amount', 
       value: 20
       
    },
@@ -41,7 +44,7 @@ function App() {
   {
       id: 3,
       name: "discount3",
-      type:['amount','percentage'],
+      type: 'percentage',
       value: 30
   },
 ];

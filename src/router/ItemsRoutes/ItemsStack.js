@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductStack from './ProductStack';
 import CategoryStack from './CategoryStack';
-import  DiscountStack from './DiscountStack';
+import  DiscountStack from './DiscountRoutes/DiscountStack';
 import  Items  from '../../screens/ItemsScreen/Items';
 import Menu from '../../components/Menu';
  
@@ -9,13 +9,15 @@ import Menu from '../../components/Menu';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { color } from 'react-native-reanimated';
+import Discount from './DiscountRoutes/Discount';
+import ProductDiscount from './DiscountRoutes/ProductDiscount';
 
 const Stack = createStackNavigator();
 
 
 function ItemsStack({navigation}) {
   return (
-    <Stack.Navigator  >
+    <Stack.Navigator >
       <Stack.Screen options={{ headerStyle: {
       backgroundColor: '#12b520',
       }, 
@@ -30,7 +32,8 @@ function ItemsStack({navigation}) {
      name = "Items" component={Items}/>
     <Stack.Screen options={{headerShown:false}} name="Product" component={ProductStack}/>
       <Stack.Screen options={{headerShown:false}} name="Category" component={CategoryStack}/>
-      <Stack.Screen options={{headerShown:false}} name="Discounts" component={DiscountStack}/>
+      <Stack.Screen options={{headerShown:false}} name="Discounts" component={Discount}/>
+      <Stack.Screen options={{headerShown:false}} name="ProductDiscount" component={ProductDiscount}/>
     </Stack.Navigator>
   );
 }

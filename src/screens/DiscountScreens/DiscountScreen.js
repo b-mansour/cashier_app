@@ -6,35 +6,23 @@ import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-nati
 
 // const Stack = createStackNavigator();
 
-export default function Items({navigation}) {
+export default function DiscountScreen({navigation}) {
     return (
 
 <View style={{flexDirection:'row', flexWrap: "wrap", justifyContent:'center', marginTop:20}}> 
       
 
      
-      <Pressable style={styles.root} onPress={() => navigation.navigate('Product')}> 
-       <Text style={{fontSize:20, color:'#fff'}}>المنتجات</Text>
+      <Pressable style={styles.root} onPress={() => navigation.navigate("DiscountItem")}> 
+       <Text style={{fontSize:20, color:'#fff'}}>خصومات المنتجات</Text>
       </Pressable>
       
 
        
 
-      <Pressable style={styles.root} onPress={() => navigation.navigate('Category')}> 
-       <Text style={{fontSize:20, color:'#fff'}}>الفئات</Text>
-      </Pressable>
-    
-
-
-    
-    <Pressable style={styles.root} onPress={() => navigation.navigate('Discounts')}> 
+      <Pressable style={styles.root} onPress={() => navigation.navigate("Discount")}> 
        <Text style={{fontSize:20, color:'#fff'}}>الخصومات</Text>
       </Pressable>
-
-      <Pressable style={styles.root} onPress={() => navigation.navigate("ProductDiscount")}> 
-       <Text style={{fontSize:20, color:'#fff'}}>خصومات المنتجات</Text>
-      </Pressable>
-      
       
 
 

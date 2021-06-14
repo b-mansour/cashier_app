@@ -16,7 +16,14 @@ export default function ProductStack({navigation}) {
 
 
         
-    <Stack.Navigator screenOptions={{headerTitleAlign:'center'}}>
+    <Stack.Navigator screenOptions={{ 
+      headerStyle: {
+      backgroundColor: '#12b520',
+      }, 
+       headerTintColor:'#fff', 
+       headerTitleAlign:'center'
+       }}
+       >
       <Stack.Screen name="ProductHome" options={{
        headerRight: () => (<AddButton routeName ='ProductCreate'  navigation={navigation}/>),
        title:'المنتجات'

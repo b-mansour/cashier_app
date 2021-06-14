@@ -116,14 +116,14 @@ export default function ProductEdit({route}) {
         </View>   
 
             
-           <Button   onPress={takePhotoFromCamera} title='تصوير من الكاميرا '/> 
+           <Button   onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
            <Button   onPress={ChoosePhoto} title='اختيار صورة'/> 
            <Button   onPress={()=> {}} title='تعديل المنتج'/>  
 
 
            <TouchableOpacity style={styles.footer} >
-    <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
-    </TouchableOpacity>
+             <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
+           </TouchableOpacity>
 
              
      </View>

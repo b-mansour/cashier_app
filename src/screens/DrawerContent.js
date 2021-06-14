@@ -121,7 +121,6 @@ export function DrawerContent(props){
     </View>
   );
 }
-
 const styles = StyleSheet.create({
     drawerContent: {
       flex: 1,

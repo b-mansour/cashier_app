@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {  View, Text, FlatList, TouchableOpacity, StyleSheet,TextInput, Pressable,ActivityIndicator } from 'react-native';
+import {  ScrollView, View, Text, FlatList, TouchableOpacity, StyleSheet,TextInput, Pressable,ActivityIndicator } from 'react-native';
 import Feather  from 'react-native-vector-icons/Feather';
 import Ionicons  from 'react-native-vector-icons/Ionicons';
 import ProductItem from '../../components/ProductItem';
@@ -223,7 +223,7 @@ import {cartContext} from '../../../App';
         numColumns={2}
         // horizontal 
         // showsHorizontalScrollIndicator={false}
-        // showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   )

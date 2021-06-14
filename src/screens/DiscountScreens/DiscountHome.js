@@ -23,12 +23,6 @@ function  DiscountHome({navigation}) {
             // showsHorizontalScrollIndicator={false}
             // showsVerticalScrollIndicator={false}
           />
-
-<Button
-        title="create new Discount"
-         onPress={() =>  navigation.navigate('DiscountCreate')}
-        
-      />
       </View>
     )
 }

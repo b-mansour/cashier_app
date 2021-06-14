@@ -3,8 +3,8 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   root: {
     flexDirection: 'column',
-    borderWidth: 1,
-    borderColor: '#d1d1d1',
+    borderWidth: 2,
+    borderColor: '#12b520',
     borderRadius: 10,
     backgroundColor: '#fff',
     marginVertical: 5,
