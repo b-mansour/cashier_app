@@ -3,11 +3,11 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   root: {
     flexDirection: 'column',
-    borderWidth: 2,
-    borderColor: '#12b520',
-    borderRadius: 10,
+    // borderWidth: 2,
+    // borderColor: '#12b520',
+    borderRadius: 4,
     backgroundColor: '#fff',
-    marginVertical: 5,
+    marginVertical: 10,
     marginHorizontal:5
   },
   image: {

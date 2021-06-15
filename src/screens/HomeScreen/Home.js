@@ -6,6 +6,7 @@ import ProductItem from '../../components/ProductItem';
 import {productContext} from '../../../App';
 import {categoryContext} from '../../../App';
 import {cartContext} from '../../../App';
+import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
  function HomeScreen({navigation}) {
@@ -147,14 +148,14 @@ import {cartContext} from '../../../App';
             <TouchableOpacity
                 style={{
                     paddingBottom: 6,
-                    paddingHorizontal:6,
-                    borderWidth: 2,
-                    borderColor:'#12b520',
-                    backgroundColor: (selectedCategory?.id == item.id) ? '#12b520' : '#fff',
-                    borderRadius: 10,
+                    paddingHorizontal:10,
+                    borderWidth: 1,
+                    borderColor:(selectedCategory?.id == item.id) ? '#454545' : '#b8b4b4',
+                    backgroundColor: (selectedCategory?.id == item.id) ? '#b8b4b4' : '#b8b4b4',
+                    borderRadius: 5,
                     alignItems: "center",
                     justifyContent: "center",
-                    marginRight: 2,
+                    marginHorizontal: 3,
                     ...styles.shadow
                 }}
                 onPress={() => onSelectCategory(item)}
@@ -163,7 +164,7 @@ import {cartContext} from '../../../App';
                 <Text
                     style={{
                         marginTop: 2,
-                        color: (selectedCategory?.id == item.id) ?  '#fff' : '#12b520',
+                        color: (selectedCategory?.id == item.id) ?  '#454545' : '#fff',
                         fontWeight:'bold'
                     }}
                 >
@@ -197,10 +198,18 @@ import {cartContext} from '../../../App';
         <Pressable  onPress={() => navigation.toggleDrawer()}>
         <Feather style={{fontSize:30}} name="menu"></Feather>
         </Pressable>
+
+
+      <View style={{ width: '30%',flexDirection:'row', justifyContent:'space-between'}}>
+        <Pressable onPress={() => navigation.navigate('BarcodeScanner', )}> 
+        <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
+        </Pressable>
+
    
        <Pressable onPress={() => navigation.navigate('CartStack')}>
           <Ionicons style={{fontSize:25}} name="cart-outline">{cartItems.length}</Ionicons>
        </Pressable>
+       </View>
        
       </View>
 
@@ -233,6 +242,7 @@ import {cartContext} from '../../../App';
 const styles = StyleSheet.create({
   page: {
     padding: 10,
+    backgroundColor:'#e1e1e6'
   },
 
   container: {
@@ -241,10 +251,10 @@ const styles = StyleSheet.create({
 },
 shadow: {
     shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 3,
-    },
+    // shadowOffset: {
+    //     width: 0,
+    //     height: 3,
+    // },
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 1,
@@ -252,10 +262,11 @@ shadow: {
 
 input: {
   width:'100%',
+  height:40, 
   borderWidth:1,
-  borderRadius:10,
+  borderRadius:5,
   alignSelf:'center',
-  borderColor:'#12b520',
+  borderColor:'#b8b4b4',
   fontSize:20,
   color:'#000'
 

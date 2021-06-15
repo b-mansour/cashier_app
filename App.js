@@ -1,16 +1,8 @@
 import   React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import ReceiptStack from './src/router/ReceiptStack';
-import ItemsStack from './src/router/ItemsRoutes/ItemsStack';
-import SettingsStack from './src/router/SettingsRoutes/SettingsStack';
-import HomeStack from './src/router/HomeStack/HomeStack';
-import {DrawerContent} from './src/screens/DrawerContent';
-import CartStack from './src/router/HomeStack/CartStack';
-import Entypo from  'react-native-vector-icons/Entypo';
-import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
-import Feather  from 'react-native-vector-icons/Feather';
 import DrawerNav from './src/router/DrawerNav/DrawerNav';
+import {View} from 'react-native';
+ 
 
 const Drawer = createDrawerNavigator();
 
@@ -55,8 +47,7 @@ function App() {
     {
         id: 1,
         name: "الخضار",
-        image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-         
+        image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', 
     },
   
     {
@@ -68,22 +59,17 @@ function App() {
     {
         id: 3,
         name: "الاجبان",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-         
-         
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',    
     },
     {
         id: 4,
         name: "المشروبات",
         image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-         
     },
     {
         id: 5,
         name: "المخبوزات",
-        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      
-        
+        image:'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVpY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', 
     },
     {
         id: 6,
@@ -204,81 +190,22 @@ function App() {
 
 
   return (
+ 
     <productContext.Provider value={{product:[products ,setProducts]}}> 
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
        <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
        <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}> 
        <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
-        
-
-
 
         <DrawerNav/>
 
-    {/* <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
-
-        <Drawer.Screen name="Home" 
-           options={{
-            title: 'الرئيسية',
-            drawerIcon: ({focused, size}) => (
-               <Entypo
-                  name="home"
-                  size={size}
-                  color={focused ? '#7cc' : '#ccc'}
-               />
-            ),
-         }}
-         component={HomeStack}/>
-
-
-        <Drawer.Screen name="Receipt" 
-        options={{
-          title:'الفواتير',
-          drawerIcon: ({focused, size}) => (
-             <FontAwesome5
-                name="money-bill"
-                size={size}
-                color={focused ? '#7cc' : '#ccc'}
-             />
-          ),
-       }}
-         component={ReceiptStack}/>
-
-        <Drawer.Screen name="Item" 
-         options={{
-          title:'المنتجات',
-          drawerIcon: ({focused, size}) => (
-             <FontAwesome5
-                name="sitemap"
-                size={size}
-                color={focused ? '#7cc' : '#ccc'}
-             />
-          ),
-       }}
-        component={ItemsStack}/>
-
-
-        <Drawer.Screen name="Settings"
-         options={{
-          title:'الضبط',
-          drawerIcon: ({focused, size}) => (
-             <Feather
-                name="settings"
-                size={size}
-                color={focused ? '#7cc' : '#ccc'}
-             />
-          ),
-       }}
-      component={SettingsStack}/>
-
-      </Drawer.Navigator>
-    </NavigationContainer> */}
     </barcodeContext.Provider>
    </cartContext.Provider>
     </discountContext.Provider>
     </categoryContext.Provider>
     </productContext.Provider>
+
+   
   );
 }
 

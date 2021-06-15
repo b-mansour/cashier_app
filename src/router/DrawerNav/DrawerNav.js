@@ -6,17 +6,14 @@ import HomeStack from './../HomeStack/HomeStack';
 import ReceiptStack from './../ReceiptStack';
 import ItemsStack from './../ItemsRoutes/ItemsStack';
 import { DrawerContent } from '../../screens/DrawerContent';
- 
 import Entypo from  'react-native-vector-icons/Entypo';
 import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
 import Feather  from 'react-native-vector-icons/Feather';
 
 
 const Drawer = createDrawerNavigator();
-
 export default function DrawerNav() {
     return (
-
         <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
   
@@ -32,7 +29,6 @@ export default function DrawerNav() {
               ),
            }}
            component={HomeStack}/>
-  
   
           <Drawer.Screen name="Receipt" 
           options={{

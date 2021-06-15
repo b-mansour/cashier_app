@@ -21,14 +21,12 @@ export default function ReceiptStack({navigation}) {
                 headerTintColor: '#fff',
                 headerTitleAlign:'center',
                 headerLeft: () => ( 
-                 <Menu  navigation={navigation} /> 
+                 <Menu navigation={navigation}/> 
                ),
                  title:'الفواتير'
                  }} 
-                 component={ReceiptHome}/>
+                 component={ReceiptHome} />
                 <Stack.Screen name="ReceiptDetails" component={ReceiptDetails}/>
-              {/* <Stack.Screen name="CategoryEdit" component={CategoryEdit} /> */}
-              
             </Stack.Navigator>
         
     )
