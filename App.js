@@ -10,6 +10,7 @@ import CartStack from './src/router/HomeStack/CartStack';
 import Entypo from  'react-native-vector-icons/Entypo';
 import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
 import Feather  from 'react-native-vector-icons/Feather';
+import DrawerNav from './src/router/DrawerNav/DrawerNav';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +23,7 @@ const Drawer = createDrawerNavigator();
 function App() {
 
 
-  // const discountTypes = ['amount','percentage'],
+   const discountTypes = ['amount','percentage'];
 
    const discountsData = [
     {
@@ -210,7 +211,11 @@ function App() {
        <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
         
 
-    <NavigationContainer>
+
+
+        <DrawerNav/>
+
+    {/* <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
 
         <Drawer.Screen name="Home" 
@@ -253,19 +258,6 @@ function App() {
        }}
         component={ItemsStack}/>
 
-        {/* <Drawer.Screen name="Cart" 
-         options={{
-          title:'السلة',
-          drawerIcon: ({focused, size}) => (
-             <Entypo
-                name="shopping-cart"
-                size={size}
-                color={focused ? '#7cc' : '#ccc'}
-             />
-          ),
-       }}
-        component={CartStack}/> */}
-
 
         <Drawer.Screen name="Settings"
          options={{
@@ -281,7 +273,7 @@ function App() {
       component={SettingsStack}/>
 
       </Drawer.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> */}
     </barcodeContext.Provider>
    </cartContext.Provider>
     </discountContext.Provider>

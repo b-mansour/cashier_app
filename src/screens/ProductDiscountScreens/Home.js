@@ -1,27 +1,52 @@
 import React from 'react';
 import { View, Text, TextInput,StyleSheet } from 'react-native';
-import {categoryContext} from '../../../App';
 import {Picker} from '@react-native-picker/picker';
 import Button from './../../components/Button/index';
+import {categoryContext} from '../../../App';
+import {productContext} from '../../../App';
+import {discountContext} from '../../../App';
 
 export default function Home() {
+
+    
 
 
 
     const {category} = React.useContext(categoryContext);
     const [ categories, setCategories] = category;
 
-    const [selectedOption, setSelectedOption] = React.useState(
+      const [selectedCategory, setSelectedCategory] = React.useState(
         categories ? categories[0] : null,
       );
+
+
+      const {product} = React.useContext(productContext);
+  const [ products, setProducts] = product;
+
+      const [selectedProduct, setSelectedProduct] = React.useState(
+        products ? products[0] : null,
+      );
+
+      const {discount} = React.useContext(discountContext);
+    const [ discounts, setDiscounts] = discount;
+
+      const [selectedDiscount, setSelectedDiscount] = React.useState(
+        discounts ? discounts[0] : null,
+      );
+
+      const [numOfDays, setNumOfDays] = React.useState();
+
+      // const [selectedOption, setSelectedOption] = React.useState(
+      //   categories ? categories[0] : null,
+      // );
     return (
         <View>
 
         <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
        <Picker
         style={{marginBottom:20}}
-        selectedValue={selectedOption}
-        onValueChange={itemValue => setSelectedOption(itemValue)}>
+        selectedValue={selectedCategory}
+        onValueChange={itemValue => setSelectedCategory(itemValue)}>
         {categories.map( option => (
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
@@ -31,9 +56,9 @@ export default function Home() {
       <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
       <Picker
         style={{marginBottom:20}}
-        selectedValue={selectedOption}
-        onValueChange={itemValue => setSelectedOption(itemValue)}>
-        {categories.map( option => (
+        selectedValue={selectedProduct}
+        onValueChange={itemValue => setSelectedProduct(itemValue)}>
+        {products.map( option => (
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
       </Picker>
@@ -42,35 +67,32 @@ export default function Home() {
 
       <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
       <Picker
-        selectedValue={selectedOption}
-        onValueChange={itemValue => setSelectedOption(itemValue)}>
-        {categories.map( option => (
+        selectedValue={selectedDiscount}
+        onValueChange={itemValue => setSelectedDiscount(itemValue)}>
+        {discounts.map( option => (
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
       </Picker>
       </View>
 
-      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
-      <Picker
+      <View >
+      {/* <Picker
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {categories.map( option => (
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
-      </Picker>
+      </Picker> */}
 
-      {/* <TextInput
-              value='hello'
-              placeholder='سعر التكلفة'
-              onChangeText={ value => setCost(value)}
+      <TextInput
+              value={numOfDays}
+              placeholder='عدد ايام الخصم'
+              onChangeText={ value => setNumOfDays(value)}
               style={styles.input}
               keyboardType='numeric'
-             /> */}
+             />
 
              <Button title='حفظ'></Button>
-
-      
-
       </View>
 
 
@@ -84,7 +106,7 @@ const styles =   StyleSheet.create({
     input: {
       marginTop:20,
       width:200,
-      height:100,
+      height:50,
       borderWidth:1,
       borderRadius:10,
       alignSelf:'center',
