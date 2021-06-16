@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
+import { Button, View, Text , FlatList, Pressable, StyleSheet , TouchableOpacity } from 'react-native';
  
 
 
@@ -46,26 +46,13 @@ export default function Items({navigation}) {
 
 
 const styles = StyleSheet.create({
-    pressable: {
-        flexDirection: 'column',
-        borderWidth: 1,
-        borderRadius: 10,
-        backgroundColor: '#fff',
-        marginVertical: 5,
-        marginHorizontal:5,
-        height:50,
-        borderColor: '#12b520',
-        alignItems: 'center',
-        justifyContent:'center'
-      },
-
-       
+   
       root: {
           flexDirection: 'column',
           borderWidth: 1,
           borderColor: '#d1d1d1',
-          borderRadius: 10,
-          backgroundColor: '#12b520',
+          borderRadius: 5,
+          backgroundColor: '#b8b4b4',
           marginVertical: 5,
           marginHorizontal:5,
           height:150,

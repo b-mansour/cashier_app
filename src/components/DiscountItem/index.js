@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
+import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
  
@@ -18,8 +19,9 @@ const DiscountItem = ({item}) => {
     <Pressable onPress={() => navigation.navigate('DiscountEdit', item )} style={styles.root}>
       
         <View style={{ alignItems:'center', flexDirection:'row', justifyContent:'space-around'}}>
-        <Text>{item.name}</Text> 
-        <Text>{item.value}</Text> 
+        <Text  style={{fontSize:15}}>{item.name}</Text> 
+        <Text  style={{fontWeight:'bold'}}>{item.value}</Text> 
+        <MaterialCommunityIcons style={{fontSize:25, color:'red'}} name="delete"></MaterialCommunityIcons>
       
     </View>
         

@@ -12,12 +12,15 @@ const Stack = createStackNavigator();
 
         
             <Stack.Navigator screenOptions={{ 
+              cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-              backgroundColor: '#12b520',
-              }, 
-               headerTintColor:'#fff', 
+                backgroundColor: '#b8b4b4',
+              },
+              headerTintColor: '#fff',
                headerTitleAlign:'center'
-               }}>
+               }} 
+               
+               >
               <Stack.Screen name = "DiscountHome" options={{title:'اضافة خصم'}}  component = {Home}/>
               {/* <Stack.Screen name="DiscountCreate" component={DiscountCreate}/>
               <Stack.Screen name="DiscountEdit" component={DiscountEdit}/> */}

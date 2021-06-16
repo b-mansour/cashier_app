@@ -14,12 +14,14 @@ const Stack = createStackNavigator();
 
         
             <Stack.Navigator screenOptions={{ 
+              cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-              backgroundColor: '#12b520',
-              }, 
-               headerTintColor:'#fff', 
+                backgroundColor: '#b8b4b4',
+              },
+              headerTintColor: '#fff',
                headerTitleAlign:'center'
-               }}>
+               }} 
+              >
               <Stack.Screen name = "DiscountHome" 
                options={{
                 headerRight: () => (<AddButton routeName ="DiscountCreate"  navigation={navigation}/>),

@@ -17,12 +17,13 @@ export default function CartStack({navigation}) {
 
 
         
-    <Stack.Navigator   >
-      <Stack.Screen name="CartScreen"  options={{ headerStyle: {
-        backgroundColor: '#12b520',
-        }, 
+    <Stack.Navigator   screenOptions={{headerTitleAlign:'center',  cardStyle: { backgroundColor:'#e1e1e6'},
+    headerStyle: {
+      backgroundColor: '#b8b4b4',
+    }
+    }} >
+      <Stack.Screen name="CartScreen"  options={{  
         headerTintColor: '#fff',
-        headerTitleAlign:'center',
         title:'السلة',
         headerLeft: () =>  <Pressable onPress={() => navigation.goBack()}> 
         <AntDesign style={{fontSize:25, color:'#fff', marginLeft:10}} name="arrowleft"></AntDesign>

@@ -42,7 +42,7 @@ export default function Home() {
     return (
         <View>
 
-        <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
+        <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
        <Picker
         style={{marginBottom:20}}
         selectedValue={selectedCategory}
@@ -53,7 +53,7 @@ export default function Home() {
       </Picker>
       </View>
 
-      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
+      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
       <Picker
         style={{marginBottom:20}}
         selectedValue={selectedProduct}
@@ -65,7 +65,7 @@ export default function Home() {
       </View>
 
 
-      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:10}}>
+      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
       <Picker
         selectedValue={selectedDiscount}
         onValueChange={itemValue => setSelectedDiscount(itemValue)}>
@@ -108,9 +108,9 @@ const styles =   StyleSheet.create({
       width:200,
       height:50,
       borderWidth:1,
-      borderRadius:10,
+      borderRadius:5,
       alignSelf:'center',
-      borderColor:'#12b520',
+      borderColor:'#8f8b8b',
       fontSize:20,
       color:'black'
   }

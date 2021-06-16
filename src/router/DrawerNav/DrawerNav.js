@@ -1,6 +1,6 @@
 import   React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer , DarkTheme } from '@react-navigation/native';
 import SettingsStack from './../SettingsRoutes/SettingsStack';
 import HomeStack from './../HomeStack/HomeStack';
 import ReceiptStack from './../ReceiptStack';

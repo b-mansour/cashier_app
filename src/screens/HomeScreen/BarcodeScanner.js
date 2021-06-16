@@ -9,9 +9,10 @@ Linking
 } from 'react-native';
 // import Camera from 'react-native-camera';
 import {RNCamera}  from 'react-native-camera';
- 
 import QRCodeScanner from  "react-native-qrcode-scanner";
 import { barcodeContext } from '../../../App';
+import {productContext} from '../../../App';
+import {cartContext} from '../../../App';
  
 
 
@@ -21,21 +22,52 @@ import { barcodeContext } from '../../../App';
 
 export default function BarcodeScanner({navigation}) {
 
-    const {barcodee} = React.useContext(barcodeContext)
+  const {barcodee} = React.useContext(barcodeContext)
   const [ barcode, setBarcode] = barcodee;
+
+  const {Cart} = React.useContext(cartContext);
+  const [ cartItems, setCartItems] = Cart;
+
+  const {product} = React.useContext(productContext);
+  const [ products, setProducts] = product;
 
      
   
    ifScanned = (e) => {
     //    Linking.openURL(e.data).catch(err => 
     //       Alert.alert('invalid qr code', e.data));
-          setBarcode(e.data);
-          console.log(e.type)
-          navigation.navigate('ProductCreate');
+       products.map(item => {
+
+        var cartItem = {
+          id: item.id,
+          name: item.name,
+          image: item.image,
+          price: item.price ,
+          quantity: item.quantity 
+      }
+         if(item.barcode == e.data){
+          
+
+        
+        item.quantity = item.quantity + 1;
+          //  setCartItems(currentItems => [...currentItems,cartItem]);  
+           console.warn('item added to cart successfully');
+          
+         } 
+         else {
+           console.warn('item not found');
+           console.log(e.data);
+         }
+         setCartItems(currentItems => [...currentItems,cartItem]); 
+          
+       });
+      
+          // setBarcode(e.data);
+          // console.log(e.type)
+          // navigation.navigate('ProductCreate');
 
    }
-  
-  
+
       return (
           <View>
               <QRCodeScanner

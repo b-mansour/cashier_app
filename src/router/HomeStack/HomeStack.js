@@ -15,7 +15,11 @@ export default function HomeStack() {
 
 
         
-    <Stack.Navigator>
+    <Stack.Navigator   screenOptions={{ cardStyle: { backgroundColor:'#e1e1e6'},
+    headerStyle: {
+      backgroundColor: '#b8b4b4',
+    }
+    }}>
       <Stack.Screen name="HomeScreen" options={{headerShown:false}} component={HomeScreen}/> 
       <Stack.Screen name="BarcodeScanner" component={BarcodeScanner}/>
       <Stack.Screen name="CartStack" options={{headerShown:false}} component={CartStack}/>

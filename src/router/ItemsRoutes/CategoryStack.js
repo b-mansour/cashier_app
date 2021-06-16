@@ -14,10 +14,11 @@ export default function CategorytStack({navigation}) {
     return (
 
             <Stack.Navigator screenOptions={{ 
+              cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-              backgroundColor: '#12b520',
-              }, 
-               headerTintColor:'#fff', 
+                backgroundColor: '#b8b4b4',
+              },
+              headerTintColor: '#fff',
                headerTitleAlign:'center'
                }} >
 

@@ -78,7 +78,7 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
       cost: 16,
       categories: [1,5,6],
       quantity: 1 ,
-      barcode:'123456789'
+      barcode:'0752481496352'
     },
     
     {
@@ -89,7 +89,7 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
       cost: 16,
       categories: [5, 7],
       quantity: 1 ,
-      barcode:'123456789'
+      barcode:'3474374600017'
     },
   ];
 
@@ -242,7 +242,7 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
 const styles = StyleSheet.create({
   page: {
     padding: 10,
-    backgroundColor:'#e1e1e6'
+   
   },
 
   container: {

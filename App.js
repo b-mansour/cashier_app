@@ -164,7 +164,7 @@ function App() {
       cost: 16,
       categories: [1,5,6],
       quantity: 1 ,
-      barcode:'123456789'
+      barcode:'3474374600017'
     },
     {
       id: '7',
@@ -174,7 +174,7 @@ function App() {
       cost: 16,
       categories: [5, 7],
       quantity: 1 ,
-      barcode:'123456789'
+      barcode:'0752481496352'
     },
   ];
 

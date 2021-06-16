@@ -16,13 +16,14 @@ export default function ProductStack({navigation}) {
 
 
         
-    <Stack.Navigator screenOptions={{ 
+    <Stack.Navigator  screenOptions={{ 
+      cardStyle: { backgroundColor:'#e1e1e6'},
       headerStyle: {
-      backgroundColor: '#12b520',
-      }, 
-       headerTintColor:'#fff', 
+        backgroundColor: '#b8b4b4',
+      },
+      headerTintColor: '#fff',
        headerTitleAlign:'center'
-       }}
+       }} 
        >
       <Stack.Screen name="ProductHome" options={{
        headerRight: () => (<AddButton routeName ='ProductCreate'  navigation={navigation}/>),

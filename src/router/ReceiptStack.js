@@ -12,12 +12,13 @@ const Stack = createStackNavigator();
 export default function ReceiptStack({navigation}) {
     return (
 
-            <Stack.Navigator screenOptions={{headerTitleAlign:'center'}}>
+            <Stack.Navigator screenOptions={{headerTitleAlign:'center',  cardStyle: { backgroundColor:'#e1e1e6'},
+            headerStyle: {
+              backgroundColor: '#b8b4b4',
+            }
+            }}>
 
               <Stack.Screen name="ReceiptHome"  options={{ 
-                headerStyle: {
-                backgroundColor: '#12b520',
-              }, 
                 headerTintColor: '#fff',
                 headerTitleAlign:'center',
                 headerLeft: () => ( 

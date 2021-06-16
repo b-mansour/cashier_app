@@ -18,9 +18,11 @@ const Stack = createStackNavigator();
 function ItemsStack({navigation}) {
   return (
     <Stack.Navigator >
-      <Stack.Screen options={{ headerStyle: {
-      backgroundColor: '#12b520',
-      }, 
+      <Stack.Screen options={{
+      cardStyle: { backgroundColor:'#e1e1e6'},
+      headerStyle: {
+        backgroundColor: '#b8b4b4',
+      },
       headerTintColor: '#fff',
       headerTitleAlign:'center',
       headerLeft: () => ( 

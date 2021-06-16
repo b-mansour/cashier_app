@@ -16,15 +16,17 @@ const Stack = createStackNavigator();
 
 function SettingsStack({navigation}) {
   return (
-    <Stack.Navigator screenOptions={{ headerStyle:{backgroundColor:'#12b520'}
+    <Stack.Navigator  screenOptions={{ 
+      cardStyle: { backgroundColor:'#e1e1e6'},
+      headerStyle: {
+        backgroundColor: '#b8b4b4',
+      },
+      headerTintColor: '#fff',
+       headerTitleAlign:'center'
+       }}  >
 
-    }} >
       <Stack.Screen name="Settings"
-      options={{ headerStyle: {
-        backgroundColor: '#12b520',
-        }, 
-        headerTintColor: '#fff',
-        headerTitleAlign:'center',
+      options={{ 
         headerLeft: () => ( 
           <Menu navigation={navigation} /> 
         ),

@@ -14,7 +14,14 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
   var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
 
 
-  
+const onCheckout = () => {
+  console.warn('checked out successfully');
+  setCartItems([]);
+}
+
+
+
+
 
 
 
@@ -31,7 +38,7 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
      <View>
      {/* <Text style={{fontSize:30}}>total price is{totalPrice.toFixed(2)}</Text> */}
     <Text style={{fontSize:30}}> اجمالي السعر {Number((totalPrice).toFixed(3))}</Text>
-    <Button title='checkout'/> 
+    <Button onPress={onCheckout} title='checkout'/> 
     </View>
     </View>
   } else {

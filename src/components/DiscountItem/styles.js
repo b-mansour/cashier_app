@@ -4,10 +4,10 @@ const styles = StyleSheet.create({
   root: {
     flexDirection: 'column',
     borderWidth: 1,
-    borderColor: '#12b520',
-    borderRadius: 10,
+    borderColor: '#454545',
+    borderRadius: 5,
     backgroundColor: '#fff',
-    marginVertical: 5,
+    marginVertical: 10,
     marginHorizontal:5,
     padding:5
   },
