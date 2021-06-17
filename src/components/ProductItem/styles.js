@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../assets/Colors';
 
 const styles = StyleSheet.create({
   root: {
@@ -24,8 +25,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   price: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 17,
+    color:colors.primary, 
+    left:'50%', 
+    fontWeight:'bold'
   },
   oldPrice: {
     fontSize: 12,

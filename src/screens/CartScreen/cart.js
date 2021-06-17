@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView, Button } from 'react-native';
 import {cartContext} from '../../../App';
 import CartItem from '../../components/CartItem';
-import Button from '../../components/Button/index';
 import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
 
  function CartScreen(){
@@ -37,8 +36,8 @@ const onCheckout = () => {
    />
      <View>
      {/* <Text style={{fontSize:30}}>total price is{totalPrice.toFixed(2)}</Text> */}
-    <Text style={{fontSize:30}}> اجمالي السعر {Number((totalPrice).toFixed(3))}</Text>
-    <Button onPress={onCheckout} title='checkout'/> 
+    <Text style={{fontSize:20}}> اجمالي السعر {Number((totalPrice).toFixed(3))}</Text>
+    <Button styles={styles.button} onPress={onCheckout} title='checkout'/> 
     </View>
     </View>
   } else {
@@ -58,6 +57,16 @@ const onCheckout = () => {
  
 
 export default CartScreen;
+
+
+
+const styles = StyleSheet.create({
+
+  button : {
+    position:'absolute',
+ 
+  }
+})
 
 
 

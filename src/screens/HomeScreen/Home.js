@@ -7,6 +7,7 @@ import {productContext} from '../../../App';
 import {categoryContext} from '../../../App';
 import {cartContext} from '../../../App';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
+import {colors} from '../../assets/Colors';
 
 
  function HomeScreen({navigation}) {
@@ -118,11 +119,15 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
   // },[])
 
   // const [filterdProducts, setFilteredProdcts] = React.useState(products);
-  const searchProduct = (somethingtoSearch) => {
-    setProducts(products.filter( i => i.name.includes(somethingtoSearch)));
-    console.log(somethingtoSearch);
 
-  }
+  // const searchProduct = (somethingtoSearch) => {
+  //   setProducts(products.filter( i => i.name.includes(somethingtoSearch)));
+  //   console.log(somethingtoSearch);
+
+  // }
+
+  const [search, setSearch] = React.useState('');
+  const filterdProducts = products.filter( i => i.name.toLowerCase().includes(search.toLowerCase()));
 
 
 
@@ -150,8 +155,8 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
                     paddingBottom: 6,
                     paddingHorizontal:10,
                     borderWidth: 1,
-                    borderColor:(selectedCategory?.id == item.id) ? '#454545' : '#b8b4b4',
-                    backgroundColor: (selectedCategory?.id == item.id) ? '#b8b4b4' : '#b8b4b4',
+                    borderColor:(selectedCategory?.id == item.id) ? colors.primary : colors.secondary,
+                    backgroundColor: (selectedCategory?.id == item.id) ?  colors.primary : colors.secondary,
                     borderRadius: 5,
                     alignItems: "center",
                     justifyContent: "center",
@@ -164,7 +169,7 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
                 <Text
                     style={{
                         marginTop: 2,
-                        color: (selectedCategory?.id == item.id) ?  '#454545' : '#fff',
+                        color: (selectedCategory?.id == item.id) ?  colors.white :colors.black,
                         fontWeight:'bold'
                     }}
                 >
@@ -220,13 +225,15 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
       <TextInput
        
               placeholder='اسم المنتج'
-              onChangeText={ text => searchProduct(text)}
+              // onChangeText={ text => searchProduct(text)}
+              onChangeText={ text => setSearch(text)}
               style={styles.input}
              /> 
 
       {/* Render Product Componet */}
       <FlatList
-        data={products}
+        // data={products}
+        data={filterdProducts}
         renderItem={({item}) => <ProductItem cartItems={cartItems} setCartItems={setCartItems} item={item} />}
         keyExtractor={(item, index) => item.id }
         numColumns={2}
@@ -266,7 +273,7 @@ input: {
   borderWidth:1,
   borderRadius:5,
   alignSelf:'center',
-  borderColor:'#b8b4b4',
+  borderColor: colors.primary,
   fontSize:20,
   color:'#000'
 

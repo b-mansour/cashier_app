@@ -131,7 +131,7 @@ export default function ProductCreate({navigation}) {
        </View>
       </View>
 
-      //  </barcodeContext.Provider>
+      //</barcodeContext.Provider>
     )
 }
 

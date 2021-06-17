@@ -32,41 +32,80 @@ export default function BarcodeScanner({navigation}) {
   const [ products, setProducts] = product;
 
      
-  
+   
    ifScanned = (e) => {
-    //    Linking.openURL(e.data).catch(err => 
-    //       Alert.alert('invalid qr code', e.data));
-       products.map(item => {
 
-        var cartItem = {
-          id: item.id,
-          name: item.name,
-          image: item.image,
-          price: item.price ,
-          quantity: item.quantity 
-      }
-         if(item.barcode == e.data){
+    // for (var j = 0; j < products.length; j++) {
+    // for (var i = 0; i < cartItems.length; i++) {
+   
+    //       if (cartItems[i].barcode == e.data) {
+    //          console.log('item found in the cart');
+    //          cartItems[i].quantity +=1;
+    //          break;
+         
+    //       } else if(products[j].barcode == e.data) {
+    //         var cartItem = {
+    //           id:product[j].id,
+    //           name:product[j].name,
+    //           image:product[j].image,
+    //           price:product[j].image,
+    //           quantity:product[j].quantity,
+    //           barcode:product[j].barcode
+    //         }
+    //         setCartItems(currentItems => [...currentItems,cartItem]);
+    //         console.log('item added to cart sucessfully');
+    //         break;
+    //       }
+    //     }
+    //   }
+   
+  
+   
+     var minato = false
+     var cartItem = {};
+     console.log( cartItems.length);
+     for (var i=0; i < cartItems.length; i++ ){
+           if(cartItems[i].barcode == e.data){
+
+            console.log('item  found');
+            minato=true;
+            
+            cartItems[i].quantity += 1
+            break;
+           }
           
-
+        }
+        console.log( e.data);
         
-        item.quantity = item.quantity + 1;
-          //  setCartItems(currentItems => [...currentItems,cartItem]);  
-           console.warn('item added to cart successfully');
-          
-         } 
-         else {
-           console.warn('item not found');
-           console.log(e.data);
-         }
-         setCartItems(currentItems => [...currentItems,cartItem]); 
-          
-       });
-      
-          // setBarcode(e.data);
-          // console.log(e.type)
-          // navigation.navigate('ProductCreate');
+    console.log( minato);
+    console.log(cartItems+ "******************************");
 
-   }
+    var productExist = true;
+     if (minato == false){
+      for (var j = 0; j < products.length; j++) {
+        if(products[j].barcode == e.data) {
+
+          cartItem.id = products[j].id
+          cartItem.name = products[j].name
+          cartItem.image = products[j].image
+          cartItem.price = products[j].price
+          cartItem.quantity = products[j].quantity
+          cartItem.barcode = products[j].barcode
+          minato=true;
+          break;
+        }
+      }
+      if ( minato){
+      setCartItems(currentItems => [...currentItems,cartItem]); 
+      console.warn('item added to cart sucssfully');
+      }
+    }
+    console.log( e.data);
+        
+    console.log( productExist);
+    return;
+    }
+  
 
       return (
           <View>
@@ -75,7 +114,8 @@ export default function BarcodeScanner({navigation}) {
               onRead={ifScanned}
               reactivate={true}
               permissionDialogMessage= 'need permission to access camera'
-              reactivateTimeout={10}
+              reactivateTimeout={3000}
+              fadeIn={false}
               showMarker={true}
               markerStyle= {{borderColor:'#fff', borderRadius:10}}
               bottomContent={

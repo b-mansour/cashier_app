@@ -4,6 +4,7 @@ import DiscountHome from '../../../screens/DiscountScreens/DiscountHome';
 import DiscountCreate from '../../../screens/DiscountScreens/DiscountCreate';
 import DiscountEdit from '../../../screens/DiscountScreens/DiscountEdit';
 import AddButton from './../../../components/AddButton';
+import {colors} from '../../../assets/Colors'
  
 
 
@@ -16,7 +17,7 @@ const Stack = createStackNavigator();
             <Stack.Navigator screenOptions={{ 
               cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-                backgroundColor: '#b8b4b4',
+                backgroundColor: colors.primary,
               },
               headerTintColor: '#fff',
                headerTitleAlign:'center'

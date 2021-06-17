@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
  
 import Home from './../../../screens/ProductDiscountScreens/Home';
+import {colors} from '../../../assets/Colors'
  
 
 
@@ -14,7 +15,7 @@ const Stack = createStackNavigator();
             <Stack.Navigator screenOptions={{ 
               cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-                backgroundColor: '#b8b4b4',
+                backgroundColor:colors.primary,
               },
               headerTintColor: '#fff',
                headerTitleAlign:'center'

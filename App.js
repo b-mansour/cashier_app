@@ -118,7 +118,7 @@ function App() {
     },
     {
       id: '2',
-      name: "red shoes",
+      name: "تفاح ",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       price: 32.98,
       cost:20,
@@ -138,7 +138,7 @@ function App() {
     },
     {
       id: '4',
-      name: "nike shoes",
+      name: "lemon",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       price: 99.98,
       cost:70,
@@ -148,17 +148,17 @@ function App() {
     },
     {
       id: '5',
-      name: "red shoes",
+      name: "apple",
       image: 'https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       price: 32.98,
       cost:20,
       categories: [2, 4, 6],
       quantity: 1 ,
-      barcode:'123456789'
+      barcode:'0012000048098'
     },
     {
       id: '6',
-      name: "puma shoes",
+      name: "ليمون",
       image: 'https://images.unsplash.com/flagged/photo-1587302164675-820fe61bbd55?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       price: 99.98,
       cost: 16,

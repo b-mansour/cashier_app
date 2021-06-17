@@ -5,6 +5,7 @@ import  QRStack from './QRStack';
 import  GeneralStack from './QRStack';
 import Settings from '../../screens/settingsScreen/settings'
 import Menu from './../../components/Menu';
+import {colors} from '../../assets/Colors'
  
  
 
@@ -19,11 +20,11 @@ function SettingsStack({navigation}) {
     <Stack.Navigator  screenOptions={{ 
       cardStyle: { backgroundColor:'#e1e1e6'},
       headerStyle: {
-        backgroundColor: '#b8b4b4',
+        backgroundColor: colors.primary,
       },
       headerTintColor: '#fff',
        headerTitleAlign:'center'
-       }}  >
+       }}   >
 
       <Stack.Screen name="Settings"
       options={{ 

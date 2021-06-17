@@ -5,6 +5,7 @@ import ProductCreate from '../../screens/productScreens/ProductCreate';
 import ProductEdit from '../../screens/productScreens/ProductEdit';
 import BarcodeScan from '../../screens/productScreens/BarcodeScanner';
 import AddButton from '../../components/AddButton';
+import {colors} from '../../assets/Colors'
 
  
 
@@ -19,7 +20,7 @@ export default function ProductStack({navigation}) {
     <Stack.Navigator  screenOptions={{ 
       cardStyle: { backgroundColor:'#e1e1e6'},
       headerStyle: {
-        backgroundColor: '#b8b4b4',
+        backgroundColor: colors.primary,
       },
       headerTintColor: '#fff',
        headerTitleAlign:'center'

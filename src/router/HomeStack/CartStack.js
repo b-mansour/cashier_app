@@ -4,7 +4,7 @@ import CartScreen from '../../screens/CartScreen/cart';
 import CartItemDetails from './../../screens/CartScreen/CartItemDetails';
 import {Pressable, Text} from 'react-native';
 import AntDesign  from  'react-native-vector-icons/AntDesign';
-import { color } from 'react-native-reanimated';
+import {colors} from '../../assets/Colors';
  
 
  
@@ -17,11 +17,14 @@ export default function CartStack({navigation}) {
 
 
         
-    <Stack.Navigator   screenOptions={{headerTitleAlign:'center',  cardStyle: { backgroundColor:'#e1e1e6'},
-    headerStyle: {
-      backgroundColor: '#b8b4b4',
-    }
-    }} >
+    <Stack.Navigator   screenOptions={{ 
+      cardStyle: { backgroundColor:'#e1e1e6'},
+      headerStyle: {
+        backgroundColor: colors.primary,
+      },
+      headerTintColor: '#fff',
+       headerTitleAlign:'center'
+       }}  >
       <Stack.Screen name="CartScreen"  options={{  
         headerTintColor: '#fff',
         title:'السلة',

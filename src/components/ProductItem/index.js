@@ -3,6 +3,7 @@ import {Image, View, Text, Pressable, TouchableOpacity,FlatList, StyleSheet} fro
 import Ionicons  from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
+import {colors} from '../../assets/Colors';
 
 
  
@@ -58,7 +59,7 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
         <Image style={styles.image} source={{uri: item.image}}/>
         </View>
         
-        <Text style={{left:'50%', fontWeight:'bold'}}>SR:{item.price}</Text>
+        <Text style={styles.price}>SR:{item.price}</Text>
       </Pressable>
   );
 };

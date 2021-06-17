@@ -4,13 +4,11 @@ import CategoryStack from './CategoryStack';
 import  DiscountStack from './DiscountRoutes/DiscountStack';
 import  Items  from '../../screens/ItemsScreen/Items';
 import Menu from '../../components/Menu';
- 
-
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { color } from 'react-native-reanimated';
 import Discount from './DiscountRoutes/Discount';
 import ProductDiscount from './DiscountRoutes/ProductDiscount';
+import {colors} from '../../assets/Colors'
 
 const Stack = createStackNavigator();
 
@@ -21,7 +19,7 @@ function ItemsStack({navigation}) {
       <Stack.Screen options={{
       cardStyle: { backgroundColor:'#e1e1e6'},
       headerStyle: {
-        backgroundColor: '#b8b4b4',
+        backgroundColor: colors.primary,
       },
       headerTintColor: '#fff',
       headerTitleAlign:'center',

@@ -4,6 +4,7 @@ import CategoryHome from '../../screens/CategoryScreens/CategoryHome';
 import CategoryCreate from '../../screens/CategoryScreens/CategoryCreate';
 import CategoryEdit from '../../screens/CategoryScreens/CategoryEdit';
 import AddButton from '../../components/AddButton';
+import {colors} from '../../assets/Colors';
  
  
 
@@ -16,11 +17,13 @@ export default function CategorytStack({navigation}) {
             <Stack.Navigator screenOptions={{ 
               cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
-                backgroundColor: '#b8b4b4',
+                backgroundColor: colors.primary,
               },
               headerTintColor: '#fff',
                headerTitleAlign:'center'
-               }} >
+               }} 
+               
+               >
 
               <Stack.Screen name="CategoryHome" 
                 options={{
