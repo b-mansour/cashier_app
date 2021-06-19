@@ -1,4 +1,4 @@
-import   React from 'react';
+import   React, {useEffect} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerNav from './src/router/DrawerNav/DrawerNav';
 import {View} from 'react-native';
@@ -11,12 +11,12 @@ const Drawer = createDrawerNavigator();
   export const cartContext = React.createContext([]);
   export const discountContext = React.createContext();
   export const barcodeContext = React.createContext();
+  export const receiptContext = React.createContext();
 
 function App() {
 
 
    const discountTypes = ['amount','percentage'];
-
    const discountsData = [
     {
       id: 1,
@@ -44,6 +44,12 @@ function App() {
 
 
   const categoryData = [
+     {
+      id: -1,
+      name: "الكل",
+      image: 'https://images.unsplash.com/photo-1615484476889-2830f980a5e3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGdyb2Nlcnl8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', 
+    },
+
     {
         id: 1,
         name: "الخضار",
@@ -179,27 +185,43 @@ function App() {
   ];
 
 
+  
+
+
 
 
     const [categories, setCategories] = React.useState(categoryData);
     const [products, setProducts] = React.useState(productsData); 
     const [discounts, setDiscounts] = React.useState(discountsData);
     const [cartItems, setCartItems] = React.useState([]);
+    const [receipts, setReceipts] = React.useState([]);
     const [barcode, setBarcode] = React.useState('');
 
-
+  //   useEffect(() => {
+  //     async function fetchMyAPI() {
+  //       await fetch('https://reactnative.dev/movies.json')
+  //       .then((response) => response.json())
+  //       .then((json) => setProducts(json.movies))
+  //       .catch((error) => console.error(error))
+  //   }
+  //   fetchMyAPI()
+  
+  // }, []);
+  
 
   return (
  
     <productContext.Provider value={{product:[products ,setProducts]}}> 
      <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
        <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
-       <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}> 
-       <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
+       <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}>
+       <receiptContext.Provider value = {{Receipt:[receipts, setReceipts]}}> 
+       <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
 
         <DrawerNav/>
 
     </barcodeContext.Provider>
+    </receiptContext.Provider>
    </cartContext.Provider>
     </discountContext.Provider>
     </categoryContext.Provider>

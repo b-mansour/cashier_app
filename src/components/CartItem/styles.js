@@ -9,13 +9,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginVertical: 5,
     marginHorizontal:5,
-    padding:5
+    padding:5,
+     
   },
   image: {
     // flex: 2,
     height: 150,
     width: 150,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   rightContainer: {
     padding: 10,

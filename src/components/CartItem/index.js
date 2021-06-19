@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, Pressable,Image, ScrollView, _ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import styles from './styles';
+import styles from './styles'; 
+import QuantitySelector from '../QuantitySelector';
  
 
 
@@ -26,12 +27,18 @@ const CartItem = ({item, cartItems}) => {
   <View style={{alignItems:'center' , flexDirection:'row', justifyContent:'space-between'}}>
     <View style={{flexDirection:'row'}}>
       <Text style={{fontSize:20}}> {item.name} X </Text> 
-      <Text  style={{fontSize:20}}>{item.quantity}</Text>
+      <Text style={{fontSize:20}}>{item.quantity}</Text>
     </View>
     <View>
-        <Image style={styles.image} source={{uri: item.image}}/>
-        </View>
-  <Text  style={{fontSize:20}}>{item.price * item.quantity}</Text>
+            <Image style={styles.image} source={{uri: item.image}}/>
+    </View>
+    <Text>{item.id}</Text>
+    <View>
+           <Text  style={{fontSize:20}}>{item.price * item.quantity}</Text>
+    </View>
+
+        {/* <QuantitySelector/> */}
+
  </View>
 </Pressable> 
         

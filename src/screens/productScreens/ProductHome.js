@@ -8,6 +8,17 @@ export default function ProductHome({navigation}) {
 
       const {product} = React.useContext(productContext);
       const [ products, setProducts] = product;
+
+
+      // const [ products, setProducts] = React.useState();
+
+    // useEffect(() => {
+    //   fetch('https://reactnative.dev/movies.json')
+    //     .then((response) => response.json())
+    //     .then((json) => setProducts(json.movies))
+    //     .catch((error) => console.error(error))
+    //     .finally(() => setLoading(false));
+    // }, []);
     
 
     return (

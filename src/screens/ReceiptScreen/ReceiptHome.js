@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, View, Text , FlatList } from 'react-native';
 import ReceiptItem from '../../components/ReceitItItem/index';
 import {productContext} from '../../../App';
+// import {receiptContext} from '../../../App';
 
 
 
@@ -11,6 +12,10 @@ function  ReceiptHome({ navigation }) {
 
   const {product} = React.useContext(productContext);
   const [ products, setProducts] = product;
+
+
+  // const {Receipt} = React.useContext(receiptContext);
+  // const [receipts, setReceipts] = Receipt;
 
 
   return (

@@ -6,6 +6,7 @@ import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
+import {colors} from '../../assets/Colors'
  
 
 export default function ProductEdit({route}) {
@@ -26,6 +27,34 @@ export default function ProductEdit({route}) {
       image : image,
       barcode : barcode
     }
+
+
+    const onProductEdit = () => {
+
+    // const formData = new FormData();
+    // const fileField = document.querySelector('input[type="file"]');
+    
+    // formData.append('name', name);
+    // formData.append('price', price);
+    // formData.append('cost', cost);
+    // formData.append('image', image);
+    // formData.append('barcode', barcode);
+    
+    fetch('https://example.com/profile/avatar', {
+      method: 'PUT',
+      // body: formData
+         body: EditProduct
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    }
+
+    
 
     const takePhotoFromCamera = () => {
       ImagePicker.openCamera({
@@ -104,7 +133,7 @@ export default function ProductEdit({route}) {
               placeholder='رقم الباركود'
               onChangeText={ value =>  setBarcode(value)}
               style={{width:'80%', borderWidth:1,
-              borderRadius:10, marginRight:10, borderColor:'#12b520'}}
+              borderRadius:10, marginRight:10, borderColor:colors.primary}}
               // style={styles.input}
               keyboardType='numeric'
               
@@ -116,9 +145,9 @@ export default function ProductEdit({route}) {
         </View>   
 
             
-           <Button   onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
-           <Button   onPress={ChoosePhoto} title='اختيار صورة'/> 
-           <Button   onPress={()=> {}} title='تعديل المنتج'/>  
+           <Button  onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
+           <Button  onPress={ChoosePhoto} title='اختيار صورة'/> 
+           <Button  onPress={()=> {}} title='تعديل المنتج'/>  
 
 
            <TouchableOpacity style={styles.footer} >
@@ -139,7 +168,7 @@ const styles =   StyleSheet.create({
     borderWidth:1,
     borderRadius:10,
     alignSelf:'center',
-    borderColor:'#12b520',
+    borderColor:colors.primary,
     fontSize:20,
     color:'#000'
 },
@@ -155,8 +184,6 @@ footer: {
   alignItems:'center',
   justifyContent:'center'
 },
-  
-
 })
 
 

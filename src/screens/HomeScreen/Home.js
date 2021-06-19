@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {  ScrollView, View, Text, FlatList, TouchableOpacity, StyleSheet,TextInput, Pressable,ActivityIndicator } from 'react-native';
+import {  SafeAreaView, View, Text, FlatList, TouchableOpacity, StyleSheet,TextInput, Pressable,ActivityIndicator } from 'react-native';
 import Feather  from 'react-native-vector-icons/Feather';
 import Ionicons  from 'react-native-vector-icons/Ionicons';
 import ProductItem from '../../components/ProductItem';
@@ -118,14 +118,7 @@ import {colors} from '../../assets/Colors';
   //   })
   // },[])
 
-  // const [filterdProducts, setFilteredProdcts] = React.useState(products);
-
-  // const searchProduct = (somethingtoSearch) => {
-  //   setProducts(products.filter( i => i.name.includes(somethingtoSearch)));
-  //   console.log(somethingtoSearch);
-
-  // }
-
+   
   const [search, setSearch] = React.useState('');
   const filterdProducts = products.filter( i => i.name.toLowerCase().includes(search.toLowerCase()));
 
@@ -138,7 +131,8 @@ import {colors} from '../../assets/Colors';
 
     function onSelectCategory(category) {
       //filter restaurant
-      let productList = productsData.filter(a => a.categories.includes(category.id))
+      let productList = category.id != -1 ? productsData.filter(a => a.categories.includes(category.id)) 
+      : productsData.filter(a => a.categories) 
       // setProducts(null)
       setProducts(productList)
   
@@ -180,9 +174,10 @@ import {colors} from '../../assets/Colors';
     }
 
     return (
-        <View style={{padding:2}}>
+        <View style={{padding:2, flex:1}}>
             <FlatList
                 data={categories}
+                contentContainerStyle={{paddingBottom:50}}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => `${item.id}`}
@@ -240,6 +235,8 @@ import {colors} from '../../assets/Colors';
         // horizontal 
         // showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={<View />}
+        ListFooterComponentStyle={{height:100}}
       />
     </View>
   )

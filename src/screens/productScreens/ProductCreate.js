@@ -6,6 +6,7 @@ import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import { barcodeContext } from '../../../App';
+import {colors} from '../../assets/Colors'
  
 
  
@@ -22,40 +23,65 @@ export default function ProductCreate({navigation}) {
     // const [barcode, setBarcode] = React.useState();
 
 
-    const {barcodee} = React.useContext(barcodeContext)
-    const [ barcode, setBarcode] = barcodee;
-
-    
 
 
-    var newProduct = {
-      name : name,
-      category: category,
-      price : price,
-      cost : cost, 
-      image : image,
-      barcode : barcode
-    }
+
+// const onProductCreate = () => {
+
+
+//   const formData = new FormData();
+
+// const fileField = document.querySelector('input[type="file"]');
+
+// formData.append('name', name);
+// formData.append('price', price);
+// formData.append('cost', cost);
+// formData.append('image', image);
+// formData.append('barcode', barcode);
+
+// fetch('https://example.com/profile/avatar', {
+//   method: 'POST',
+//   body: formData
+// })
+// .then(response => response.json())
+// .then(result => {
+//   console.log('Success:', result);
+// })
+// .catch(error => {
+//   console.error('Error:', error);
+// });
+// }
+
+
+
+
+
+    const {Barcode} = React.useContext(barcodeContext)
+    const [ barcode, setBarcode] = Barcode;
 
     const takePhotoFromCamera = () => {
       ImagePicker.openCamera({
         width: 300,
         height: 400,
-        cropping: true,
+        cropping:false,
       }).then(image => {
-        console.log(image);
+        console.log(image.cropRect.path);
         setImage(image.path)
+    
       });
     }
 
     const ChoosePhoto = () => {
       ImagePicker.openPicker({
+      
+        cropperToolbarTitle:'نعديل الصورة', 
         width: 300,
         height: 400,
-        cropping: true
+        cropping: true,
       }).then(image => {
-        console.log(image);
+        console.log(image.path);
         setImage(image.path)
+        console.log(image)
       });
     }
 
@@ -95,7 +121,7 @@ export default function ProductCreate({navigation}) {
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {categories.map( option => (
-          <Picker.Item key={option.id} label={option.name} value={option.name} />
+          <Picker.Item   key={option.id} label={option.name} value={option.name} />
         ))}
       </Picker>
 
@@ -114,7 +140,7 @@ export default function ProductCreate({navigation}) {
               placeholder='رقم الباركود'
               onChangeText={ value =>  setBarcode(value)}
               style={{width:'80%', borderWidth:1,
-              borderRadius:10, marginRight:10, borderColor:'#12b520'}}
+              borderRadius:10, marginRight:10, borderColor:colors.primary}}
               // style={styles.input}
               keyboardType='numeric'
               
@@ -126,7 +152,8 @@ export default function ProductCreate({navigation}) {
     </View>   
            <Button onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
            <Button onPress={ChoosePhoto} title='اختيار صورة'/> 
-           <Button onPress={()=> {}} title='اضافةالمنتج'/>  
+           <Button onPress={()=> {}} title='اضافةالمنتج'/> 
+      
            
        </View>
       </View>
@@ -144,7 +171,7 @@ const styles =   StyleSheet.create({
     borderWidth:1,
     borderRadius:10,
     alignSelf:'center',
-    borderColor:'#12b520',
+    borderColor:colors.primary,
     fontSize:20,
     color:'black'
 }

@@ -20,7 +20,8 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
       name: item.name,
       image: item.image,
       price: item.price ,
-      quantity: item.quantity 
+      quantity: item.quantity,
+      barcode : item.barcode
       
    }
 

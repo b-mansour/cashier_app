@@ -22,8 +22,8 @@ import {cartContext} from '../../../App';
 
 export default function BarcodeScanner({navigation}) {
 
-  const {barcodee} = React.useContext(barcodeContext)
-  const [ barcode, setBarcode] = barcodee;
+  const {Barcode} = React.useContext(barcodeContext)
+  const [ barcode, setBarcode] = Barcode;
 
   const {Cart} = React.useContext(cartContext);
   const [ cartItems, setCartItems] = Cart;

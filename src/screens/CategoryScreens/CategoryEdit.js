@@ -9,7 +9,32 @@ function CategoryEdit({route}) {
 
     const [name, setName] = React.useState(route.params.name);
     const [image, setImage] = React.useState(route.params.image);
-    // const [description, setDescription] = React.useState(route.params.description);
+    //const [description, setDescription] = React.useState(route.params.description);
+
+
+
+    // const onCategoryEdit = () => {
+
+
+    //   const formData = new FormData();
+    //   const fileField = document.querySelector('input[type="file"]');
+      
+    //   formData.append('name', name);
+    //   formData.append('image', image);
+     
+      
+    //   fetch('https://example.com/profile/avatar', {
+    //     method: 'PUT',
+    //     body: formData
+    //   })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log('Success:', result);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error:', error);
+    //   });
+    //   }
 
 
     const takePhotoFromCamera = () => {
