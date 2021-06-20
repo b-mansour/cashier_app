@@ -185,6 +185,75 @@ function App() {
   ];
 
 
+
+  // const ReceitsData =  [
+  //   {
+  //     id: '1',
+  //     name: "sneaker",
+  //     price: 20.98,
+  //     cost:15,
+  //     categories: [5, 7],
+  //     quantity: 1 ,
+  //     barcode:'123456789'
+  //   },
+  //   {
+  //     id: '2',
+  //     name: "تفاح ",
+  //     price: 32.98,
+  //     cost:20,
+  //     categories: [2, 4, 6],
+  //     quantity: 1 ,
+  //     barcode:'123456789'
+  //   },
+  //   {
+  //     id: '3',
+  //     billNo: '26252',
+  //     cashierNo: 34,
+  //     vatNo:20,
+  //     createdDate:'2021/06/20',
+  //     quantity: 1 ,
+  //     discountPrice:'200',
+  //     totalPrice: '500'
+  //   },
+  //   {
+  //     id: '4',
+  //     name: "lemon",
+  //     price: 99.98,
+  //     cost:70,
+  //     categories: [2, 5, 6],
+  //     quantity: 1,
+  //     barcode:'123456789'
+  //   },
+  //   {
+  //     id: '5',
+  //     name: "apple",
+  //     price: 32.98,
+  //     cost:20,
+  //     categories: [2, 4, 6],
+  //     quantity: 1 ,
+  //     barcode:'0012000048098'
+  //   },
+  //   {
+  //     id: '6',
+  //     name: "ليمون",
+  //     price: 99.98,
+  //     cost: 16,
+  //     categories: [1,5,6],
+  //     quantity: 1 ,
+  //     barcode:'3474374600017'
+  //   },
+  //   {
+  //     id: '7',
+  //     name: "sneaker",
+  //     price: 20.98,
+  //     cost: 16,
+  //     categories: [5, 7],
+  //     quantity: 1 ,
+  //     barcode:'0752481496352'
+  //   },
+  // ];
+
+
   
 
 
