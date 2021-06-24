@@ -3,12 +3,15 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer , DarkTheme } from '@react-navigation/native';
 import SettingsStack from './../SettingsRoutes/SettingsStack';
 import HomeStack from './../HomeStack/HomeStack';
-import ReceiptStack from './../ReceiptStack';
+import ReceiptStack from '../ReceiptStack/ReceiptStack';
 import ItemsStack from './../ItemsRoutes/ItemsStack';
 import { DrawerContent } from '../../screens/DrawerContent';
 import Entypo from  'react-native-vector-icons/Entypo';
 import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
 import Feather  from 'react-native-vector-icons/Feather';
+import  AntDesign  from 'react-native-vector-icons/AntDesign';
+import Profile from './../ProfileStack/Profile';
+
 
 
 const Drawer = createDrawerNavigator();
@@ -67,7 +70,21 @@ export default function DrawerNav() {
                />
             ),
          }}
+
           component={CartStack}/> */}
+
+<Drawer.Screen name="Profile"
+           options={{
+            title:'الملف الشخصي',
+            drawerIcon: ({focused, size}) => (
+               <AntDesign
+                  name="user"
+                  size={size}
+                  color={focused ? '#7cc' : '#ccc'}
+               />
+            ),
+         }}
+        component={Profile}/>
   
   
           <Drawer.Screen name="Settings"
@@ -84,6 +101,8 @@ export default function DrawerNav() {
         component={SettingsStack}/>
   
         </Drawer.Navigator>
+
+        
       </NavigationContainer>
     )
 }

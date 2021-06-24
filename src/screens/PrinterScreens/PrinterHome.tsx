@@ -31,7 +31,7 @@ interface SelectedPrinter
 }
 
 export default function App() {
-  const [selectedValue, setSelectedValue] = React.useState<keyof typeof printerList>("ble");
+  const [selectedValue, setSelectedValue] = React.useState<keyof typeof printerList>("net");
   const [devices, setDevices] = React.useState([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [selectedPrinter, setSelectedPrinter] = React.useState<SelectedPrinter>(

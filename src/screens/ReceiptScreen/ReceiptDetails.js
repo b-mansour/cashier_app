@@ -1,7 +1,6 @@
 import React from 'react';
 import { View , Text} from 'react-native'; 
-
-import Barcode from "react-native-barcode-builder";
+import QRCode from 'react-native-qrcode-svg';
 
 export default function ReceiptDetails() {
     return (
@@ -25,9 +24,9 @@ export default function ReceiptDetails() {
             <View style={{flexDirection:'column', marginRight:20, marginLeft:20 , alignItems:'center'}}>
                 
             <Text>
-            final price 
+             final price 
             </Text>
-            <Text>
+             <Text>
                600
             </Text>
             </View>
@@ -43,7 +42,6 @@ export default function ReceiptDetails() {
             </View>
 
             <View style={{flexDirection:'column', marginRight:20, marginLeft:20, alignItems:'center'}}>
-
             <Text>
             quantity
             </Text>
@@ -53,14 +51,13 @@ export default function ReceiptDetails() {
             </View>
 
             <View style={{flexDirection:'column', marginRight:20, marginLeft:20, alignItems:'center'}}>
-
             <Text>
              product
-              </Text>
+            </Text>
              <Text>
                 apple
                 </Text>
-               </View>
+            </View>
 
         </View>
 
@@ -171,9 +168,11 @@ quantity
    اجمالي السعر + الضريبة : 3473843847
     </Text>
  
-<Text style={{marginTop:50,alignSelf:'center'}}>
-    <Barcode  width='1.2'  value="Hello world" format="CODE128" />
-</Text>
+<View style={{marginTop:50,alignSelf:'center'}}>
+<QRCode
+      value="http://awesome.link.qr"
+    />
+</View>
 
  
    

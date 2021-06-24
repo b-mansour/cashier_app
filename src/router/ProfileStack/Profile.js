@@ -1,16 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ReceiptHome from '../screens/ReceiptScreen/ReceiptHome';
-import Menu from '../components/Menu';
-import ReceiptDetails from './../screens/ReceiptScreen/ReceiptDetails';
-import {colors} from '../assets/Colors'
+ 
+import {colors} from '../../assets/Colors'
+import ProfileHome from './../../screens/ProfileScreens/ProfileHome';
+import Menu from '../../components/Menu'
  
  
 
 
 const Stack = createStackNavigator();
 
-export default function ReceiptStack({navigation}) {
+export default function ProfileStack({navigation}) {
     return (
 
             <Stack.Navigator  screenOptions={{ 
@@ -28,10 +28,10 @@ export default function ReceiptStack({navigation}) {
                 headerLeft: () => ( 
                  <Menu navigation={navigation}/> 
                ),
-                 title:'الفواتير'
+                 title:'الصفحة الشخصية'
                  }} 
-                 component={ReceiptHome} />
-                <Stack.Screen name="ReceiptDetails" component={ReceiptDetails}/>
+                 component={ProfileHome} />
+                {/* <Stack.Screen name="ReceiptDetails" component={ReceiptDetails}/> */}
             </Stack.Navigator>
         
     )

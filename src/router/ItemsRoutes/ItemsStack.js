@@ -1,17 +1,14 @@
 import React from 'react';
 import ProductStack from './ProductStack';
 import CategoryStack from './CategoryStack';
-import  DiscountStack from './DiscountRoutes/DiscountStack';
 import  Items  from '../../screens/ItemsScreen/Items';
 import Menu from '../../components/Menu';
 import { createStackNavigator } from '@react-navigation/stack';
-import { color } from 'react-native-reanimated';
 import Discount from './DiscountRoutes/Discount';
 import ProductDiscount from './DiscountRoutes/ProductDiscount';
 import {colors} from '../../assets/Colors'
 
 const Stack = createStackNavigator();
-
 
 function ItemsStack({navigation}) {
   return (
@@ -27,7 +24,6 @@ function ItemsStack({navigation}) {
         <Menu  navigation={navigation} /> 
       ),
       title:'المنتجات'
-
      }}  
      name = "Items" component={Items}/>
     <Stack.Screen options={{headerShown:false}} name="Product" component={ProductStack}/>
@@ -42,13 +38,4 @@ export default ItemsStack;
 
 
 
-// options={{
-         
-//   headerLeft: () => (
-//     <Button
-//       onPress={() => console.warn('This is a button!')}
-//       title="Info"
-//       color="#fff"
-//     />
-//   ),
-// }}
+ 

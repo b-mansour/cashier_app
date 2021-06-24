@@ -1,7 +1,6 @@
-import   React, {useEffect} from 'react';
+import  React, {useEffect} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerNav from './src/router/DrawerNav/DrawerNav';
-import {View} from 'react-native';
  
 
 const Drawer = createDrawerNavigator();
@@ -12,6 +11,7 @@ const Drawer = createDrawerNavigator();
   export const discountContext = React.createContext();
   export const barcodeContext = React.createContext();
   export const receiptContext = React.createContext();
+  export const userContext = React.createContext();
 
 function App() {
 
@@ -185,80 +185,20 @@ function App() {
   ];
 
 
-
-  // const ReceitsData =  [
-  //   {
-  //     id: '1',
-  //     name: "sneaker",
-  //     price: 20.98,
-  //     cost:15,
-  //     categories: [5, 7],
-  //     quantity: 1 ,
-  //     barcode:'123456789'
-  //   },
-  //   {
-  //     id: '2',
-  //     name: "تفاح ",
-  //     price: 32.98,
-  //     cost:20,
-  //     categories: [2, 4, 6],
-  //     quantity: 1 ,
-  //     barcode:'123456789'
-  //   },
-  //   {
-  //     id: '3',
-  //     billNo: '26252',
-  //     cashierNo: 34,
-  //     vatNo:20,
-  //     createdDate:'2021/06/20',
-  //     quantity: 1 ,
-  //     discountPrice:'200',
-  //     totalPrice: '500'
-  //   },
-  //   {
-  //     id: '4',
-  //     name: "lemon",
-  //     price: 99.98,
-  //     cost:70,
-  //     categories: [2, 5, 6],
-  //     quantity: 1,
-  //     barcode:'123456789'
-  //   },
-  //   {
-  //     id: '5',
-  //     name: "apple",
-  //     price: 32.98,
-  //     cost:20,
-  //     categories: [2, 4, 6],
-  //     quantity: 1 ,
-  //     barcode:'0012000048098'
-  //   },
-  //   {
-  //     id: '6',
-  //     name: "ليمون",
-  //     price: 99.98,
-  //     cost: 16,
-  //     categories: [1,5,6],
-  //     quantity: 1 ,
-  //     barcode:'3474374600017'
-  //   },
-  //   {
-  //     id: '7',
-  //     name: "sneaker",
-  //     price: 20.98,
-  //     cost: 16,
-  //     categories: [5, 7],
-  //     quantity: 1 ,
-  //     barcode:'0752481496352'
-  //   },
-  // ];
+  const usersData =  [
+    {
+      id: '1',
+      userName: "basher",
+      image:'https://images.unsplash.com/photo-1580654712603-eb43273aff33?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGxhbWJvcmdoaW5pfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      email: 'user@mail.com',
+      password:'12345678',
+      confirmPassword:'12345678',
+    },
+  ];
 
 
   
-
-
-
-
+    const [users, setUsers] = React.useState(usersData);
     const [categories, setCategories] = React.useState(categoryData);
     const [products, setProducts] = React.useState(productsData); 
     const [discounts, setDiscounts] = React.useState(discountsData);
@@ -279,9 +219,9 @@ function App() {
   
 
   return (
- 
+   <userContext.Provider  value={{User:[users ,setUsers]}}>
     <productContext.Provider value={{product:[products ,setProducts]}}> 
-     <categoryContext.Provider value={{ category:[ categories , setCategories]}}> 
+     <categoryContext.Provider value={{ category:[ categories ,setCategories]}}> 
        <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
        <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}>
        <receiptContext.Provider value = {{Receipt:[receipts, setReceipts]}}> 
@@ -295,9 +235,27 @@ function App() {
     </discountContext.Provider>
     </categoryContext.Provider>
     </productContext.Provider>
+    </userContext.Provider>
 
    
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
