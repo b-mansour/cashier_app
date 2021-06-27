@@ -9,50 +9,92 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
 import {colors} from '../../assets/Colors'
  
 
-export default function ProductEdit({route}) {
+export default function ProductEdit({route, navigation}) {
 
 
     const [name, setName] = React.useState(route.params.name);
+    const [id, setId] = React.useState(route.params.id);
     const [price, setPrice] = React.useState(route.params.price);
     const [cost, setCost] = React.useState(route.params.cost);
     const [image, setImage] = React.useState(route.params.image);
     const [barcode, setBarcode] = React.useState(route.params.barcode);
 
 
-    var EditProduct = {
-      name : name,
-      category: category,
-      price : price,
-      cost : cost, 
-      image : image,
-      barcode : barcode
+
+const onProductEdit = () => {
+
+   // const formData = new FormData();
+
+// const fileField = document.querySelector('input[type="file"]');
+
+const formData = {
+                   "Id" : id, 
+                   "Name" : name, 
+                   "Cost" : cost, 
+                   "Price" : price, 
+                   "Qr" : barcode, 
+                   "SectionId" : "1", 
+                   "Image" : image
+                  }
+
+// formData.append('name', name);
+// formData.append('price', price);
+// formData.append('cost', cost);
+// formData.append('image', image);
+// formData.append('barcode', barcode);
+
+fetch('https://cashierapi.ibtikar-soft.sa/api/Store/EditProduct', {
+method: 'POST',
+headers: { 
+'Accept': 'application/json',
+'Content-Type':'application/json'
+},
+body : JSON.stringify(formData)
+// body: formData
+})
+.then(response => response.json())
+.then(result => {
+console.log('Success:', result);
+navigation.goBack();
+})
+.catch(error => {
+console.error('Error:', error);
+});
     }
 
 
-    const onProductEdit = () => {
-
-    // const formData = new FormData();
-    // const fileField = document.querySelector('input[type="file"]');
+    const onProductDelete = () => {
     
-    // formData.append('name', name);
-    // formData.append('price', price);
-    // formData.append('cost', cost);
-    // formData.append('image', image);
-    // formData.append('barcode', barcode);
     
-    fetch('https://example.com/profile/avatar', {
-      method: 'PUT',
-      // body: formData
-         body: EditProduct
-    })
-    .then(response => response.json())
-    .then(result => {
-      console.log('Success:', result);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    }
+      // const formData = new FormData();
+      // const fileField = document.querySelector('input[type="file"]');
+     var formData = {
+                     "Id" : id 
+                    }
+      // formData.append('name', name);
+      // formData.append('image', image);
+     
+      
+      fetch('https://cashierapi.ibtikar-soft.sa/api/Store/DeleteSection', {
+        method: 'POST',
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type':'application/json'
+         },
+     
+        // body: formData
+        body : JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        navigation.goBack();
+         
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+      }
 
     
 
@@ -126,8 +168,8 @@ export default function ProductEdit({route}) {
               keyboardType='numeric'
              />
 
-<View style={{flexDirection:'row', justifyContent: 'center',
-    alignItems: 'center', marginTop:20}}> 
+    <View style={{flexDirection:'row', justifyContent: 'center',
+         alignItems: 'center', marginTop:20}}> 
         <TextInput
               value={barcode}
               placeholder='رقم الباركود'
@@ -147,10 +189,10 @@ export default function ProductEdit({route}) {
             
            <Button  onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
            <Button  onPress={ChoosePhoto} title='اختيار صورة'/> 
-           <Button  onPress={()=> {}} title='تعديل المنتج'/>  
+           <Button  onPress={onProductEdit} title='تعديل المنتج'/>  
 
 
-           <TouchableOpacity style={styles.footer} >
+           <TouchableOpacity onPress={onProductDelete} style={styles.footer}>
              <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
            </TouchableOpacity>
 

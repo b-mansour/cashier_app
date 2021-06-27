@@ -9,6 +9,42 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
 
 const DiscountItem = ({item}) => {
 
+
+  const [id , setId] = React.useState(item.id)
+  const onDiscountDelete = () => {
+
+
+    // const formData = new FormData();
+    // const fileField = document.querySelector('input[type="file"]');
+   var formData = {
+                   "Id" : id, 
+                  }
+    // formData.append('name', name);
+    // formData.append('image', image);
+   
+    
+    fetch('https://cashierapi.ibtikar-soft.sa/api/Store/DeleteDiscount', {
+      method: 'POST',
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
+       },
+   
+      // body: formData
+      body : JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+      navigation.goBack();
+       
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    }
+
+
   
   const navigation = useNavigation();
 
@@ -22,7 +58,7 @@ const DiscountItem = ({item}) => {
         onPress: () => console.log("Cancel Pressed"),
         style: "cancel"
       },
-      { text: "OK", onPress: () => console.log("OK Pressed") }
+      { text: "OK", onPress: onDiscountDelete }
     ]
   );
 

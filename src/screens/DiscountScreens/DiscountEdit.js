@@ -7,13 +7,55 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
  function DiscountEdit({route}) {
 
     const discountTypes = ['amount','percentage'];
-
+    const [ id, setId] = React.useState(route.params.id);
     const [discountName, setDiscountName] = React.useState(route.params.name);
     const [ DiscountValue, setDiscountValue] = React.useState(route.params.value);
 
     const [selectedOption, setSelectedOption] = React.useState(
       discountTypes ? discountTypes[0] : null,
       );
+
+
+
+
+      const onDiscountEdit = () => {
+
+
+        // const formData = new FormData();
+        // const fileField = document.querySelector('input[type="file"]');
+       var formData = {
+                       "Id" : id, 
+                       "Name" : discountName , 
+                       "Discount" : DiscountValue, 
+                       "TypeId" : "1"
+                      }
+        // formData.append('name', name);
+        // formData.append('image', image);
+       
+        
+        fetch('https://cashierapi.ibtikar-soft.sa/api/Store/EditDiscount', {
+          method: 'POST',
+          headers: { 
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+           },
+       
+          // body: formData
+          body : JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+          navigation.goBack();
+           
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+        }
+
+        
+    
 
 
     
@@ -47,7 +89,7 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
        
 
-           <Button onPress={()=> {}} title='تعديل'/>
+           <Button onPress={onDiscountEdit} title='تعديل'/>
 
 
            <TouchableOpacity style={styles.footer} >

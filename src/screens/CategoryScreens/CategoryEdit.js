@@ -6,36 +6,82 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 
 function CategoryEdit({route}) {
-
+  
+    const [id, setId] = React.useState(route.params.id);
     const [name, setName] = React.useState(route.params.name);
     const [image, setImage] = React.useState(route.params.image);
     //const [description, setDescription] = React.useState(route.params.description);
 
 
 
-    // const onCategoryEdit = () => {
+    const onCategoryEdit = () => {
 
 
-    //   const formData = new FormData();
-    //   const fileField = document.querySelector('input[type="file"]');
-      
-    //   formData.append('name', name);
-    //   formData.append('image', image);
+      // const formData = new FormData();
+      // const fileField = document.querySelector('input[type="file"]');
+     var formData = {
+                     "Id" : id, 
+                     "Name" : name , 
+                     "Image" : image
+                    }
+      // formData.append('name', name);
+      // formData.append('image', image);
      
       
-    //   fetch('https://example.com/profile/avatar', {
-    //     method: 'PUT',
-    //     body: formData
-    //   })
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     console.log('Success:', result);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error:', error);
-    //   });
-    //   }
+      fetch('https://cashierapi.ibtikar-soft.sa/api/Store/EditSection', {
+        method: 'POST',
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type':'application/json'
+         },
+     
+        // body: formData
+        body : JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+      }
 
+
+      
+      const onCategoryDelete = () => {
+    
+    
+        // const formData = new FormData();
+        // const fileField = document.querySelector('input[type="file"]');
+       var formData = {
+                       "Id" : id, 
+                      }
+        // formData.append('name', name);
+        // formData.append('image', image);
+       
+        
+        fetch('https://cashierapi.ibtikar-soft.sa/api/Store/DeleteSection', {
+          method: 'POST',
+          headers: { 
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+           },
+       
+          // body: formData
+          body : JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+          navigation.goBack();
+           
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+        }
+    
 
     const takePhotoFromCamera = () => {
         ImagePicker.openCamera({
@@ -61,10 +107,8 @@ function CategoryEdit({route}) {
         console.log(image);
       }
   
-
-
-
     return (
+
     //     <View >
        
 
@@ -101,10 +145,10 @@ function CategoryEdit({route}) {
           <View> 
           <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
-           <Button onPress={()=> {}} title='تعديل'/> 
+           <Button onPress={onCategoryEdit} title='تعديل'/> 
            </View> 
 
-    <TouchableOpacity style={styles.footer} >
+    <TouchableOpacity onPress={onCategoryDelete} style={styles.footer}>
     <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
     </TouchableOpacity>
 </View>
