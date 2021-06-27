@@ -201,21 +201,41 @@ function App() {
     const [users, setUsers] = React.useState(usersData);
     const [categories, setCategories] = React.useState(categoryData);
     const [products, setProducts] = React.useState(productsData); 
-    const [discounts, setDiscounts] = React.useState(discountsData);
+    const [discounts, setDiscounts] = React.useState();
     const [cartItems, setCartItems] = React.useState([]);
     const [receipts, setReceipts] = React.useState([]);
     const [barcode, setBarcode] = React.useState('');
 
-  //   useEffect(() => {
-  //     async function fetchMyAPI() {
-  //       await fetch('https://reactnative.dev/movies.json')
-  //       .then((response) => response.json())
-  //       .then((json) => setProducts(json.movies))
-  //       .catch((error) => console.error(error))
-  //   }
-  //   fetchMyAPI()
+async function getDiscounts() {
+  await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetDiscounts/1')
+        .then((response) => response.json())
+        .then((json) => setDiscounts(json.response))
+        .catch((error) => console.error(error))
+        
+}
+
+async function getProductsAndCategories() {
+  await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+  .then((response) => response.json())
+  .then((json) => setCategories(json.response.sectionList))
+  .catch((error) => console.error(error))
+}
+
+// async function fetchMyAPI() {
+//   await fetch('https://reactnative.dev/movies.json')
+//   .then((response) => response.json())
+//   .then((json) => setProducts(json.movies))
+//   .catch((error) => console.error(error))
+// }
+
+    useEffect(() => {
+      getProductsAndCategories();
+      getDiscounts();
+      
+   
+    // fetchMyAPI()
   
-  // }, []);
+  }, []);
   
 
   return (

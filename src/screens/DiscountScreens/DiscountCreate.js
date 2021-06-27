@@ -5,7 +5,7 @@ import Button from '../../components/Button/index';
 import {Picker} from '@react-native-picker/picker';
 
 
- function DiscountCreate() {
+ function DiscountCreate({navigation}) {
 
   const discountTypes = ['amount','percentage'];
 
@@ -19,6 +19,44 @@ import {Picker} from '@react-native-picker/picker';
     const [selectedOption, setSelectedOption] = React.useState(
       discountTypes ? discountTypes[0] : null,
       );
+
+
+      const onDiscountCreate = () => {
+
+
+        // const formData = new FormData();
+        // const fileField = document.querySelector('input[type="file"]');
+       var formData = {"Name" : discountName,  
+                       "TypeId" : "2", 
+                       "Discount" : DiscountValue, 
+                       "CashierNo" : "107375", 
+                       "ShopId" : "5"}
+        // formData.append('name', name);
+        // formData.append('image', image);
+       
+        
+        fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewDiscount', {
+          method: 'POST',
+          headers: { 
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+           },
+       
+          // body: formData
+          body : JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+          navigation.goBack();
+           
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+        }
+    
+    
       
 
     return (
@@ -26,6 +64,7 @@ import {Picker} from '@react-native-picker/picker';
     {console.log(selectedOption)}
         <TextInput
               value={discountName} 
+              onChangeText={ value => setDiscountName(value)}
               placeholder='اسم الخصم'
               style={styles.input}
              /> 
@@ -41,11 +80,12 @@ import {Picker} from '@react-native-picker/picker';
         <TextInput
               value={DiscountValue}
               placeholder='قيمة الخصم'
+              onChangeText={ value => setDiscountValue(value)}
               style={styles.input}
               keyboardType='numeric'
              />
 
-        <Button   onPress={()=> {}} title='اضافة'/>
+        <Button   onPress={onDiscountCreate} title='اضافة'/>
      </View>
     )
 }

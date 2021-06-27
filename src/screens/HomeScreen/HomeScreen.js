@@ -107,28 +107,44 @@ import {colors} from '../../assets/Colors';
   const [ cartItems, setCartItems] = Cart;
 
 
-  async function  getCategories() {
+//   async function getCategories() {
+//     await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetSections/1')
+//     .then((response) => response.json())
+//     .then((json) => setCategories(json.response))
+//     .catch((error) => console.error(error))
+// }
 
-    
-  }
+// async function getProductsAndCategories() {
+//     await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+//     .then((response) => response.json())
+//     .then((json) => setCategories(json.response.sectionList))
+//     .catch((error) => console.error(error))
+// }
 
+// async function getProducts() {
+//     await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+//     .then((response) => response.json())
+//     .then((json) => setProducts(json.response.productsList))
+//     .catch((error) => console.error(error))
+// }
 
-   //   useEffect(() => {
-  //     async function fetchMyAPI() {
-  //       await fetch('https://reactnative.dev/movies.json')
-  //       .then((response) => response.json())
-  //       .then((json) => setProducts(json.movies))
-  //       .catch((error) => console.error(error))
-  //   }
-  //   fetchMyAPI()
+// async function getProducts() {
+//     await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+//     .then((response) => response.json())
+//     .then((json) => setProducts(json.response.productsList))
+//     .catch((error) => console.error(error))
+// }
+
+  //    useEffect(() => {
+  //       getProducts()
+  //       getProductsAndCategories()
 
   // }, []);
 
 
-   
+  
   const [search, setSearch] = React.useState('');
-  const filteredProducts = products.filter( i => i.name.toLowerCase().includes(search.toLowerCase()));
-
+  const filterdProducts = products.filter( i => i.name.toLowerCase().includes(search.toLowerCase()));
 
 
  
@@ -170,7 +186,7 @@ import {colors} from '../../assets/Colors';
                 <Text
                     style={{
                         marginTop: 2,
-                        color: (selectedCategory?.id == item.id) ?  colors.white :colors.black,
+                        color: (selectedCategory?.id == item.id) ?  '#454545' : '#fff',
                         fontWeight:'bold'
                     }}
                 >
@@ -181,10 +197,9 @@ import {colors} from '../../assets/Colors';
     }
 
     return (
-        <View style={{padding:2, flex:1}}>
+        <View style={{padding:2}}>
             <FlatList
                 data={categories}
-                contentContainerStyle={{paddingBottom:50}}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => `${item.id}`}
@@ -220,9 +235,9 @@ import {colors} from '../../assets/Colors';
        
       </View>
 
-        
+       
+
       {renderMainCategories()}
-    
 
       <TextInput
        
@@ -231,12 +246,11 @@ import {colors} from '../../assets/Colors';
               style={styles.input}
              /> 
                
-             
 
       {/* Render Product Componet */}
       <FlatList
         // data={products}
-        data={filteredProducts}
+        data={filterdProducts}
         renderItem={({item}) => <ProductItem cartItems={cartItems} setCartItems={setCartItems} item={item} />}
         keyExtractor={(item, index) => item.id }
         numColumns={2}
@@ -252,39 +266,40 @@ import {colors} from '../../assets/Colors';
 
 
 const styles = StyleSheet.create({
-  page: {
-    padding: 10,
-   
+    page: {
+      padding: 10,
+     
+    },
+  
+    container: {
+      flex: 1,
+      backgroundColor: 'gray'
   },
-
-  container: {
-    flex: 1,
-    backgroundColor: 'gray'
-},
-shadow: {
-    shadowColor: "#000",
-    // shadowOffset: {
-    //     width: 0,
-    //     height: 3,
-    // },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 1,
-},
-
-input: {
-  width:'100%',
-  height:40, 
-  borderWidth:1,
-  borderRadius:5,
-  alignSelf:'center',
-  borderColor: colors.primary,
-  fontSize:20,
-  color:'#000'
-
-}
-
-});
+  shadow: {
+      shadowColor: "#000",
+      // shadowOffset: {
+      //     width: 0,
+      //     height: 3,
+      // },
+      shadowOpacity: 0.1,
+      shadowRadius: 3,
+      elevation: 1,
+  },
+  
+  input: {
+    width:'100%',
+    height:40, 
+    borderWidth:1,
+    borderRadius:5,
+    alignSelf:'center',
+    borderColor: colors.primary,
+    fontSize:20,
+    color:'#000'
+  
+  }
+  
+  });
+  
 
 
 

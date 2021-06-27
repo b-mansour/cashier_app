@@ -21,17 +21,28 @@ export default function ProductCreate({navigation}) {
     const [cost, setCost] = React.useState();
     const [image, setImage] = React.useState();
     // const [barcode, setBarcode] = React.useState();
+    const {Barcode} = React.useContext(barcodeContext)
+    const [ barcode, setBarcode] = Barcode;
 
 
 
 
 
-// const onProductCreate = () => {
+const onProductCreate = () => {
 
 
-//   const formData = new FormData();
+// const formData = new FormData();
 
 // const fileField = document.querySelector('input[type="file"]');
+
+const formData = { "Name" : name, 
+                   "SectionId" : "1", 
+                   "Cost" : cost, 
+                   "Price" : price, 
+                   "Image" : image, 
+                   "Qr" :  barcode,
+                   "CashierNo" : "107375",
+                   "ShopId" : "3"}
 
 // formData.append('name', name);
 // formData.append('price', price);
@@ -39,25 +50,30 @@ export default function ProductCreate({navigation}) {
 // formData.append('image', image);
 // formData.append('barcode', barcode);
 
-// fetch('https://example.com/profile/avatar', {
-//   method: 'POST',
-//   body: formData
-// })
-// .then(response => response.json())
-// .then(result => {
-//   console.log('Success:', result);
-// })
-// .catch(error => {
-//   console.error('Error:', error);
-// });
-// }
+fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
+  method: 'POST',
+  headers: { 
+    'Accept': 'application/json',
+    'Content-Type':'application/json'
+   },
+   body : JSON.stringify(formData)
+  // body: formData
+})
+.then(response => response.json())
+.then(result => {
+  console.log('Success:', result);
+  navigation.goBack();
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+}
 
 
 
 
 
-    const {Barcode} = React.useContext(barcodeContext)
-    const [ barcode, setBarcode] = Barcode;
+   
 
     const takePhotoFromCamera = () => {
       ImagePicker.openCamera({
@@ -152,7 +168,7 @@ export default function ProductCreate({navigation}) {
     </View>   
            <Button onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
            <Button onPress={ChoosePhoto} title='اختيار صورة'/> 
-           <Button onPress={()=> {}} title='اضافةالمنتج'/> 
+           <Button onPress={onProductCreate} title='اضافةالمنتج'/> 
       
            
        </View>

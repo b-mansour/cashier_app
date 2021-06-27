@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../../screens/HomeScreen/Home';
+import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import CartScreen from '../../screens/CartScreen/cart';
 import CartStack from './CartStack';
 import BarcodeScanner from './../../screens/HomeScreen/BarcodeScanner';

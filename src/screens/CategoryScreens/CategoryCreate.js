@@ -14,28 +14,38 @@ function CategoryEdit({route}) {
 
 
 
-    // const onCategoryCreate = () => {
+    const onCategoryCreate = () => {
 
 
     // const formData = new FormData();
     // const fileField = document.querySelector('input[type="file"]');
-    
+   var formData = {"Name" : name, 
+               "Image" : image, 
+               "ShopId" : "1", 
+               "CashierNo" : "107375"
+              }
     // formData.append('name', name);
     // formData.append('image', image);
    
     
-    // fetch('https://example.com/profile/avatar', {
-    //   method: 'POST',
-    //   body: formData
-    // })
-    // .then(response => response.json())
-    // .then(result => {
-    //   console.log('Success:', result);
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error);
-    // });
-    // }
+    fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewSection', {
+      method: 'POST',
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
+       },
+   
+      // body: formData
+      body : JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    }
 
 
 
@@ -93,19 +103,10 @@ function CategoryEdit({route}) {
 
          <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
-           <Button onPress={()=> {}} title='اضافة'/>  
+           <Button onPress={onCategoryCreate} title='اضافة'/>  
 
     </View>
 
-
-
-
-    
- 
-
-
-
- 
 </View>
     )
 }

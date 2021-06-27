@@ -6,18 +6,18 @@ import {categoryContext} from '../../../App';
 import {productContext} from '../../../App';
 import {discountContext} from '../../../App';
 
-export default function Home() {
+export default function Home({navigation}) {
 
     
 
 
 
-    const {category} = React.useContext(categoryContext);
-    const [ categories, setCategories] = category;
+    // const {category} = React.useContext(categoryContext);
+    // const [ categories, setCategories] = category;
 
-      const [selectedCategory, setSelectedCategory] = React.useState(
-        categories ? categories[0] : null,
-      );
+    //   const [selectedCategory, setSelectedCategory] = React.useState(
+    //     categories ? categories[0] : null,
+    //   );
 
 
       const {product} = React.useContext(productContext);
@@ -39,10 +39,53 @@ export default function Home() {
       // const [selectedOption, setSelectedOption] = React.useState(
       //   categories ? categories[0] : null,
       // );
+
+
+ const onProductDiscountCreate = () => {
+
+
+        // const formData = new FormData();
+        // const fileField = document.querySelector('input[type="file"]');
+       var formData = {
+                      "ProductId" :  '1', 
+                      "DiscountId" : '1', 
+                      "Periode" :numOfDays, 
+                      "CashierNo" : "107375", 
+                      "ShopId" : "1"
+                    }
+
+
+        // formData.append('name', name);
+        // formData.append('image', image);
+       
+        
+        fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProductDiscount', {
+          method: 'POST',
+          headers: { 
+            'Accept': 'application/json',
+            'Content-Type':'application/json'
+           },
+       
+          // body: formData
+          body : JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+          navigation.goBack();
+           
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+        }
+
+
     return (
         <View>
 
-        <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
+        {/* <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
        <Picker
         style={{marginBottom:20}}
         selectedValue={selectedCategory}
@@ -51,7 +94,7 @@ export default function Home() {
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
       </Picker>
-      </View>
+      </View> */}
 
       <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
       <Picker
@@ -92,7 +135,7 @@ export default function Home() {
               keyboardType='numeric'
              />
 
-             <Button title='حفظ'></Button>
+             <Button title='حفظ' onPress={onProductDiscountCreate}></Button>
       </View>
 
 
