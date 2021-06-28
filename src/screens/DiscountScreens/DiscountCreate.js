@@ -19,22 +19,17 @@ import {Picker} from '@react-native-picker/picker';
     const [selectedOption, setSelectedOption] = React.useState(
       discountTypes ? discountTypes[0] : null,
       );
-
-
+      
       const onDiscountCreate = () => {
 
-
-        // const formData = new FormData();
-        // const fileField = document.querySelector('input[type="file"]');
-       var formData = {"Name" : discountName,  
-                       "TypeId" : "2", 
-                       "Discount" : DiscountValue, 
-                       "CashierNo" : "107375", 
-                       "ShopId" : "5"}
-        // formData.append('name', name);
-        // formData.append('image', image);
-       
-        
+       var formData = { 
+                        "Name" : discountName, 
+                        "TypeId" : "1",
+                        "discount1" : DiscountValue, 
+                        "CashierNo" : "107375", 
+                        "ShopId" : "1"
+                      }
+    
         fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewDiscount', {
           method: 'POST',
           headers: { 
@@ -48,7 +43,7 @@ import {Picker} from '@react-native-picker/picker';
         .then(response => response.json())
         .then(result => {
           console.log('Success:', result);
-          navigation.goBack();
+          // navigation.goBack();
            
         })
         .catch(error => {

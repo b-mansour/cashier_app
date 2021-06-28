@@ -19,11 +19,13 @@ function CategoryEdit({route}) {
 
     // const formData = new FormData();
     // const fileField = document.querySelector('input[type="file"]');
-   var formData = {"Name" : name, 
-               "Image" : image, 
-               "ShopId" : "1", 
-               "CashierNo" : "107375"
-              }
+  //  var formData = {"Name" : name, 
+  //                  "Image" : image, 
+  //                  "ShopId" : "1", 
+  //                  "CashierNo" : "107375"
+  //   }
+
+    var formData = {"Name" : "المشروبات", "Image" : "2a55.jpg", "ShopId" : "1", "CashierNo" : "107375"}
     // formData.append('name', name);
     // formData.append('image', image);
    

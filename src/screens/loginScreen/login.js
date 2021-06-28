@@ -1,7 +1,3 @@
-// Example of Splash, Login and Sign Up in React Native
-// https://aboutreact.com/react-native-login-and-signup/
-
-// Import React and Component
 import React, {useState, createRef} from 'react';
 import {
   StyleSheet,
@@ -17,7 +13,7 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-import Loader from './Components/Loader';
+// import Loader from './Components/Loader';
 
 const LoginScreen = ({navigation}) => {
   const [userEmail, setUserEmail] = useState('');
@@ -38,41 +34,42 @@ const LoginScreen = ({navigation}) => {
       return;
     }
     setLoading(true);
-    let dataToSend = {user_email: userEmail, user_password: userPassword};
-    let formBody = [];
-    for (let key in dataToSend) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
+    let dataToSend = {"CahierNo" : userEmail,"Password" : userPassword};
+    // let formBody = [];
+    // for (let key in dataToSend) {
+    //   let encodedKey = encodeURIComponent(key);
+    //   let encodedValue = encodeURIComponent(dataToSend[key]);
+    //   formBody.push(encodedKey + '=' + encodedValue);
+    // }
+    // formBody = formBody.join('&');
 
-    fetch('https://aboutreact.herokuapp.com/login.php', {
-      // fetch('https://webhook.site/377b48c7-83ee-4b7c-b6b5-afe7bebf0d44', {
+    fetch('https://cashierapi.ibtikar-soft.sa/api/Cashier/Login', {
       method: 'POST',
-      body: formBody,
-      // body: JSON.stringify(dataToSend),
+      // body: formBody,
+      body: JSON.stringify(dataToSend),
       headers: {
-        //Header Defination
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-        'Content-Type': 'application/json',
-      },
-    })
+        },
+      })
       .then((response) => response.json())
       .then((responseJson) => {
         //Hide Loader
         setLoading(false);
         console.log(responseJson);
         // If server response message same as Data Matched
-        if (responseJson.status == 1) {
-          AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-          console.log(responseJson.data[0].user_id);
-          navigation.replace('DrawerNavigationRoutes');
-        } else {
-          setErrortext('Please check your email id or password');
-          console.log('Please check your email id or password');
-        }
-      })
+        // if (responseJson.response == 0) {
+        //   AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
+        //   console.log(responseJson.data[0].user_id);
+        //   navigation.replace('DrawerNavigationRoutes');
+        // } else {
+        //   setErrortext('Please check your email id or password');
+        //   console.log('Please check your email id or password');
+        // }
+      }
+      
+      )
       .catch((error) => {
         //Hide Loader
         setLoading(false);
@@ -82,7 +79,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <View style={styles.mainBody}>
-      <Loader loading={loading} />
+      {/* <Loader loading={loading} /> */}
       <ScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{

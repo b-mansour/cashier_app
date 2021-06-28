@@ -16,7 +16,8 @@ export default function ProductEdit({route, navigation}) {
     const [id, setId] = React.useState(route.params.id);
     const [price, setPrice] = React.useState(route.params.price);
     const [cost, setCost] = React.useState(route.params.cost);
-    const [image, setImage] = React.useState(route.params.image);
+    // const [image, setImage] = React.useState(route.params.image);
+    const [image, setImage] = React.useState('');
     const [barcode, setBarcode] = React.useState(route.params.barcode);
 
 
@@ -36,6 +37,10 @@ const formData = {
                    "SectionId" : "1", 
                    "Image" : image
                   }
+
+
+                  // const formData = {"Id" : "1", "Name" : "بصل", "Cost" : ".25", "Price" : "80", "Qr" : "", 
+                  // "SectionId" : "1", "Image" : ""}
 
 // formData.append('name', name);
 // formData.append('price', price);

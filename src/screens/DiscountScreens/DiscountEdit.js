@@ -4,7 +4,7 @@ import Button from '../../components/Button/index';
 import {Picker} from '@react-native-picker/picker';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
- function DiscountEdit({route}) {
+ function DiscountEdit({route, navigation}) {
 
     const discountTypes = ['amount','percentage'];
     const [ id, setId] = React.useState(route.params.id);
@@ -80,7 +80,7 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
 
          <TextInput
-              value={DiscountValue.toString()}
+              value={DiscountValue}
             //   placeholder='قيمة الخصم'
             style={styles.input}
               keyboardType='numeric'

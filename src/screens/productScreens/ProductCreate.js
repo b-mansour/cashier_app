@@ -36,19 +36,31 @@ const onProductCreate = () => {
 // const fileField = document.querySelector('input[type="file"]');
 
 const formData = { "Name" : name, 
-                   "SectionId" : "1", 
+                   "SectionId" :"1", 
                    "Cost" : cost, 
                    "Price" : price, 
                    "Image" : image, 
                    "Qr" :  barcode,
                    "CashierNo" : "107375",
-                   "ShopId" : "3"}
+                   "ShopId" : "1"
+                  }
 
-// formData.append('name', name);
-// formData.append('price', price);
-// formData.append('cost', cost);
-// formData.append('image', image);
-// formData.append('barcode', barcode);
+// const formData = {
+//                   "Name" : "beenss",  
+//                   "SectionId" : "1", 
+//                   "Cost" : "6.00", 
+//                   "Price" : "7.50", 
+//                   "Image" : "2a57a.jpg",
+//                    "Qr" : "78596435", 
+//                    "CashierNo" : "107375", 
+//                    "ShopId" : "1"
+//                   }
+
+      // formData.append('name', name);
+     // formData.append('price', price);
+    // formData.append('cost', cost);
+   // formData.append('image', image);
+  // formData.append('barcode', barcode);
 
 fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
   method: 'POST',
@@ -62,7 +74,7 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 .then(response => response.json())
 .then(result => {
   console.log('Success:', result);
-  navigation.goBack();
+  // navigation.goBack();
 })
 .catch(error => {
   console.error('Error:', error);
@@ -70,10 +82,6 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 }
 
 
-
-
-
-   
 
     const takePhotoFromCamera = () => {
       ImagePicker.openCamera({

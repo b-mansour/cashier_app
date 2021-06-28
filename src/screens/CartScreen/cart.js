@@ -62,11 +62,9 @@ const onCheckout = () => {
 
 
 
-
-
   var cart;
 
-  if(cartItems.length > 0){
+  if(cartItems.length > 0) {
     cart = <View style={{flex:1}}>
     <FlatList
      data={cartItems}

@@ -17,7 +17,7 @@ import Profile from './../ProfileStack/Profile';
 const Drawer = createDrawerNavigator();
 export default function DrawerNav() {
     return (
-        <NavigationContainer>
+      //   <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>
   
           <Drawer.Screen name="Home" 
@@ -103,6 +103,6 @@ export default function DrawerNav() {
         </Drawer.Navigator>
 
         
-      </NavigationContainer>
+      // </NavigationContainer>
     )
 }

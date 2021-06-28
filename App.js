@@ -1,9 +1,13 @@
 import  React, {useEffect} from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerNav from './src/router/DrawerNav/DrawerNav';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import LoginScreen from './src/screens/loginScreen/login';
+const Stack = createStackNavigator();
  
 
-const Drawer = createDrawerNavigator();
+ 
 
 const discountTypes = ['amount','percentage'];
 
@@ -62,7 +66,32 @@ async function getCategories() {
        <receiptContext.Provider value = {{Receipt:[receipts, setReceipts]}}> 
        <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
 
-        <DrawerNav/>
+
+
+       <NavigationContainer>
+      <Stack.Navigator>
+        {/* SplashScreen which will come once for 5 Seconds */}
+        {/* <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{headerShown: false}}
+        /> */}
+        {/* Auth Navigator which includer Login Signup will come once */}
+        <Stack.Screen
+          name="Auth"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+        {/* Navigation Drawer as a landing page */}
+        <Stack.Screen
+          name="DrawerNavigationRoutes"
+          component={DrawerNav}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+
+        {/* <DrawerNav/> */}
 
     </barcodeContext.Provider>
     </receiptContext.Provider>

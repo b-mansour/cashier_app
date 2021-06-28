@@ -5,7 +5,7 @@ import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 
 
-function CategoryEdit({route}) {
+function CategoryEdit({route,navigation}) {
   
     const [id, setId] = React.useState(route.params.id);
     const [name, setName] = React.useState(route.params.name);
