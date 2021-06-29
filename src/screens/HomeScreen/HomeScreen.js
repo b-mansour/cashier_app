@@ -246,20 +246,22 @@ async function getProducts() {
               style={styles.input}
              /> 
                
-
-      {/* Render Product Componet */}
+     <View style={{alignSelf:'center'}}>
+          {/* Render Product Componet */}
       <FlatList
         // data={products}
         data={filteredProducts}
         renderItem={({item}) => <ProductItem cartItems={cartItems} setCartItems={setCartItems} item={item} />}
         keyExtractor={(item, index) => item.id }
-        numColumns={2}
+        numColumns={5}
         // horizontal 
         // showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         ListFooterComponent={<View />}
-        ListFooterComponentStyle={{height:100}}
+        ListFooterComponentStyle={{height:250}}
       />
+     </View>
+   
     </View>
   )
 }
@@ -268,6 +270,7 @@ async function getProducts() {
 const styles = StyleSheet.create({
     page: {
       padding: 10,
+    
      
     },
   

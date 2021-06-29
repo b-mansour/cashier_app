@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput,TouchableOpacity } from 'react-native';
+import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput,TouchableOpacity } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
@@ -70,7 +70,6 @@ console.error('Error:', error);
 
     const onProductDelete = () => {
     
-    
       // const formData = new FormData();
       // const fileField = document.querySelector('input[type="file"]');
      var formData = {
@@ -79,8 +78,8 @@ console.error('Error:', error);
       // formData.append('name', name);
       // formData.append('image', image);
      
-      
-      fetch('https://cashierapi.ibtikar-soft.sa/api/Store/DeleteSection', {
+    
+      fetch('https://cashierapi.ibtikar-soft.sa/api/Store/DeleteProduct', {
         method: 'POST',
         headers: { 
           'Accept': 'application/json',
@@ -93,7 +92,7 @@ console.error('Error:', error);
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
-        navigation.goBack();
+        // navigation.goBack();
          
       })
       .catch(error => {
@@ -137,7 +136,7 @@ console.error('Error:', error);
 
 
     return (
-        <View>
+        <ScrollView>
 
 
 
@@ -202,7 +201,7 @@ console.error('Error:', error);
            </TouchableOpacity>
 
              
-     </View>
+     </ScrollView>
     )
 }
 

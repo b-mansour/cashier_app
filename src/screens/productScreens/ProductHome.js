@@ -28,7 +28,7 @@ export default function ProductHome({navigation}) {
           data={products}
           renderItem={({item}) => <ProductHomeItem item={item}/>}
           keyExtractor={(item, index) => item.id }
-          numColumns={2}
+          numColumns={5}
         //   horizontal 
           // showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}

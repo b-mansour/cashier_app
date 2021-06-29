@@ -24,7 +24,7 @@ export default function Home({navigation}) {
   const [ products, setProducts] = product;
 
       const [selectedProduct, setSelectedProduct] = React.useState(
-        products ? products[0] : null,
+        products ? products[1] : null,
       );
 
       const {discount} = React.useContext(discountContext);
@@ -47,17 +47,17 @@ export default function Home({navigation}) {
         // const formData = new FormData();
         // const fileField = document.querySelector('input[type="file"]');
        var formData = {
-                      "ProductId" :  '1', 
-                      "DiscountId" : '1', 
+                      "ProductId" :  selectedProduct.id, 
+                      "DiscountId" :selectedDiscount.id, 
                       "Periode" :numOfDays, 
                       "CashierNo" : "107375", 
-                      "ShopId" : "1"
+                      "ShopId" : 1
                     }
 
 
         // formData.append('name', name);
         // formData.append('image', image);
-       
+        console.log(selectedProduct)
         
         fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProductDiscount', {
           method: 'POST',

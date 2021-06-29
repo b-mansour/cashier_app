@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text , FlatList, Pressable, StyleSheet, ScrollVie , TextInput } from 'react-native';
+import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
@@ -103,10 +103,11 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
         height: 400,
         cropping: true,
       }).then(image => {
-        console.log(image.path);
+        // console.log(image.path);
         setImage(image.path)
-        console.log(image)
+      //   console.log(image)
       });
+      console.log(image)
     }
 
 
@@ -123,7 +124,9 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
     return (
       
       // <barcodeContext.Provider value={{barcodee:[barcode, setBarcode]}}>
-      <View>
+      <ScrollView>
+
+
         <View>
         <TextInput
               value={name} 
@@ -180,7 +183,7 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
       
            
        </View>
-      </View>
+       </ScrollView>
 
       //</barcodeContext.Provider>
     )

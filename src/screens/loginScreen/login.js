@@ -56,17 +56,19 @@ const LoginScreen = ({navigation}) => {
       .then((response) => response.json())
       .then((responseJson) => {
         //Hide Loader
-        setLoading(false);
+        // setLoading(false);
         console.log(responseJson);
+        console.log(responseJson.response.cashierDetail.no);
         // If server response message same as Data Matched
-        // if (responseJson.response == 0) {
-        //   AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-        //   console.log(responseJson.data[0].user_id);
-        //   navigation.replace('DrawerNavigationRoutes');
-        // } else {
-        //   setErrortext('Please check your email id or password');
-        //   console.log('Please check your email id or password');
-        // }
+        if (responseJson.response.cashierDetail.no == userEmail ) {
+          // AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
+          // console.log(responseJson.data[0].user_id);
+          navigation.replace('DrawerNavigationRoutes');
+          
+        } else {
+          setErrortext('Please check your email id or password');
+          console.log('Please check your email id or password');
+        }
       }
       
       )

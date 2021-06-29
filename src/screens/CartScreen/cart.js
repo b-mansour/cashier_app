@@ -14,7 +14,7 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
   // const [receipts, setReceipts] = Receipt;
 
   var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
-
+  // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price, 0);
 
   // const [billNo, setBillNo] = React.useState();
   // const [CashierNo, setCashierNo] = React.useState();
@@ -65,12 +65,17 @@ const onCheckout = () => {
   var cart;
 
   if(cartItems.length > 0) {
-    cart = <View style={{flex:1}}>
+    cart = <View style={{flex:1, alignItems:'center'}}>
     <FlatList
      data={cartItems}
      renderItem={({item}) => <CartItem  cartItems={cartItems} item={item}/>}
      keyExtractor={(item, index) => item.id }
      contentContainerStyle={{paddingBottom:10}}
+
+     numColumns={3}
+     showsVerticalScrollIndicator={false}
+     ListFooterComponent={<View />}
+     ListFooterComponentStyle={{height:100}}
    />
      <View>
      {/* <Text style={{fontSize:30}}>total price is{totalPrice.toFixed(2)}</Text> */}

@@ -32,7 +32,7 @@ const CartItem = ({item, cartItems}) => {
     <View>
             <Image style={styles.image} source={{uri: item.image}}/>
     </View>
-    <Text>{item.id}</Text>
+  
     <View>
            <Text  style={{fontSize:20}}>{item.price * item.quantity}</Text>
     </View>
@@ -50,3 +50,37 @@ const CartItem = ({item, cartItems}) => {
 
 
 export default CartItem;
+
+
+
+
+
+{/* <View style={{alignItems:'center' , flexDirection:'row', justifyContent:'space-between'}}>
+
+{item.hasOwnProperty('quantity')? ( <View style={{flexDirection:'row'}}>
+  <Text style={{fontSize:20}}>  {item.name}  </Text> 
+  <Text style={{fontSize:20}}> x {item.quantity}</Text>
+</View>) : (
+     <Text style={{fontSize:20}}>  {item.name}  </Text> 
+)}
+<View>
+        <Image style={styles.image} source={{uri: item.image}}/>
+</View>
+
+<View>
+  {item.hasOwnProperty('quantity')? (<View> 
+       <Text style={{fontSize:20}}>{item.price * item.quantity}</Text>
+       <Text  style={{fontSize:20}}>{item.price}</Text>
+        
+       </View>
+       ):( <View>  
+       <Text  style={{fontSize:20}}>{item.price}</Text>
+       <Text  style={{fontSize:20 , color:'black'}}>{item.barcode}</Text></View>
+
+       )}
+      
+</View>
+
+ 
+
+</View> */}

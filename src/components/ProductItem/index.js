@@ -20,20 +20,36 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
       name: item.name,
       image: item.image,
       price: item.price ,
-      quantity: item.quantity,
-      barcode : item.barcode
+      barcode : item.qr,
+      quantity: 1,
       
    }
 
-    for(let i=0 ; i < cartItems.length ; i++){
+    for(let i=0 ; i < cartItems.length; i++){
 
       if(cartItems[i].id === cartItem.id){
         cartItems[i].quantity = cartItems[i].quantity + 1;
-          // cartItems.splice(i,1);
-        // setCartItems(currentItems => [...currentItems,cartItem]);
+
         return
       }
   }
+
+//   for(let i=0 ; i < cartItems.length; i++){
+
+//     if(cartItems[i].id === cartItem.id && !cartItems[i].hasOwnProperty('quantity')){
+//       // cartItem[i].quantity = 2;
+//       cartItem["quantity"] = 2;
+//       // cartItems[i].quantity = cartItems[i].quantity + 1;
+//       return
+//     }
+//     else if (cartItems[i].id === cartItem.id && cartItems[i].hasOwnProperty('quantity')) {
+
+//          cartItems[i].quantity = cartItems[i].quantity + 1
+        
+//     }
+// }
+
+
     // setCartItems([...cartItems,route.params.item])
     setCartItems(currentItems => [...currentItems,cartItem]);
     console.log(cartItems);
