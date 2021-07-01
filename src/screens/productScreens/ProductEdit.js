@@ -6,7 +6,8 @@ import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
-import {colors} from '../../assets/Colors'
+import {colors} from '../../assets/Colors';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
  
 
 export default function ProductEdit({route, navigation}) {
@@ -92,7 +93,7 @@ console.error('Error:', error);
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
-        // navigation.goBack();
+        navigation.goBack();
          
       })
       .catch(error => {
@@ -100,29 +101,52 @@ console.error('Error:', error);
       });
       }
 
-    
+   const TakePhoto = () => {
+        const options = {}
+        launchCamera(options, response => {
+          console.log(response)
+        })
+      
+      }
+      
 
-    const takePhotoFromCamera = () => {
-      ImagePicker.openCamera({
-        width: 300,
-        height: 400,
-        cropping: true,
-      }).then(image => {
-        console.log(image);
-        setImage(image.path)
-      });
-    }
+    // const takePhotoFromCamera = () => {
+    //   ImagePicker.openCamera({
+    //     width: 300,
+    //     height: 400,
+    //     cropping: true,
+    //   }).then(image => {
+    //     console.log(image);
+    //     setImage(image.path)
+    //   });
+    // }
+
 
     const ChoosePhoto = () => {
-      ImagePicker.openPicker({
-        width: 300,
-        height: 400,
-        cropping: true
-      }).then(image => {
-        console.log(image);
-        setImage(image.path)
-      });
-    }
+      const options = {
+        includeBase64: true
+      }
+      launchImageLibrary(options, response => {
+        setImage(response.assets[0].base64)
+        console.log("_________________________________________________")
+        console.log(response.assets[0].base64)
+        console.log("*****************************************************")
+        
+
+        // console.log(image)
+      })
+   }
+
+    // const ChoosePhoto = () => {
+    //   ImagePicker.openPicker({
+    //     width: 300,
+    //     height: 400,
+    //     cropping: true
+    //   }).then(image => {
+    //     console.log(image);
+    //     setImage(image.path)
+    //   });
+    // }
 
 
 
@@ -188,26 +212,20 @@ console.error('Error:', error);
 <MaterialCommunityIcons style={{fontSize:25}} name="barcode-scan"></MaterialCommunityIcons>
 
 
-        </View>   
-
-            
-           <Button  onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
+        </View>  
+           <Button  onPress={TakePhoto} title='تصوير من الكاميرا'/> 
            <Button  onPress={ChoosePhoto} title='اختيار صورة'/> 
            <Button  onPress={onProductEdit} title='تعديل المنتج'/>  
-
-
            <TouchableOpacity onPress={onProductDelete} style={styles.footer}>
              <AntDesign style={{fontSize:25, color:'#FFF'}} name="delete"></AntDesign>
-           </TouchableOpacity>
-
-             
+           </TouchableOpacity>     
      </ScrollView>
     )
 }
 
 
 
-const styles =   StyleSheet.create({
+const styles = StyleSheet.create({
   input: {
     marginTop:20,
     width:'90%',

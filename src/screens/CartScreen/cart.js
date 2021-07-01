@@ -12,55 +12,58 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
 
   // const {Receipt} = React.useContext(receiptContext);
   // const [receipts, setReceipts] = Receipt;
-
-  var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
+  var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.UnitPrice * currentvalue.Quantity, 0);
+  // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
   // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price, 0);
 
-  // const [billNo, setBillNo] = React.useState();
-  // const [CashierNo, setCashierNo] = React.useState();
-  // const [discountPrice, setDiscountPrice] = React.useState();
-  // const [product, setProduct] = React.useState();
-  // const [Quantity, setQuantity] = React.useState();
-  // const [totalAmount, setTotalAmount] = React.useState(totalPrice);
-  // const [vatNo, setVatNo] = React.useState();
+   
+  const onCheckout = () => {
 
+    const formData = {
+                      "VatNo" : "2354", 
+                      "Location" : "الشوقية", 
+                      "Price" : ".50", 
+                      "Vat" : ".075", 
+                      "TotalPrice": totalPrice,
+                      "IsPrinted" : "True", 
+                      "IsPaid" : "True", 
+                      "Invoice" : "", 
+                      "CashierNo" : "209889",
+                      "ShopId" : "1", 
+                      "ProductDetails" : cartItems
+                    }
+    
+          // formData.append('name', name);
+         // formData.append('price', price);
+        // formData.append('cost', cost);
+       // formData.append('image', image);
+      // formData.append('barcode', barcode);
+    
+    fetch('https://cashierapi.ibtikar-soft.sa/api/Bills/AddBill', {
+      method: 'POST',
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type':'application/json'
+       },
+       body : JSON.stringify(formData)
+      // body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
 
-  // const onCheckout = () => {
+      
+      // navigation.goBack();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    }
 
-  // const formData = new FormData();
-  // const fileField = document.querySelector('input[type="file"]');
-  
-  // formData.append('billNo', billNo);
-  // formData.append('CashierNo', CashierNo);
-  // formData.append('product', product);
-  // formData.append('Quantity', Quantity);
-  // formData.append('discountPrice', discountPrice);
-  // formData.append('totalAmount', totalAmount);
-  // formData.append('vatNo', vatNo);
-
-  
-  // fetch('https://example.com/profile/avatar', {
-  //   method:'POST',
-  //   body: formData
-  // })
-  // .then(response => response.json())
-  // .then( result => {
-  //   console.log('Success:', result);
-  // })
-  // .catch( error => {
-  //   console.error('Error:', error);
-  // });
-  // }
-
-const onCheckout = () => {
-  console.warn('checked out successfully');
-  setCartItems([]);
-}
-
-
-
-
-
+// const onCheckout = () => {
+//   console.warn('checked out successfully');
+//   setCartItems([]);
+// }
 
   var cart;
 

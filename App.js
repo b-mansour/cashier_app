@@ -53,8 +53,8 @@ async function getCategories() {
     useEffect(() => {
       getProducts();
       getCategories();
-      getDiscounts();
-    },[]);
+      // getDiscounts();
+    },[products]);
   
 
   return (
@@ -77,11 +77,11 @@ async function getCategories() {
           options={{headerShown: false}}
         /> */}
         {/* Auth Navigator which includer Login Signup will come once */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Auth"
           component={LoginScreen}
           options={{headerShown: false}}
-        /> */}
+        />
         {/* Navigation Drawer as a landing page */}
         <Stack.Screen
           name="DrawerNavigationRoutes"

@@ -15,40 +15,42 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
 
 
   let onadd = () => {
-    var cartItem = {
-      id: item.id,
-      name: item.name,
-      image: item.image,
-      price: item.price ,
-      barcode : item.qr,
-      quantity: 1,
+  //   var cartItem = {
+  //     id: item.id,
+  //     name: item.name,
+  //     image: item.image,
+  //     price: item.price ,
+  //     barcode : item.qr,
+  //     quantity: 1,
       
-   }
+  //  }
 
-    for(let i=0 ; i < cartItems.length; i++){
 
-      if(cartItems[i].id === cartItem.id){
-        cartItems[i].quantity = cartItems[i].quantity + 1;
+   var cartItem = { 
+                     ProductID : item.id, 
+                     UnitPrice : item.price, 
+                     Quantity : 1, 
+                     DiscountID : "", 
+                     FinalPrice : ".50"
+                    }
 
-        return
-      }
-  }
+  //   for(let i=0 ; i < cartItems.length; i++){
 
-//   for(let i=0 ; i < cartItems.length; i++){
+  //     if(cartItems[i].id === cartItem.id){
+  //       cartItems[i].quantity = cartItems[i].quantity + 1;
 
-//     if(cartItems[i].id === cartItem.id && !cartItems[i].hasOwnProperty('quantity')){
-//       // cartItem[i].quantity = 2;
-//       cartItem["quantity"] = 2;
-//       // cartItems[i].quantity = cartItems[i].quantity + 1;
-//       return
-//     }
-//     else if (cartItems[i].id === cartItem.id && cartItems[i].hasOwnProperty('quantity')) {
+  //       return
+  //     }
+  // }
 
-//          cartItems[i].quantity = cartItems[i].quantity + 1
-        
-//     }
-// }
+  for(let i=0 ; i < cartItems.length; i++){
 
+    if(cartItems[i].ProductID === cartItem.ProductID){
+      cartItems[i].Quantity = cartItems[i].Quantity + 1;
+
+      return
+    }
+}
 
     // setCartItems([...cartItems,route.params.item])
     setCartItems(currentItems => [...currentItems,cartItem]);

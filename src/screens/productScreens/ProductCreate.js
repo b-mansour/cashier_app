@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {categoryContext} from '../../../App';
 import Button from '../../components/Button/index';
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import { barcodeContext } from '../../../App';
-import {colors} from '../../assets/Colors'
+import {colors} from '../../assets/Colors';
+// import ImagePicker from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
  
 
  
@@ -20,12 +22,11 @@ export default function ProductCreate({navigation}) {
     const [price, setPrice] = React.useState();
     const [cost, setCost] = React.useState();
     const [image, setImage] = React.useState();
-    // const [barcode, setBarcode] = React.useState();
     const {Barcode} = React.useContext(barcodeContext)
     const [ barcode, setBarcode] = Barcode;
 
 
-
+ 
 
 
 const onProductCreate = () => {
@@ -35,7 +36,8 @@ const onProductCreate = () => {
 
 // const fileField = document.querySelector('input[type="file"]');
 
-const formData = { "Name" : name, 
+const formData = { 
+                   "Name" : name, 
                    "SectionId" :"1", 
                    "Cost" : cost, 
                    "Price" : price, 
@@ -44,17 +46,6 @@ const formData = { "Name" : name,
                    "CashierNo" : "107375",
                    "ShopId" : "1"
                   }
-
-// const formData = {
-//                   "Name" : "beenss",  
-//                   "SectionId" : "1", 
-//                   "Cost" : "6.00", 
-//                   "Price" : "7.50", 
-//                   "Image" : "2a57a.jpg",
-//                    "Qr" : "78596435", 
-//                    "CashierNo" : "107375", 
-//                    "ShopId" : "1"
-//                   }
 
       // formData.append('name', name);
      // formData.append('price', price);
@@ -74,6 +65,8 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 .then(response => response.json())
 .then(result => {
   console.log('Success:', result);
+  console.log(formData);
+  
   // navigation.goBack();
 })
 .catch(error => {
@@ -82,44 +75,74 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 }
 
 
+const TakePhoto = () => {
+  const options = {}
+  launchCamera(options, response => {
+    console.log(response)
+  })
 
-    const takePhotoFromCamera = () => {
-      ImagePicker.openCamera({
-        width: 300,
-        height: 400,
-        cropping:false,
-      }).then(image => {
-        console.log(image.cropRect.path);
-        setImage(image.path)
+}
+
+
+    // const takePhotoFromCamera = () => {
+    //   ImagePicker.openCamera({
+    //     width: 300,
+    //     height: 400,
+    //     cropping:false,
+    //   }).then(image => {
+    //     console.log(image.cropRect.path);
+    //     setImage(image.path)
     
-      });
-    }
+    //   });
+    // }
 
     const ChoosePhoto = () => {
-      ImagePicker.openPicker({
+      const options = {
+        includeBase64: true
+      }
+      launchImageLibrary(options, response => {
+        setImage(response.assets[0].base64)
+        console.log("_________________________________________________")
+        console.log(response.assets[0].base64)
+        console.log("*****************************************************")
+        
+
+        // console.log(image)
+      })
+   }
+
+
+
+   useEffect(() => {
+    console.log(image);
+    
+  },[image]);
+
+
+    
+
+
+    // const ChoosePhoto = () => {
+    //   ImagePicker.openPicker({
       
-        cropperToolbarTitle:'نعديل الصورة', 
-        width: 300,
-        height: 400,
-        cropping: true,
-      }).then(image => {
-        // console.log(image.path);
-        setImage(image.path)
-      //   console.log(image)
-      });
-      console.log(image)
-    }
+    //     cropperToolbarTitle:'نعديل الصورة', 
+    //     width: 300,
+    //     height: 400,
+    //     cropping: true,
+    //   }).then(image => {
+    //     // console.log(image.path);
+    //     setImage(image.path)
+    //   //   console.log(image)
+    //   });
+    //   console.log(image)
+    // }
 
-
-
-
-    const {category} = React.useContext(categoryContext);
+     const {category} = React.useContext(categoryContext);
     const [ categories, setCategories] = category;
 
     const [selectedOption, setSelectedOption] = React.useState(
         categories ? categories[0] : null,
       );
-
 
     return (
       
@@ -177,7 +200,7 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
     </Pressable>
 
     </View>   
-           <Button onPress={takePhotoFromCamera} title='تصوير من الكاميرا'/> 
+           <Button onPress={TakePhoto} title='تصوير من الكاميرا'/> 
            <Button onPress={ChoosePhoto} title='اختيار صورة'/> 
            <Button onPress={onProductCreate} title='اضافةالمنتج'/> 
       

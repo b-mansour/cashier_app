@@ -21,7 +21,7 @@ const CategoryItem = ({item}) => {
     <View  style={styles.root}>
      
       <View>
-         <Image style={styles.image} source={{uri: item.image}} />
+         <Image style={styles.image} source={{uri: item.image}}/>
       </View>
        
     </View>

@@ -5,6 +5,7 @@ import {
     DrawerItem,
     DrawerItemList
 } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from  'react-native-vector-icons/Ionicons';
@@ -12,7 +13,19 @@ import AntDesign  from  'react-native-vector-icons/AntDesign';
 
  
 
-export function DrawerContent(props){
+export function DrawerContent(props,{navigation}){
+
+
+
+
+    const removeData = async () => {
+        try {
+            await AsyncStorage.clear();
+          
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return(
         <View style={{flex:1}}>
@@ -115,6 +128,18 @@ export function DrawerContent(props){
                     // )}
                     label="رقم الاصدار 1.0"
                     onPress={() => {}}
+                />
+
+               <DrawerItem 
+                    icon={({color, size}) => (
+                        <Icon 
+                        name="exit-to-app" 
+                        color={color}
+                        size={size}
+                        />
+                    )}
+                    label="تسجيل الخروج"
+                    onPress={removeData}
                 />
                 </View>
             {/* </Drawer.Section> */}

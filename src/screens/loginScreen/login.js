@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {useState, createRef, useEffect} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -11,34 +11,72 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import Loader from './Components/Loader';
 
 const LoginScreen = ({navigation}) => {
-  const [userEmail, setUserEmail] = useState('');
+  const [cashierNo, setCashierNo] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
 
-  const passwordInputRef = createRef();
+  // const passwordInputRef = createRef();
+
+  
+const setData = async () => {
+  if (cashierNo.length == 0 || userPassword.length == 0) {
+      Alert.alert('Warning!', 'Please write your data.')
+  } else {
+      try {
+          var  cashier = {
+                          cashierNo: cashierNo,
+                          userPassword: userPassword
+          }
+          await AsyncStorage.setItem('CashierData', JSON.stringify(cashier));
+          navigation.navigate('DrawerNavigationRoutes');
+      } catch (error) {
+          console.log(error);
+      }
+  }
+}
+
+const getData = () => {
+    try {
+        AsyncStorage.getItem('CashierData')
+            .then(value => {
+                if (value != null) {
+                    navigation.navigate('DrawerNavigationRoutes');
+                }
+            })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+ useEffect(() => {
+    getData();
+}, []);
 
   const handleSubmitPress = () => {
-    setErrortext('');
-    if (!userEmail) {
-      alert('Please fill Email');
-      return;
-    }
-    if (!userPassword) {
-      alert('Please fill Password');
-      return;
-    }
-    setLoading(true);
-    let dataToSend = {"CahierNo" : userEmail,"Password" : userPassword};
+    // setErrortext('');
+    // if (!cashierNo) {
+    //   alert('Please fill Email');
+    //   return;
+    // }
+    // if (!userPassword) {
+    //   alert('Please fill Password');
+    //   return;
+    // }
+    // setLoading(true);
+    let cashierData = {
+                      "CahierNo" : cashierNo,
+                      "Password" : userPassword
+                    };
     // let formBody = [];
-    // for (let key in dataToSend) {
+    // for (let key in cashierData) {
     //   let encodedKey = encodeURIComponent(key);
-    //   let encodedValue = encodeURIComponent(dataToSend[key]);
+    //   let encodedValue = encodeURIComponent(cashierData[key]);
     //   formBody.push(encodedKey + '=' + encodedValue);
     // }
     // formBody = formBody.join('&');
@@ -46,7 +84,7 @@ const LoginScreen = ({navigation}) => {
     fetch('https://cashierapi.ibtikar-soft.sa/api/Cashier/Login', {
       method: 'POST',
       // body: formBody,
-      body: JSON.stringify(dataToSend),
+      body: JSON.stringify(cashierData),
       headers: {
         'Accept': 'application/json',
         'Content-Type':'application/json'
@@ -60,9 +98,11 @@ const LoginScreen = ({navigation}) => {
         console.log(responseJson);
         console.log(responseJson.response.cashierDetail.no);
         // If server response message same as Data Matched
-        if (responseJson.response.cashierDetail.no == userEmail ) {
+        // if (responseJson.response.cashierDetail.no == cashierNo ) {
+          if (responseJson.responseCode == 200 ) {
           // AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
           // console.log(responseJson.data[0].user_id);
+          setData()
           navigation.replace('DrawerNavigationRoutes');
           
         } else {
@@ -112,15 +152,15 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserEmail) => setUserEmail(UserEmail)}
+                onChangeText={(UserEmail) => setCashierNo(UserEmail)}
                 placeholder="اسم المستخدم" //dummy@abc.com
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="none"
                 keyboardType="email-address"
                 returnKeyType="next"
-                onSubmitEditing={() =>
-                  passwordInputRef.current && passwordInputRef.current.focus()
-                }
+                // onSubmitEditing={() =>
+                //   passwordInputRef.current && passwordInputRef.current.focus()
+                // }
                 underlineColorAndroid="#f000"
                 blurOnSubmit={false}
               />
@@ -132,7 +172,7 @@ const LoginScreen = ({navigation}) => {
                 placeholder="Enter Password" //12345
                 placeholderTextColor="#8b9cb5"
                 keyboardType="default"
-                ref={passwordInputRef}
+                // ref={passwordInputRef}
                 onSubmitEditing={Keyboard.dismiss}
                 blurOnSubmit={false}
                 secureTextEntry={true}

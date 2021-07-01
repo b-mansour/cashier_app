@@ -1,4 +1,4 @@
-import   React from 'react';
+import   React, {useEffect} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer , DarkTheme } from '@react-navigation/native';
 import SettingsStack from './../SettingsRoutes/SettingsStack';
@@ -11,11 +11,42 @@ import FontAwesome5 from  'react-native-vector-icons/FontAwesome5';
 import Feather  from 'react-native-vector-icons/Feather';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
 import Profile from './../ProfileStack/Profile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const Drawer = createDrawerNavigator();
-export default function DrawerNav() {
+export default function DrawerNav({navigation}) {
+
+  const [cashierNo, setCashierNo] = React.useState('');
+  const [userPassword, setUserPassword] = React.useState('');
+
+
+
+  useEffect(() => {
+   getData();
+}, []);
+
+const getData = () => {
+   try {
+       AsyncStorage.getItem('CashierData')
+           .then(value => {
+               if (value != null) {
+                   let  cashier = JSON.parse(value);
+                   setCashierNo(cashier.cashierNo);
+                   setUserPassword(cashier.userPassword);
+               } else if(value == null){
+                  navigation.navigate('Auth')
+               }
+           })
+   } catch (error) {
+       console.log(error);
+   }
+}
+
+
+
+
     return (
       //   <NavigationContainer>
         <Drawer.Navigator initialRouteName="Home"  drawerContent={props => <DrawerContent {...props} />}>

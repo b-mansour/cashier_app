@@ -140,8 +140,7 @@ function CategoryEdit({route,navigation}) {
               
 
     </View>
-    
-    
+  
           <View> 
           <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
