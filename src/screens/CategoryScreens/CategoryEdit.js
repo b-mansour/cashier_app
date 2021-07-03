@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Image} from 'react-native';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
 import Button from '../../components/Button/index';
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+
+
 
 
 function CategoryEdit({route,navigation}) {
@@ -83,29 +86,60 @@ function CategoryEdit({route,navigation}) {
         }
     
 
-    const takePhotoFromCamera = () => {
-        ImagePicker.openCamera({
-          width: 300,
-          height: 400,
-          cropping: true,
-        }).then(image => {
-          console.log(image);
-          setImage(image.path)
-        });
-      }
-  
-      const ChoosePhoto = () => {
-        ImagePicker.openPicker({
-          width: 300,
-          height: 400,
-          cropping: true
-        }).then(image => {
-          console.log(image);
-          setImage(image.path)
-        });
+   const TakePhoto = () => {
+  const options = {}
+  launchCamera(options, response => {
+    console.log(response)
+  })
 
-        console.log(image);
+}
+
+    // const takePhotoFromCamera = () => {
+    //     ImagePicker.openCamera({
+    //       width: 300,
+    //       height: 400,
+    //       cropping: true,
+    //     }).then(image => {
+    //       console.log(image);
+    //       setImage(image.path)
+    //     });
+    //   }
+
+     const ChoosePhoto = () => {
+      const options = {
+        includeBase64: true
       }
+      launchImageLibrary(options, response => {
+        setImage(response.assets[0].base64? response.assets[0].base64: null)
+        console.log("_________________________________________________")
+        // console.log(response.assets[0].base64)
+        console.log("*****************************************************")
+        
+
+        // console.log(image)
+      })
+   }
+
+  
+      // const ChoosePhoto = () => {
+      //   ImagePicker.openPicker({
+      //     width: 300,
+      //     height: 400,
+      //     cropping: true
+      //   }).then(image => {
+      //     console.log(image);
+      //     setImage(image.path)
+      //   });
+
+      //   console.log(image);
+      // }
+  
+
+ useEffect(() => {
+    console.log(image);
+    
+  },[image]);
+
   
     return (
 

@@ -19,7 +19,7 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNav({navigation}) {
 
   const [cashierNo, setCashierNo] = React.useState('');
-  const [userPassword, setUserPassword] = React.useState('');
+  const [cashierPassword, setCashierPassword] = React.useState('');
 
 
 
@@ -34,7 +34,7 @@ const getData = () => {
                if (value != null) {
                    let  cashier = JSON.parse(value);
                    setCashierNo(cashier.cashierNo);
-                   setUserPassword(cashier.userPassword);
+                   setCashierPassword(cashier.cashierPassword);
                } else if(value == null){
                   navigation.navigate('Auth')
                }

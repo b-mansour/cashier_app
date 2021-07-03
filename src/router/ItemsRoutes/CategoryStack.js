@@ -6,14 +6,18 @@ import CategoryEdit from '../../screens/CategoryScreens/CategoryEdit';
 import AddButton from '../../components/AddButton';
 import {colors} from '../../assets/Colors';
  
- 
 
 
 const Stack = createStackNavigator();
 
 export default function CategorytStack({navigation}) {
-    return (
 
+
+
+
+
+
+    return (
             <Stack.Navigator screenOptions={{ 
               cardStyle: { backgroundColor:'#e1e1e6'},
               headerStyle: {
@@ -34,6 +38,7 @@ export default function CategorytStack({navigation}) {
               <Stack.Screen name="CategoryCreate" options={{title:'اضافة فئة جديدة'}} component={CategoryCreate}/>
               <Stack.Screen name="CategoryEdit"  options={{title:'تعديل الفئة'}} component={CategoryEdit}/>
             </Stack.Navigator>
+     
         
     )
 };

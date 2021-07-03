@@ -57,7 +57,14 @@ async function getProducts() {
   }, []);
 
 
-  
+
+// function getAll() {
+//  console.log(productList)
+//     let productList =  productsData
+//       setProductsData(productList)
+//  }
+
+
   const [search, setSearch] = React.useState('');
   const filteredProducts = products.filter( i => i.name.toLowerCase().includes(search.toLowerCase()));
 
@@ -75,7 +82,6 @@ async function getProducts() {
       // : productsData.filter(a => a.categories) 
       // setProducts(null)
       setProducts(productList)
-      
       setSelectedCategory(category)
   }
 
@@ -187,10 +193,8 @@ async function getProducts() {
 const styles = StyleSheet.create({
     page: {
       padding: 10,
-    
-     
     },
-  
+
     container: {
       flex: 1,
       backgroundColor: 'gray'

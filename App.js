@@ -13,11 +13,15 @@ const discountTypes = ['amount','percentage'];
 
   export const productContext = React.createContext();
   export const categoryContext = React.createContext();
-  export const cartContext = React.createContext([]);
+  export const cartContext = React.createContext();
   export const discountContext = React.createContext();
   export const barcodeContext = React.createContext();
   export const receiptContext = React.createContext();
   export const userContext = React.createContext();
+  export const cashierContext = React.createContext();
+  export const shopContext = React.createContext();
+ 
+   
 
 function App() {
 
@@ -28,6 +32,11 @@ function App() {
     const [cartItems, setCartItems] = React.useState([]);
     const [receipts, setReceipts] = React.useState([]);
     const [barcode, setBarcode] = React.useState('');
+
+    const [cashierNo, setCashierNo] = React.useState('');
+    const [userPassword, setUserPassword] = React.useState('');
+    const [shopId, setShopId] = React.useState('');
+  
 
 async function getDiscounts() {
   await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetDiscounts/1')
@@ -54,17 +63,19 @@ async function getCategories() {
       getProducts();
       getCategories();
       // getDiscounts();
-    },[products]);
+    },[]);
   
 
   return (
-   <userContext.Provider  value={{User:[users ,setUsers]}}>
-    <productContext.Provider value={{product:[products ,setProducts]}}> 
-     <categoryContext.Provider value={{ category:[ categories ,setCategories]}}> 
-       <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
-       <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}>
-       <receiptContext.Provider value = {{Receipt:[receipts, setReceipts]}}> 
-       <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
+    <cashierContext.Provider value={{cashier:[cashierNo, setCashierNo]}}>
+      <shopContext.Provider value={{ shop :[shopId, setShopId]}}>
+        <productContext.Provider value={{product:[products ,setProducts]}}> 
+          <categoryContext.Provider value={{ category:[ categories ,setCategories]}}> 
+             <discountContext.Provider value={{discount:[discounts, setDiscounts]}}> 
+               <cartContext.Provider value={{Cart:[cartItems, setCartItems]}}>
+                  <receiptContext.Provider value = {{Receipt:[receipts, setReceipts]}}> 
+                       <barcodeContext.Provider value={{Barcode:[barcode, setBarcode]}}>
+      
 
 
 
@@ -99,7 +110,8 @@ async function getCategories() {
     </discountContext.Provider>
     </categoryContext.Provider>
     </productContext.Provider>
-    </userContext.Provider>
+    </shopContext.Provider>
+    </cashierContext.Provider>
 
    
   );

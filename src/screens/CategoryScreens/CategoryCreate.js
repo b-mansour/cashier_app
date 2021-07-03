@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View,Text,StyleSheet,TextInput} from 'react-native';
 import Button from '../../components/Button/index';
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 
 
@@ -54,32 +55,60 @@ function CategoryEdit({route}) {
     });
     }
 
+const TakePhoto = () => {
+  const options = {}
+  launchCamera(options, response => {
+    console.log(response)
+  })
 
+}
 
-    const takePhotoFromCamera = () => {
-        ImagePicker.openCamera({
-          width: 300,
-          height: 400,
-          cropping: true,
-        }).then(image => {
-          console.log(image);
-          setImage(image.path)
-        });
+    // const takePhotoFromCamera = () => {
+    //     ImagePicker.openCamera({
+    //       width: 300,
+    //       height: 400,
+    //       cropping: true,
+    //     }).then(image => {
+    //       console.log(image);
+    //       setImage(image.path)
+    //     });
+    //   }
+
+     const ChoosePhoto = () => {
+      const options = {
+        includeBase64: true
       }
-  
-      const ChoosePhoto = () => {
-        ImagePicker.openPicker({
-          width: 300,
-          height: 400,
-          cropping: true
-        }).then(image => {
-          console.log(image);
-          setImage(image.path)
-        });
+      launchImageLibrary(options, response => {
+        setImage(response.assets[0].base64? response.assets[0].base64: null)
+        console.log("_________________________________________________")
+        // console.log(response.assets[0].base64)
+        console.log("*****************************************************")
+        
 
-        console.log(image);
-      }
+        // console.log(image)
+      })
+   }
+
   
+      // const ChoosePhoto = () => {
+      //   ImagePicker.openPicker({
+      //     width: 300,
+      //     height: 400,
+      //     cropping: true
+      //   }).then(image => {
+      //     console.log(image);
+      //     setImage(image.path)
+      //   });
+
+      //   console.log(image);
+      // }
+  
+
+ useEffect(() => {
+    console.log(image);
+    
+  },[image]);
+
 
 
     return (
@@ -108,7 +137,7 @@ function CategoryEdit({route}) {
          </View>
 
 
-         <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
+         <Button onPress={TakePhoto} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
            <Button onPress={onCategoryCreate} title='اضافة'/>  
 

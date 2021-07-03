@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput,TouchableOpacity } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import {categoryContext} from '../../../App';
+// import {categoryContext} from '../../../App';
+import {categoryContext} from '../../router/ItemsRoutes/ProductStack';
 import Button from '../../components/Button/index';
 import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -35,7 +36,7 @@ const formData = {
                    "Cost" : cost, 
                    "Price" : price, 
                    "Qr" : barcode, 
-                   "SectionId" : "1", 
+                   "SectionId" : selectedOption, 
                    "Image" : image
                   }
 
@@ -184,7 +185,7 @@ console.error('Error:', error);
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {categories.map( option => (
-          <Picker.Item key={option.id} label={option.name} value={option.name} />
+          <Picker.Item key={option.id} label={option.name} value={option.id} />
         ))}
       </Picker>
 

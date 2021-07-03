@@ -1,11 +1,14 @@
 import React, {useEffect} from 'react';
 import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import {categoryContext} from '../../../App';
+// import {categoryContext} from '../../../App';
+import {categoryContext} from '../../router/ItemsRoutes/ProductStack';
 import Button from '../../components/Button/index';
 // import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import { barcodeContext } from '../../../App';
+import {cashierContext} from '../../../App';
+import {shopContext} from '../../../App';
 import {colors} from '../../assets/Colors';
 // import ImagePicker from 'react-native-image-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -25,6 +28,12 @@ export default function ProductCreate({navigation}) {
     const {Barcode} = React.useContext(barcodeContext)
     const [ barcode, setBarcode] = Barcode;
 
+     const {cashier} = React.useContext(cashierContext);
+      const [ cashierNo, setCashierNo] = cashier;
+
+       const {shop} = React.useContext(shopContext);
+      const [ shopId, setShopId] = shop;
+
 
  
 
@@ -38,15 +47,15 @@ const onProductCreate = () => {
 
 const formData = { 
                    "Name" : name, 
-                   "SectionId" :"1", 
+                   "SectionId" : selectedOption, 
                    "Cost" : cost, 
                    "Price" : price, 
                    "Image" : image, 
                    "Qr" :  barcode,
-                   "CashierNo" : "107375",
-                   "ShopId" : "1"
+                   "CashierNo" : cashierNo,
+                   "ShopId" : shopId
                   }
-
+console.log(cashierNo)
       // formData.append('name', name);
      // formData.append('price', price);
     // formData.append('cost', cost);
@@ -116,7 +125,7 @@ const TakePhoto = () => {
    useEffect(() => {
     console.log(image);
     
-  },[image]);
+  },[image,selectedOption]);
 
 
     
@@ -143,6 +152,9 @@ const TakePhoto = () => {
     const [selectedOption, setSelectedOption] = React.useState(
         categories ? categories[0] : null,
       );
+      useEffect(()=> {
+        console.log(selectedOption)
+      },[selectedOption])
 
     return (
       
@@ -171,7 +183,7 @@ const TakePhoto = () => {
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {categories.map( option => (
-          <Picker.Item   key={option.id} label={option.name} value={option.name} />
+          <Picker.Item   key={option.id} label={option.name} value={option.id} />
         ))}
       </Picker>
 

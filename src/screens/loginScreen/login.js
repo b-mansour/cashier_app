@@ -10,28 +10,37 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
+import {cashierContext} from '../../../App';
+import {shopContext} from '../../../App';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import Loader from './Components/Loader';
 
 const LoginScreen = ({navigation}) => {
-  const [cashierNo, setCashierNo] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  
+  const [cashierPassword, setCashierPassword] = useState('');
   // const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
+
+     const {cashier} = React.useContext(cashierContext);
+      const [ cashierNo, setCashierNo] = cashier;
+
+      const {shop} = React.useContext(shopContext);
+      const [ shopId, setShopId] = shop;
+
 
   // const passwordInputRef = createRef();
 
   
 const setData = async () => {
-  if (cashierNo.length == 0 || userPassword.length == 0) {
+  if (cashierNo.length == 0 || cashierPassword.length == 0) {
       Alert.alert('Warning!', 'Please write your data.')
   } else {
       try {
           var  cashier = {
                           cashierNo: cashierNo,
-                          userPassword: userPassword
+                          cashierPassword: cashierPassword
           }
           await AsyncStorage.setItem('CashierData', JSON.stringify(cashier));
           navigation.navigate('DrawerNavigationRoutes');
@@ -59,19 +68,19 @@ const getData = () => {
 }, []);
 
   const handleSubmitPress = () => {
-    // setErrortext('');
-    // if (!cashierNo) {
-    //   alert('Please fill Email');
-    //   return;
-    // }
-    // if (!userPassword) {
-    //   alert('Please fill Password');
-    //   return;
-    // }
+    setErrortext('');
+    if (!cashierNo) {
+      alert('Please fill Email');
+      return;
+    }
+    if (!cashierPassword) {
+      alert('Please fill Password');
+      return;
+    }
     // setLoading(true);
     let cashierData = {
                       "CahierNo" : cashierNo,
-                      "Password" : userPassword
+                      "Password" : cashierPassword
                     };
     // let formBody = [];
     // for (let key in cashierData) {
@@ -95,6 +104,7 @@ const getData = () => {
       .then((responseJson) => {
         //Hide Loader
         // setLoading(false);
+        
         console.log(responseJson);
         console.log(responseJson.response.cashierDetail.no);
         // If server response message same as Data Matched
@@ -102,6 +112,7 @@ const getData = () => {
           if (responseJson.responseCode == 200 ) {
           // AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
           // console.log(responseJson.data[0].user_id);
+
           setData()
           navigation.replace('DrawerNavigationRoutes');
           
@@ -168,8 +179,8 @@ const getData = () => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserPassword) => setUserPassword(UserPassword)}
-                placeholder="Enter Password" //12345
+                onChangeText={(UserPassword) => setCashierPassword(UserPassword)}
+                placeholder="كلمة المرور"  
                 placeholderTextColor="#8b9cb5"
                 keyboardType="default"
                 // ref={passwordInputRef}
