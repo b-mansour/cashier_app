@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, FlatList, SafeAreaView , StyleSheet, ScrollView, Button } from 'react-native';
 import {cartContext} from '../../../App';
 // import {receiptContext} from '../../../App';
 import CartItem from '../../components/CartItem';
 import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
+import {cashierContext} from '../../../App'
+// import {}
 
  function CartScreen(){
 
   const {Cart} = React.useContext(cartContext);
   const [ cartItems, setCartItems] = Cart;
+  const {cashier} = React.useContext(cashierContext);
+  const [ cashierNo, setCashierNo] = cashier;
 
   // const {Receipt} = React.useContext(receiptContext);
   // const [receipts, setReceipts] = Receipt;
   var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.UnitPrice * currentvalue.Quantity, 0);
   // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
   // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price, 0);
+  var tax = (totalPrice/100) * 15
+  var totalPricePlusTax = totalPrice + tax;
 
    
   const onCheckout = () => {
@@ -22,16 +28,16 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
     const formData = {
                       "VatNo" : "2354", 
                       "Location" : "الشوقية", 
-                      "Price" : ".50", 
-                      "Vat" : ".075", 
-                      "TotalPrice": totalPrice,
+                      "Price" : totalPrice,
+                      "Vat" : tax, 
+                      "TotalPrice": totalPricePlusTax,
                       "IsPrinted" : "True", 
                       "IsPaid" : "True", 
                       "Invoice" : "", 
-                      "CashierNo" : "209889",
+                      "CashierNo" : cashierNo,
                       "ShopId" : "1", 
                       "ProductDetails" : cartItems
-                    }
+                      }
     
           // formData.append('name', name);
          // formData.append('price', price);
@@ -60,6 +66,10 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
     });
     }
 
+    useEffect(() => { 
+      console.log(cartItems)
+    },[cartItems])
+
 // const onCheckout = () => {
 //   console.warn('checked out successfully');
 //   setCartItems([]);
@@ -87,7 +97,7 @@ import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
     </View>
     </View>
   } else {
-    cart =  <View style={{alignItems:'center', flex:1, justifyContent:'center'}}>
+    cart = <View style={{alignItems:'center', flex:1, justifyContent:'center'}}>
             <MaterialIcons style={{fontSize:70, color:"gray"}} name="shopping-cart"></MaterialIcons>
             <Text style={{fontSize:20, color:"gray"}}>لا يوجد شيء في السلة</Text>
             </View>

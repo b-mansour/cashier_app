@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text , FlatList, Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
+import {View,Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 // import {categoryContext} from '../../../App';
 import {categoryContext} from '../../router/ItemsRoutes/ProductStack';
@@ -12,6 +12,7 @@ import {shopContext} from '../../../App';
 import {colors} from '../../assets/Colors';
 // import ImagePicker from 'react-native-image-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
  
 
  
@@ -33,6 +34,26 @@ export default function ProductCreate({navigation}) {
 
        const {shop} = React.useContext(shopContext);
       const [ shopId, setShopId] = shop;
+      // const [cashierPassword, setCashierPassword] = React.useState('');
+
+      const getData = () => {
+        try {
+            AsyncStorage.getItem('CashierData')
+                .then(value => {
+                    if (value != null) {
+                        let  cashier = JSON.parse(value);
+                        setCashierNo(cashier.cashierNo);
+                        // setCashierPassword(cashier.cashierPassword);
+                        setShopId(cashier.shopId);
+                        
+                    } else if(value == null){
+                       navigation.navigate('Auth')
+                    }
+                })
+        } catch (error) {
+            console.log(error);
+      }
+     }
 
 
  
@@ -40,8 +61,7 @@ export default function ProductCreate({navigation}) {
 
 const onProductCreate = () => {
 
-
-// const formData = new FormData();
+  // const formData = new FormData();
 
 // const fileField = document.querySelector('input[type="file"]');
 
@@ -123,9 +143,8 @@ const TakePhoto = () => {
 
 
    useEffect(() => {
-    console.log(image);
-    
-  },[image,selectedOption]);
+    getData();
+  },[image,selectedOption,shopId]);
 
 
     

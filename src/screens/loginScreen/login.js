@@ -26,8 +26,10 @@ const LoginScreen = ({navigation}) => {
      const {cashier} = React.useContext(cashierContext);
       const [ cashierNo, setCashierNo] = cashier;
 
-      const {shop} = React.useContext(shopContext);
-      const [ shopId, setShopId] = shop;
+      // const {shop} = React.useContext(shopContext);
+      // const [ shopId , setShopId] = shop;
+
+      const [ shopId , setShopId] = useState()
 
 
   // const passwordInputRef = createRef();
@@ -40,7 +42,9 @@ const setData = async () => {
       try {
           var  cashier = {
                           cashierNo: cashierNo,
-                          cashierPassword: cashierPassword
+                          cashierPassword: cashierPassword,
+                          shopId: shopId,
+
           }
           await AsyncStorage.setItem('CashierData', JSON.stringify(cashier));
           navigation.navigate('DrawerNavigationRoutes');
@@ -67,7 +71,7 @@ const getData = () => {
     getData();
 }, []);
 
-  const handleSubmitPress = () => {
+  const handleSubmitPress = async () => {
     setErrortext('');
     if (!cashierNo) {
       alert('Please fill Email');
@@ -90,7 +94,7 @@ const getData = () => {
     // }
     // formBody = formBody.join('&');
 
-    fetch('https://cashierapi.ibtikar-soft.sa/api/Cashier/Login', {
+   await fetch('https://cashierapi.ibtikar-soft.sa/api/Cashier/Login', {
       method: 'POST',
       // body: formBody,
       body: JSON.stringify(cashierData),
@@ -107,25 +111,27 @@ const getData = () => {
         
         console.log(responseJson);
         console.log(responseJson.response.cashierDetail.no);
+        console.log(responseJson.response.cashierDetail.shopId);
         // If server response message same as Data Matched
         // if (responseJson.response.cashierDetail.no == cashierNo ) {
           if (responseJson.responseCode == 200 ) {
           // AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
           // console.log(responseJson.data[0].user_id);
-
+          setShopId(responseJson.response.cashierDetail.shopId)
           setData()
+          console.log(shopId)
           navigation.replace('DrawerNavigationRoutes');
           
         } else {
           setErrortext('Please check your email id or password');
-          console.log('Please check your email id or password');
+          // console.log('Please check your email id or password');
         }
       }
       
       )
       .catch((error) => {
         //Hide Loader
-        setLoading(false);
+        // setLoading(false);
         console.error(error);
       });
   };

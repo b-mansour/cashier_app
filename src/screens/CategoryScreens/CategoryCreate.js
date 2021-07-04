@@ -1,8 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import { View,Text,StyleSheet,TextInput} from 'react-native';
 import Button from '../../components/Button/index';
 // import ImagePicker from 'react-native-image-crop-picker';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {cashierContext} from '../../../App';
+import {shopContext} from '../../../App';
 
 
 
@@ -12,30 +15,51 @@ function CategoryEdit({route}) {
     // const [description, setDescription] = React.useState();
     const [image, setImage] = React.useState();
 
+    const {cashier} = useContext(cashierContext);
+    const [ cashierNo, setCashierNo] = cashier;
+
+     const {shop} = useContext(shopContext);
+    const [ shopId, setShopId] = shop;
+
+    const getData = () => {
+      try {
+          AsyncStorage.getItem('CashierData')
+              .then(value => {
+                  if (value != null) {
+                      let  cashier = JSON.parse(value);
+                      setCashierNo(cashier.cashierNo);
+                      // setCashierPassword(cashier.cashierPassword);
+                      setShopId(cashier.shopId);
+                      
+                  } else if(value == null){
+                    //  navigation.navigate('Auth')
+                    console.log('something went wrong')
+                  }
+              })
+      } catch (error) {
+          console.log(error);
+    }
+   }
+
 
 
 
     const onCategoryCreate = () => {
 
 
-    // const formData = new FormData();
-    // const fileField = document.querySelector('input[type="file"]');
-  //  var formData = {"Name" : name, 
-  //                  "Image" : image, 
-  //                  "ShopId" : "1", 
-  //                  "CashierNo" : "107375"
-  //   }
+      console.log(shopId);
+      console.log(cashierNo);
+
 
     var formData = {
                     "Name" : name, 
                     "Image" :  image, 
-                    "ShopId" : "1", 
-                    "CashierNo" : "107375"
+                    "ShopId" :   shopId, 
+                    "CashierNo" : cashierNo
                   }
-    // formData.append('name', name);
-    // formData.append('image', image);
    
-    
+   
+    console.log(formData)
     fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewSection', {
       method: 'POST',
       headers: { 
@@ -105,8 +129,9 @@ const TakePhoto = () => {
   
 
  useEffect(() => {
-    console.log(image);
-    
+    getData();
+    console.log(shopId);
+    console.log(cashierNo);
   },[image]);
 
 
