@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { View, Text, TextInput,StyleSheet } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import Button from './../../components/Button/index';
 import {categoryContext} from '../../../App';
 import {productContext} from '../../../App';
 import {discountContext} from '../../../App';
+import {cashierContext} from '../../../App';
 
 export default function Home({navigation}) {
 
@@ -34,6 +35,9 @@ export default function Home({navigation}) {
         discounts ? discounts[0] : null,
       );
 
+       const {cashier} = React.useContext(cashierContext);
+      const [ cashierNo, setCashierNo] = cashier;
+
       const [numOfDays, setNumOfDays] = React.useState();
 
       // const [selectedOption, setSelectedOption] = React.useState(
@@ -47,10 +51,10 @@ export default function Home({navigation}) {
         // const formData = new FormData();
         // const fileField = document.querySelector('input[type="file"]');
        var formData = {
-                      "ProductId" :  selectedProduct.id, 
-                      "DiscountId" :selectedDiscount.id, 
+                      "ProductId" :  selectedProduct, 
+                      "DiscountId" :selectedDiscount, 
                       "Periode" :numOfDays, 
-                      "CashierNo" : "107375", 
+                      "CashierNo" : cashierNo, 
                       "ShopId" : 1
                     }
 
@@ -81,20 +85,26 @@ export default function Home({navigation}) {
 
         }
 
+        useEffect(() => {
+          console.log(selectedDiscount)
+        },[selectedDiscount])
+
 
     return (
         <View>
 
-        {/* <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
-       <Picker
+        {
+        /* <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
+        <Picker
         style={{marginBottom:20}}
         selectedValue={selectedCategory}
         onValueChange={itemValue => setSelectedCategory(itemValue)}>
         {categories.map( option => (
           <Picker.Item key={option.id} label={option.name} value={option.name} />
         ))}
-      </Picker>
-      </View> */}
+        </Picker>
+        </View> */
+        }
 
       <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
       <Picker
@@ -102,18 +112,20 @@ export default function Home({navigation}) {
         selectedValue={selectedProduct}
         onValueChange={itemValue => setSelectedProduct(itemValue)}>
         {products.map( option => (
-          <Picker.Item key={option.id} label={option.name} value={option.name} />
+          <Picker.Item key={option.id} label={option.name} value={option.id}/>
         ))}
       </Picker>
       </View>
 
 
-      <View style={{margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
+      <View style={{
+        
+        margin:20, height:60, borderWidth:2, borderColor:'#8f8b8b', borderRadius:5}}>
       <Picker
         selectedValue={selectedDiscount}
         onValueChange={itemValue => setSelectedDiscount(itemValue)}>
         {discounts.map( option => (
-          <Picker.Item key={option.id} label={option.name} value={option.name} />
+          <Picker.Item key={option.id} label={option.name} value={option.id} />
         ))}
       </Picker>
       </View>

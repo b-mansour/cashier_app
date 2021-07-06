@@ -69,7 +69,7 @@ const getData = () => {
 
  useEffect(() => {
     getData();
-}, []);
+}, [shopId]);
 
   const handleSubmitPress = async () => {
     setErrortext('');

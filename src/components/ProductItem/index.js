@@ -75,7 +75,7 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
          </TouchableOpacity> */}
          <Text style={{alignSelf:'center', margin:10}}>{item.name}</Text> 
         <View>
-        <Image style={styles.image} source={{uri:item.image}}/>
+        <Image style={styles.image} source={{uri:'https://cashierapi.ibtikar-soft.sa/' + item.image}} />
         </View>
         
         <Text style={styles.price}>SR:{item.price}</Text>

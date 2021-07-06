@@ -27,7 +27,7 @@ export default function ProductCreate({navigation}) {
     const [cost, setCost] = React.useState();
     const [image, setImage] = React.useState();
     const {Barcode} = React.useContext(barcodeContext)
-    const [ barcode, setBarcode] = Barcode;
+    const [barcode, setBarcode] = Barcode;
 
      const {cashier} = React.useContext(cashierContext);
       const [ cashierNo, setCashierNo] = cashier;
@@ -73,9 +73,9 @@ const formData = {
                    "Image" : image, 
                    "Qr" :  barcode,
                    "CashierNo" : cashierNo,
-                   "ShopId" : shopId
+                   "ShopId" :  1
                   }
-console.log(cashierNo)
+console.log(shopId)
       // formData.append('name', name);
      // formData.append('price', price);
     // formData.append('cost', cost);
@@ -105,9 +105,15 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 
 
 const TakePhoto = () => {
-  const options = {}
+   const options = {
+        includeBase64: true
+      }
   launchCamera(options, response => {
-    console.log(response)
+     setImage(response.assets[0].base64)
+        console.log("_________________________________________________")
+        console.log(response.assets[0].base64)
+        console.log("*****************************************************")
+        console.log(image)
   })
 
 }
@@ -124,18 +130,28 @@ const TakePhoto = () => {
     
     //   });
     // }
-
+   
+     
     const ChoosePhoto = () => {
       const options = {
         includeBase64: true
       }
       launchImageLibrary(options, response => {
-        setImage(response.assets[0].base64)
-        console.log("_________________________________________________")
-        console.log(response.assets[0].base64)
-        console.log("*****************************************************")
+        if(response){
+           setImage(response.assets[0].base64)
+           console.log("_________________________________________________")
+           console.log(response);
+           console.log("*****************************************************")
         
 
+
+        }
+
+        else{ 
+          console.log('sjjd')
+        }
+        
+       
         // console.log(image)
       })
    }

@@ -15,7 +15,7 @@ export default function HomeStack() {
 
 
         
-    <Stack.Navigator   screenOptions={{ cardStyle: { backgroundColor:'#e1e1e6'},
+    <Stack.Navigator   screenOptions = {{ cardStyle: { backgroundColor:'#e1e1e6'},
     headerStyle: {
       backgroundColor: '#b8b4b4',
     }

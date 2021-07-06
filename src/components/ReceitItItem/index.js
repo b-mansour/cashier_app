@@ -15,13 +15,15 @@ const ReceiptItem = ({item, navigation}) => {
   return (
 
     <Pressable 
-       onPress={() => navigation.navigate('ReceiptDetails')}
+       onPress={() => navigation.navigate('ReceiptDetails', item)}
      style={styles.root}>
       
-    <  Text>Receipt</Text>
+    <  Text>فاتورة</Text>
         <View style={{alignItems:'center'}}>
-        <Text>{item.name}</Text> 
-        <Text style={{fontWeight:'bold'}}>SR:{item.price}</Text>
+        <Text>   اجمالس السعر : {item.totalPrice}</Text> 
+         <Text> الضريبة :  {item.vat}</Text> 
+        <Text style={{fontWeight:'bold'}}>رقم الفاتورة: {item.billNo}</Text>
+        <Text style={{fontWeight:'bold'}}>تاريخ اصدار الفاتورة:{item.createdDate}</Text>
       </View>
         
         

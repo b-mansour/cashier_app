@@ -7,9 +7,18 @@ import {Picker} from '@react-native-picker/picker';
 
  function DiscountCreate({navigation}) {
 
-  const discountTypes = ['amount','percentage'];
-
-
+  const discountTypes = [
+                         {
+                            id: 1,
+                            type:'خصم مبلغ'
+                         },
+                         {
+                           id: 2,
+                           type:'خصم بالنسبة'
+                         }
+                                 
+                        ];
+                        
     const [discountName, setDiscountName] = React.useState('');
     const [ DiscountValue, setDiscountValue] = React.useState()
 
@@ -19,16 +28,19 @@ import {Picker} from '@react-native-picker/picker';
     const [selectedOption, setSelectedOption] = React.useState(
       discountTypes ? discountTypes[0] : null,
       );
+
+
       
       const onDiscountCreate = () => {
 
        var formData = { 
                         "Name" : discountName, 
-                        "TypeId" : "1",
+                        "TypeId" : selectedOption,
                         "discount1" : DiscountValue, 
                         "CashierNo" : "107375", 
                         "ShopId" : "1"
                       }
+                      console.log(formData)
     
         fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewDiscount', {
           method: 'POST',
@@ -68,7 +80,7 @@ import {Picker} from '@react-native-picker/picker';
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
         {discountTypes.map( (option,index) => (
-           <Picker.Item key={index}   label={option} value={option} />
+           <Picker.Item key={index}   label={option.type} value={option.id} />
         ))}
       </Picker>
         

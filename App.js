@@ -62,7 +62,7 @@ async function getCategories() {
     useEffect(() => {
       getProducts();
       getCategories();
-      // getDiscounts();
+      getDiscounts();
     },[]);
   
 
