@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {View, Text, Pressable , Alert}  from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
@@ -61,7 +61,9 @@ const DiscountItem = ({item}) => {
     ]
   );
 
-   
+ useEffect(()=> {
+   console.log(item)
+ })  
 
   return (
 

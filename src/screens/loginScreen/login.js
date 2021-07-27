@@ -9,6 +9,7 @@ import {
   Keyboard,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ImageBackground
 } from 'react-native';
 import {cashierContext} from '../../../App';
 import {shopContext} from '../../../App';
@@ -139,6 +140,7 @@ const getData = () => {
   return (
     <View style={styles.mainBody}>
       {/* <Loader loading={loading} /> */}
+      <ImageBackground  source={require('../../assets/images/cashierbackground.png')} resizeMode="cover" style={styles.image}>
       <ScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
@@ -149,22 +151,22 @@ const getData = () => {
         <View>
           <KeyboardAvoidingView enabled>
             <View style={{alignItems: 'center'}}>
-              {/* <Image
-                source={require('../Image/aboutreact.png')}
+              <Image
+                source={require('../../assets/images/iscashier.png')}
                 style={{
                   width: '50%',
                   height: 100,
                   resizeMode: 'contain',
                   margin: 30,
                 }}
-              /> */}
+              />
 
-              <Text   style={{
+              {/* <Text   style={{
               color:'#ffff',
               height: 100,
               margin: 30,
               fontSize:25
-            }}>Cashier App</Text>
+            }}>Cashier App</Text> */}
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
@@ -214,6 +216,7 @@ const getData = () => {
           </KeyboardAvoidingView>
         </View>
       </ScrollView>
+      </ImageBackground>
     </View>
   );
 };
@@ -273,5 +276,9 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     fontSize: 14,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
   },
 });

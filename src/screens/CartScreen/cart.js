@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
-import { View, Text, FlatList, SafeAreaView , StyleSheet, ScrollView, Button } from 'react-native';
+import { View, Text, FlatList, StyleSheet,Button } from 'react-native';
 import {cartContext} from '../../../App';
-// import {receiptContext} from '../../../App';
 import CartItem from '../../components/CartItem';
 import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
-import {cashierContext} from '../../../App'
-// import {}
+import {cashierContext} from '../../../App';
+import {
+  BLEPrinter,
+} from "react-native-thermal-receipt-printer";
+ 
 
  function CartScreen(){
 
@@ -14,16 +16,17 @@ import {cashierContext} from '../../../App'
   const {cashier} = React.useContext(cashierContext);
   const [ cashierNo, setCashierNo] = cashier;
 
-  // const {Receipt} = React.useContext(receiptContext);
-  // const [receipts, setReceipts] = Receipt;
+   
   var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.UnitPrice * currentvalue.Quantity, 0);
-  // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price * currentvalue.quantity, 0);
-  // var totalPrice =  cartItems.reduce((accumulator, currentvalue) => accumulator + currentvalue.price, 0);
   var tax = (totalPrice/100) * 15
   var totalPricePlusTax = totalPrice + tax;
 
    
   const onCheckout = () => {
+
+    BLEPrinter.printText("<C>sample text</C>\n")
+   
+
 
     const formData = {
                       "VatNo" : "2354", 
@@ -39,12 +42,7 @@ import {cashierContext} from '../../../App'
                       "ProductDetails" : cartItems
                       }
     
-          // formData.append('name', name);
-         // formData.append('price', price);
-        // formData.append('cost', cost);
-       // formData.append('image', image);
-      // formData.append('barcode', barcode);
-    
+       
     fetch('https://cashierapi.ibtikar-soft.sa/api/Bills/AddBill', {
       method: 'POST',
       headers: { 
@@ -52,13 +50,12 @@ import {cashierContext} from '../../../App'
         'Content-Type':'application/json'
        },
        body : JSON.stringify(formData)
-      // body: formData
+      
     })
     .then(response => response.json())
     .then(result => {
       console.log('Success:', result);
-
-      
+      // setCartItems([]);
       // navigation.goBack();
     })
     .catch(error => {
@@ -66,14 +63,11 @@ import {cashierContext} from '../../../App'
     });
     }
 
+    
+
     useEffect(() => { 
       console.log(cartItems)
     },[cartItems])
-
-// const onCheckout = () => {
-//   console.warn('checked out successfully');
-//   setCartItems([]);
-// }
 
   var cart;
 
@@ -93,7 +87,8 @@ import {cashierContext} from '../../../App'
      <View>
      {/* <Text style={{fontSize:30}}>total price is{totalPrice.toFixed(2)}</Text> */}
     <Text style={{fontSize:20}}> اجمالي السعر {Number((totalPrice).toFixed(3))}</Text>
-    <Button styles={styles.button} onPress={onCheckout} title='checkout'/> 
+    <Button styles={styles.button} onPress={onCheckout} title='اكمال عملية الدفع'/> 
+    <Pressable  onPress={onCheckout}><Text>اكمال عملية الدفع</Text></Pressable>  
     </View>
     </View>
   } else {

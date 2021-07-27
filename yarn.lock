@@ -998,13 +998,6 @@
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-"@react-native-community/async-storage@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.12.1.tgz#25f821b4f6b13abe005ad67e47c6f1cee9f27b24"
-  integrity sha512-70WGaH3PKYASi4BThuEEKMkyAgE9k7VytBqmgPRx3MzJx9/MkspwqJGmn3QLCgHLIFUgF1pit2mWICbRJ3T3lg==
-  dependencies:
-    deep-assign "^3.0.0"
-
 "@react-native-community/cli-debugger-ui@^5.0.1-alpha.1":
   version "5.0.1-alpha.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1-alpha.1.tgz#09a856ccd2954cf16eea59b14dd26ae66720e4e6"
@@ -5705,6 +5698,14 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-flash-message@^0.1.23:
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/react-native-flash-message/-/react-native-flash-message-0.1.23.tgz#50a17201a2d9d6b22a2f174a97b22c30bff15638"
+  integrity sha512-T++KNGpIofXRqj3fT+/zJH/su1VgIjGcwiJerSvRsvEXwai1LdUl+O0tX7dz+Lgxi7yzswXKWcUQmY0dZrbG3g==
+  dependencies:
+    prop-types "^15.7.2"
+    react-native-iphone-x-helper "^1.3.0"
+
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz#942bbf2963bbf49fa79593600ee9d7b5dab3cfc0"
@@ -5715,6 +5716,11 @@ react-native-gesture-handler@^1.10.3:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-image-base64@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-image-base64/-/react-native-image-base64-0.1.4.tgz#0a4687740de9b04df63e649c5946fc646bc0f4e9"
+  integrity sha512-WLdzwHdXFRLS9VStG1CG46+t+fcInjVWxKd1+AATElBhaAS3zwDHz7mYIZS1OX4VMuNClwl5G8dowuqUJ9aMGQ==
 
 react-native-image-crop-picker@^0.36.2:
   version "0.36.2"

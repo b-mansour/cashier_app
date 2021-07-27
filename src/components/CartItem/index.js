@@ -31,9 +31,8 @@ const CartItem = ({item, cartItems}) => {
       <Text style={{fontSize:20}}>{item.Quantity}</Text>
     </View>
     <View>
-            {/* <Image style={styles.image} source={{uri: item.image}}/> */}
-    </View>
-  
+        <Image style={styles.image} source={{uri:'https://cashierapi.ibtikar-soft.sa/' + item.image}} />
+        </View>
     <View>
            {/* <Text  style={{fontSize:20}}>{item.price * item.quantity}</Text> */}
            <Text style={{fontSize:20}}>{item.UnitPrice * item.Quantity}</Text>

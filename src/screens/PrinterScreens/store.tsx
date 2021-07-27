@@ -204,11 +204,3 @@ const styles = StyleSheet.create({
 
 
 
-
-
-
-
-
-
-
- 

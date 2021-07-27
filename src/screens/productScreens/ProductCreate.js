@@ -1,8 +1,6 @@
 import React, {useEffect} from 'react';
 import {View,Pressable, StyleSheet, ScrollView , TextInput } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-// import {categoryContext} from '../../../App';
-import {categoryContext} from '../../router/ItemsRoutes/ProductStack';
 import Button from '../../components/Button/index';
 // import ImagePicker from 'react-native-image-crop-picker';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -75,7 +73,9 @@ const formData = {
                    "CashierNo" : cashierNo,
                    "ShopId" :  1
                   }
-console.log(shopId)
+                  
+
+ 
       // formData.append('name', name);
      // formData.append('price', price);
     // formData.append('cost', cost);
@@ -95,6 +95,7 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 .then(result => {
   console.log('Success:', result);
   console.log(formData);
+  navigation.goBack();
   
   // navigation.goBack();
 })
@@ -109,47 +110,33 @@ const TakePhoto = () => {
         includeBase64: true
       }
   launchCamera(options, response => {
+      if(response.didCancel){
+      console.log('cancelled')
+    } else {
      setImage(response.assets[0].base64)
-        console.log("_________________________________________________")
-        console.log(response.assets[0].base64)
-        console.log("*****************************************************")
-        console.log(image)
+    //  console.log("_________________________________________________")
+    //  console.log(response);
+    //  console.log("*****************************************************")
+ }
   })
 
 }
 
-
-    // const takePhotoFromCamera = () => {
-    //   ImagePicker.openCamera({
-    //     width: 300,
-    //     height: 400,
-    //     cropping:false,
-    //   }).then(image => {
-    //     console.log(image.cropRect.path);
-    //     setImage(image.path)
-    
-    //   });
-    // }
-   
-     
     const ChoosePhoto = () => {
       const options = {
         includeBase64: true
       }
       launchImageLibrary(options, response => {
-        if(response){
+        if(response.didCancel){
+            console.log('cancelled')
+        } else {
            setImage(response.assets[0].base64)
-           console.log("_________________________________________________")
-           console.log(response);
-           console.log("*****************************************************")
+          //  console.log("_________________________________________________")
+          //  console.log(response);
+          //  console.log("*****************************************************")
+       }
+
         
-
-
-        }
-
-        else{ 
-          console.log('sjjd')
-        }
         
        
         // console.log(image)
@@ -158,38 +145,25 @@ const TakePhoto = () => {
 
 
 
-   useEffect(() => {
-    getData();
-  },[image,selectedOption,shopId]);
-
-
-    
-
-
-    // const ChoosePhoto = () => {
-    //   ImagePicker.openPicker({
-      
-    //     cropperToolbarTitle:'نعديل الصورة', 
-    //     width: 300,
-    //     height: 400,
-    //     cropping: true,
-    //   }).then(image => {
-    //     // console.log(image.path);
-    //     setImage(image.path)
-    //   //   console.log(image)
-    //   });
-    //   console.log(image)
-    // }
-
-     const {category} = React.useContext(categoryContext);
-    const [ categories, setCategories] = category;
-
+  
     const [selectedOption, setSelectedOption] = React.useState(
         categories ? categories[0] : null,
       );
-      useEffect(()=> {
-        console.log(selectedOption)
-      },[selectedOption])
+
+    const [categories, setCategories ] = React.useState([]);
+      useEffect(async () => {
+              let isMounted = true;               
+             await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetSections/1')
+              .then((response) => response.json())
+              .then((json) => { if(isMounted) setCategories(json.response)})
+              .catch((error) => console.error('Error:' + error))
+              return () => { isMounted = false }; 
+            },[categories,image,selectedOption]);                  
+
+      // useEffect(()=> {
+      //   console.log(selectedOption)
+      //   getData();
+      // },[selectedOption,image])
 
     return (
       

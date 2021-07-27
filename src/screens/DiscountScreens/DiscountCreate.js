@@ -1,26 +1,31 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {View, TextInput, StyleSheet } from 'react-native';
 import { discountContext } from '../../../App';
 import Button from '../../components/Button/index';
 import {Picker} from '@react-native-picker/picker';
+import {cashierContext} from '../../../App';
 
 
  function DiscountCreate({navigation}) {
 
+
+
   const discountTypes = [
                          {
                             id: 1,
-                            type:'خصم مبلغ'
-                         },
-                         {
+                            type:'خصم'
+                          },
+                          {
                            id: 2,
                            type:'خصم بالنسبة'
                          }
                                  
                         ];
                         
-    const [discountName, setDiscountName] = React.useState('');
-    const [ DiscountValue, setDiscountValue] = React.useState()
+    const [discountName, setDiscountName] = React.useState();
+    const [ DiscountValue, setDiscountValue] = React.useState();
+    const {cashier} = React.useContext(cashierContext);
+      const [ cashierNo, setCashierNo] = cashier;
 
     // const {discount} = React.useContext(discountContext);
     // const [ discounts, setDiscounts] = discount;
@@ -37,9 +42,10 @@ import {Picker} from '@react-native-picker/picker';
                         "Name" : discountName, 
                         "TypeId" : selectedOption,
                         "discount1" : DiscountValue, 
-                        "CashierNo" : "107375", 
+                        "CashierNo" : cashierNo, 
                         "ShopId" : "1"
                       }
+                      
                       console.log(formData)
     
         fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewDiscount', {
@@ -63,7 +69,9 @@ import {Picker} from '@react-native-picker/picker';
         });
         }
     
-    
+    useEffect(() => {
+      console.log(selectedOption);
+    },[selectedOption])
       
 
     return (

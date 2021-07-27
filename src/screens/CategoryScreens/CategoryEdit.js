@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Image} from 'react-native';
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
 import Button from '../../components/Button/index';
@@ -44,6 +44,7 @@ function CategoryEdit({route,navigation}) {
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
+        navigation.goBack();
       })
       .catch(error => {
         console.error('Error:', error);
@@ -176,7 +177,7 @@ function CategoryEdit({route,navigation}) {
     </View>
   
           <View> 
-          <Button onPress={takePhotoFromCamera} title='Take photo from camera'/> 
+          <Button onPress={TakePhoto} title='Take photo from camera'/> 
            <Button onPress={ChoosePhoto} title='Choose photo'/> 
            <Button onPress={onCategoryEdit} title='تعديل'/> 
            </View> 

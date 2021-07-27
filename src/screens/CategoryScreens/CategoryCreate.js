@@ -9,7 +9,7 @@ import {shopContext} from '../../../App';
 
 
 
-function CategoryEdit({route}) {
+function CategoryCreate({navigation}) {
 
     const [name, setName] = React.useState();
     // const [description, setDescription] = React.useState();
@@ -52,10 +52,10 @@ function CategoryEdit({route}) {
 
 
     var formData = {
-                    "Name" : name, 
-                    "Image" :  image, 
-                    "ShopId" :   shopId, 
-                    "CashierNo" : cashierNo
+                    "Name" :name, 
+                    "Image" :image, 
+                    "ShopId" : 1, 
+                    "CashierNo" :cashierNo
                   }
    
    
@@ -73,6 +73,7 @@ function CategoryEdit({route}) {
     .then(response => response.json())
     .then(result => {
       console.log('Success:', result);
+      navigation.goBack();
     })
     .catch(error => {
       console.error('Error:', error);
@@ -82,7 +83,14 @@ function CategoryEdit({route}) {
 const TakePhoto = () => {
   const options = {}
   launchCamera(options, response => {
-    console.log(response)
+    if(response.didCancel){
+      console.log('cancelled')
+    } else {
+     setImage(response.assets[0].base64)
+     console.log("_________________________________________________")
+     console.log(response);
+     console.log("*****************************************************")
+ }
   })
 
 }
@@ -103,11 +111,14 @@ const TakePhoto = () => {
         includeBase64: true
       }
       launchImageLibrary(options, response => {
-        setImage(response.assets[0].base64? response.assets[0].base64: null)
-        console.log("_________________________________________________")
-        // console.log(response.assets[0].base64)
-        console.log("*****************************************************")
-        
+        if(response.didCancel){
+          console.log('cancelled')
+        } else {
+         setImage(response.assets[0].base64)
+         console.log("_________________________________________________")
+         console.log(response);
+         console.log("*****************************************************")
+     }
 
         // console.log(image)
       })
@@ -205,4 +216,4 @@ var styles = StyleSheet.create({
     
 });
 
-export default CategoryEdit;
+export default CategoryCreate;

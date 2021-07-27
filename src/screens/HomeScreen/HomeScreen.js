@@ -122,6 +122,7 @@ async function getProducts() {
     return (
         <View style={{padding:2}}>
             <FlatList
+                style={{alignSelf:'center'}}
                 data={categories}
                 horizontal
                 showsHorizontalScrollIndicator={false}

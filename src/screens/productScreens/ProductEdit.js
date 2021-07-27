@@ -9,6 +9,9 @@ import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunity
 import  AntDesign  from 'react-native-vector-icons/AntDesign';
 import {colors} from '../../assets/Colors';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { showMessage, hideMessage } from "react-native-flash-message";
+ 
+import imageToBase64 from 'image-to-base64/browser';
  
 
 export default function ProductEdit({route, navigation}) {
@@ -19,12 +22,13 @@ export default function ProductEdit({route, navigation}) {
     const [price, setPrice] = React.useState(route.params.price);
     const [cost, setCost] = React.useState(route.params.cost);
     // const [image, setImage] = React.useState(route.params.image);
-    const [image, setImage] = React.useState('');
+    const [image, setImage] = React.useState();
     const [barcode, setBarcode] = React.useState(route.params.barcode);
 
 
-
+  
 const onProductEdit = () => {
+  
 
    // const formData = new FormData();
 
@@ -36,14 +40,16 @@ const formData = {
                    "Cost" : cost, 
                    "Price" : price, 
                    "Qr" : barcode, 
-                   "SectionId" : selectedOption, 
+                   "SectionId" : selectedOption.id, 
                    "Image" : image
                   }
+                  console.log(formData)
 
 
-                  // const formData = {"Id" : "1", "Name" : "بصل", "Cost" : ".25", "Price" : "80", "Qr" : "", 
-                  // "SectionId" : "1", "Image" : ""}
+                  
 
+
+                
 // formData.append('name', name);
 // formData.append('price', price);
 // formData.append('cost', cost);
@@ -62,7 +68,16 @@ body : JSON.stringify(formData)
 .then(response => response.json())
 .then(result => {
 console.log('Success:', result);
+
+// showMessage({
+//   message: "My message title",
+//   description: "My message description",
+//   type: "default",
+//   backgroundColor: "purple",  
+//   color: "#606060", 
+// });
 navigation.goBack();
+
 })
 .catch(error => {
 console.error('Error:', error);
@@ -152,12 +167,51 @@ console.error('Error:', error);
 
 
 
-    const {category} = React.useContext(categoryContext);
-    const [ categories, setCategories] = category;
+    // const {category} = React.useContext(categoryContext);
+    // const [ categories, setCategories] = category;
 
     const [selectedOption, setSelectedOption] = React.useState(
         categories ? categories[0] : null,
       );
+
+
+    function convertImageTobase64(){
+      imageToBase64(route.params.image) // Path to the image
+    .then(
+        (response) => {
+            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+        }
+    )
+    .catch(
+        (error) => {
+            console.log(error); // Logs an error if there was one
+        }
+    )
+      }
+
+    // function convertImageTobase64(){
+    //     ImgToBase64.getBase64String(route.params.image)
+    //       .then(base64String =>  console.log(base64String))
+    //       .catch(err => console.log(err));
+    //   }
+
+    const [categories, setCategories ] = React.useState([]);
+      useEffect(() => {
+              convertImageTobase64();
+              let isMounted = true;               
+              fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetSections/1')
+              .then((response) => response.json())
+              .then((json) => { if(isMounted) setCategories(json.response)})
+              .catch((error) => console.error('Error:' + error))
+              return () => { isMounted = false }; 
+            },[categories,image]);                               
+    
+      // useEffect(()=>{
+      //   console.log(selectedOption.id);
+      //   console.log(route.params);
+      //   console.log(image);
+      //   console.log(categories);
+      // },[])
 
 
     return (
@@ -250,8 +304,3 @@ footer: {
   justifyContent:'center'
 },
 })
-
-
-
-
-

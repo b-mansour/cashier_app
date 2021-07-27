@@ -58,6 +58,8 @@ export default function Home({navigation}) {
                       "ShopId" : 1
                     }
 
+                   
+
 
         // formData.append('name', name);
         // formData.append('image', image);
@@ -86,8 +88,9 @@ export default function Home({navigation}) {
         }
 
         useEffect(() => {
+          console.log(selectedProduct)
           console.log(selectedDiscount)
-        },[selectedDiscount])
+        },[selectedDiscount,selectedProduct])
 
 
     return (
@@ -149,13 +152,9 @@ export default function Home({navigation}) {
 
              <Button title='حفظ' onPress={onProductDiscountCreate}></Button>
       </View>
-
-
         </View>
     )
 }
-
-
 
 const styles =   StyleSheet.create({
     input: {

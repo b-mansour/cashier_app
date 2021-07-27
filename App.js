@@ -35,7 +35,7 @@ function App() {
 
     const [cashierNo, setCashierNo] = React.useState('');
     const [userPassword, setUserPassword] = React.useState('');
-    const [shopId, setShopId] = React.useState();
+    const [shopId, setShopId] = React.useState('');
   
 
 async function getDiscounts() {

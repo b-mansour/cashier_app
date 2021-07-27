@@ -31,7 +31,7 @@ export default function ReceiptStack({navigation}) {
                  title:'الفواتير'
                  }} 
                  component={ReceiptHome} />
-                <Stack.Screen name="ReceiptDetails" component={ReceiptDetails}/>
+                <Stack.Screen name="ReceiptDetails" options={{title:'تفاصيل الفاتورة'}} component={ReceiptDetails}/>
             </Stack.Navigator>
         
     )

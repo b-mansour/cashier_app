@@ -25,13 +25,17 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
       
   //  }
 
+  console.log(item);
+
 
    var cartItem = { 
                      ProductID : item.id, 
                      UnitPrice : item.price, 
-                     Quantity : 1, 
-                     DiscountID : "", 
-                     FinalPrice : ".50"
+                     image: item.image,
+                     barcode: item.qr,
+                     Quantity :1, 
+                     DiscountID :item.discountId, 
+                     FinalPrice :item.price
                     }
 
   //   for(let i=0 ; i < cartItems.length; i++){
@@ -73,16 +77,19 @@ const ProductItem = ({item, cartItems, setCartItems}) => {
     }}>
       <Ionicons style={{fontSize:20}} name="cart"></Ionicons>
          </TouchableOpacity> */}
-         <Text style={{alignSelf:'center', margin:10}}>{item.name}</Text> 
-        <View>
-        <Image style={styles.image} source={{uri:'https://cashierapi.ibtikar-soft.sa/' + item.image}} />
-        </View>
-        
-        <Text style={styles.price}>SR:{item.price}</Text>
+         
+         <Text style={{alignSelf:'center' , fontSize:20}}>{item.name}</Text> 
+
+<View>
+ <Image style={styles.image} source={{uri:'https://cashierapi.ibtikar-soft.sa/' + item.image}} />
+</View>
+
+<View style={{flexDirection:'row', justifyContent:'space-between' }}>
+ 
+<Text style={{ margin:5, fontWeight:'bold' }}>SR:{item.price}</Text>
+</View>
       </Pressable>
   );
 };
-
-
 
 export default ProductItem;

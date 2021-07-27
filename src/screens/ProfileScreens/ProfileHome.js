@@ -5,7 +5,7 @@ export default function ProfileHome() {
     return (
         <View>
 
-            <Text> profile home  </Text>
+            <Text>profile home</Text>
             
         </View>
     )

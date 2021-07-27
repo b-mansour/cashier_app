@@ -1,8 +1,10 @@
 import React,  {useEffect} from 'react';
 import { Button, View, Text , FlatList } from 'react-native';
 import ReceiptItem from '../../components/ReceitItItem/index';
-import {productContext} from '../../../App';
-// import {receiptContext} from '../../../App';
+// import {productContext} from '../../../App';
+import {cashierContext} from '../../../App';
+
+ 
 
 
 
@@ -25,9 +27,6 @@ function  ReceiptHome({ navigation }) {
         },[]);                               
 
 
-  // const {Receipt} = React.useContext(receiptContext);
-  // const [receipts, setReceipts] = Receipt;
-
 
   return (
 
@@ -48,11 +47,6 @@ export default ReceiptHome;
 
 
 
-
-  // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-       
-    //   <Button onPress={() => navigation.goBack()} title="Go back home" />
-    // </View>
-
+ 
 
  

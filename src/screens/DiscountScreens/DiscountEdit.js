@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View,TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import Button from '../../components/Button/index';
 import {Picker} from '@react-native-picker/picker';
@@ -6,10 +6,23 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
  function DiscountEdit({route, navigation}) {
 
-    const discountTypes = ['amount','percentage'];
+   
     const [ id, setId] = React.useState(route.params.id);
     const [discountName, setDiscountName] = React.useState(route.params.name);
     const [ DiscountValue, setDiscountValue] = React.useState(route.params.value);
+
+
+    const discountTypes = [
+      {
+         id: 1,
+         type:'خصم مبلغ'
+      },
+      {
+        id: 2,
+        type:'خصم بالنسبة'
+      }
+              
+     ];
 
     const [selectedOption, setSelectedOption] = React.useState(
       discountTypes ? discountTypes[0] : null,
@@ -20,15 +33,24 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
       const onDiscountEdit = () => {
 
+        
+
 
         // const formData = new FormData();
         // const fileField = document.querySelector('input[type="file"]');
        var formData = {
                        "Id" : id, 
                        "Name" : discountName , 
-                       "Discount" : DiscountValue, 
-                       "TypeId" : "1"
+                       "Discount1" : DiscountValue, 
+                       "TypeId" : selectedOption.id
                       }
+
+                      console.log(id)
+                      console.log(discountName)
+                      console.log(DiscountValue)
+                      console.log(selectedOption)
+
+                      
         // formData.append('name', name);
         // formData.append('image', image);
        
@@ -57,7 +79,9 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
         
     
 
-
+  useEffect(()=> {
+    console.log(selectedOption)
+  },[selectedOption])
     
 
     return (
@@ -70,11 +94,11 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
             onChangeText={ value =>  setDiscountName(value)}
              /> 
 
-      <Picker
+<Picker
         selectedValue={selectedOption}
         onValueChange={itemValue => setSelectedOption(itemValue)}>
-        {discountTypes.map( (option,index) => (
-           <Picker.Item key={index}   label={option} value={option} />
+        {discountTypes.map( (option) => (
+           <Picker.Item key={option.id}   label={option.type} value={option.id} />
         ))}
       </Picker>
 
