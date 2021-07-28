@@ -10,16 +10,14 @@ import {colors} from '../../assets/Colors';
 
 export default function ProductHome({navigation}) {
 
-      // const {product} = React.useContext(productContext);
-      // const [ products, setProducts] = product;
+      
 
-      const [productsData, setProductsData] = React.useState();
-      // const [ products, setProducts] = React.useState();
+      const [productsData, setProductsData] = React.useState([]);
+     
+      const [ products, setProducts] = React.useState([]);
+      const [categories, setCategories] = React.useState([]);
 
-      const {product} = React.useContext(productContext);
-      const [ products, setProducts] = product;
-      const {category} = React.useContext(categoryContext);
-      const [ categories, setCategories] = category;
+      
     
 
       const [search, setSearch] = React.useState('');
@@ -29,12 +27,9 @@ export default function ProductHome({navigation}) {
 
        
       function onSelectCategory(category) {
-        //filter restaurant
-        // let productList = category.id != -1 ? productsData.filter(a => a.categories.includes(category.id)) 
+       
          let productList = category.id != -1 ? productsData.filter(a => a.sectionId == category.id) 
          : productsData.filter(a => a.sectionId) 
-        // : productsData.filter(a => a.categories) 
-        // setProducts(null)
         setProducts(productList)
         setSelectedCategory(category)
     }
@@ -99,9 +94,19 @@ export default function ProductHome({navigation}) {
     return () => { isMounted = false }; 
   }
 
+  async function getCategories() {
+    let isMounted = true;               
+    fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+    .then((response) => response.json())
+    .then((json) => { if(isMounted) setCategories(json.response.sectionList)})
+    .catch((error) => console.error('Error:' + error))
+    return () => { isMounted = false }; 
+  }
+
    
     useEffect(() => {
       getProducts();
+      getCategories();
       let isMounted = true;               
       fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
       .then((response) => response.json())
@@ -131,6 +136,8 @@ export default function ProductHome({navigation}) {
           // horizontal 
           // showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
+          ListFooterComponent={<View />}
+        ListFooterComponentStyle={{height:100}}
         />
       </View>
     )

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { View, Text, FlatList, StyleSheet,Button } from 'react-native';
+import { View, Text, FlatList, StyleSheet,Button,Pressable } from 'react-native';
 import {cartContext} from '../../../App';
 import CartItem from '../../components/CartItem';
 import MaterialIcons  from 'react-native-vector-icons/MaterialIcons';
@@ -24,7 +24,19 @@ import {
    
   const onCheckout = () => {
 
-    BLEPrinter.printText("<C>sample text</C>\n")
+    // BLEPrinter.printText("<C>sample text</C>\n")
+
+    BLEPrinter.printText(response=> {
+      console.log('dddddd',response)
+    })
+
+    // BLEPrinter.printText(
+    //                     `<B>Shop Name</B>\n
+    //                     <C>:${totalPrice}  </C>  <C> :234343</C>\n
+    //                     <C>:${cashierNo}</C>`
+
+                        
+    //                     )
    
 
 

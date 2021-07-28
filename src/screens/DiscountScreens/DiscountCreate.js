@@ -13,7 +13,7 @@ import {cashierContext} from '../../../App';
   const discountTypes = [
                          {
                             id: 1,
-                            type:'خصم'
+                            type:'خصم بالقيمة'
                           },
                           {
                            id: 2,

@@ -19,10 +19,9 @@ export default function Home({navigation}) {
     //   const [selectedCategory, setSelectedCategory] = React.useState(
     //     categories ? categories[0] : null,
     //   );
-
-
-      const {product} = React.useContext(productContext);
-  const [ products, setProducts] = product;
+    const [products, setProducts] = React.useState([]); 
+  //     const {product} = React.useContext(productContext);
+  // const [ products, setProducts] = product;
 
       const [selectedProduct, setSelectedProduct] = React.useState(
         products ? products[1] : null,
@@ -90,6 +89,13 @@ export default function Home({navigation}) {
         useEffect(() => {
           console.log(selectedProduct)
           console.log(selectedDiscount)
+            let isMounted = true;               
+            fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
+            .then((response) => response.json())
+            .then((json) => { if(isMounted) setProducts(json.response.productsList)})
+            .catch((error) => console.error('Error:' + error))
+            return () => { isMounted = false }; 
+       
         },[selectedDiscount,selectedProduct])
 
 

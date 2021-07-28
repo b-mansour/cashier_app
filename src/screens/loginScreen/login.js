@@ -70,7 +70,7 @@ const getData = () => {
 
  useEffect(() => {
     getData();
-}, [shopId]);
+},[shopId]);
 
   const handleSubmitPress = async () => {
     setErrortext('');
@@ -109,18 +109,14 @@ const getData = () => {
       .then((responseJson) => {
         //Hide Loader
         // setLoading(false);
-        
-        console.log(responseJson);
-        console.log(responseJson.response.cashierDetail.no);
-        console.log(responseJson.response.cashierDetail.shopId);
-        // If server response message same as Data Matched
-        // if (responseJson.response.cashierDetail.no == cashierNo ) {
-          if (responseJson.responseCode == 200 ) {
-          // AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-          // console.log(responseJson.data[0].user_id);
+        if (responseJson.responseCode == 200 ) {
+           console.log(responseJson);
+           console.log(responseJson.response.cashierDetail.shopId);
+           console.log(responseJson.response.cashierDetail.no);
+         
           setShopId(responseJson.response.cashierDetail.shopId)
-          setData()
           console.log(shopId)
+          setData()
           navigation.replace('DrawerNavigationRoutes');
           
         } else {
@@ -128,7 +124,6 @@ const getData = () => {
           // console.log('Please check your email id or password');
         }
       }
-      
       )
       .catch((error) => {
         //Hide Loader
@@ -158,16 +153,11 @@ const getData = () => {
                   height: 100,
                   resizeMode: 'contain',
                   margin: 30,
+                  bottom:150
                 }}
               />
-
-              {/* <Text   style={{
-              color:'#ffff',
-              height: 100,
-              margin: 30,
-              fontSize:25
-            }}>Cashier App</Text> */}
             </View>
+            <View style={{bottom:130}}>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
@@ -208,6 +198,8 @@ const getData = () => {
               onPress={handleSubmitPress}>
               <Text style={styles.buttonTextStyle}>تسجيل الدخول</Text>
             </TouchableOpacity>
+            </View>
+          
             {/* <Text
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('RegisterScreen')}>
@@ -257,7 +249,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,

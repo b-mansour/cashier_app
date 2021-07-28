@@ -22,7 +22,7 @@ export default function ProductEdit({route, navigation}) {
     const [price, setPrice] = React.useState(route.params.price);
     const [cost, setCost] = React.useState(route.params.cost);
     // const [image, setImage] = React.useState(route.params.image);
-    const [image, setImage] = React.useState();
+    const [image, setImage] = React.useState('');
     const [barcode, setBarcode] = React.useState(route.params.barcode);
 
 
@@ -40,16 +40,13 @@ const formData = {
                    "Cost" : cost, 
                    "Price" : price, 
                    "Qr" : barcode, 
-                   "SectionId" : selectedOption.id, 
+                   "SectionId" : selectedOption, 
                    "Image" : image
                   }
+                
                   console.log(formData)
 
-
-                  
-
-
-                
+               
 // formData.append('name', name);
 // formData.append('price', price);
 // formData.append('cost', cost);
@@ -143,15 +140,19 @@ console.error('Error:', error);
         includeBase64: true
       }
       launchImageLibrary(options, response => {
-        setImage(response.assets[0].base64)
-        console.log("_________________________________________________")
-        console.log(response.assets[0].base64)
-        console.log("*****************************************************")
-        
-
+        if(response.didCancel){
+          console.log('cancelled')
+        } else {
+         setImage(response.assets[0].base64)
+         console.log("_________________________________________________")
+         console.log(response);
+         console.log("*****************************************************")
+     }
+  
         // console.log(image)
       })
    }
+  
 
     // const ChoosePhoto = () => {
     //   ImagePicker.openPicker({
@@ -175,19 +176,20 @@ console.error('Error:', error);
       );
 
 
-    function convertImageTobase64(){
-      imageToBase64(route.params.image) // Path to the image
-    .then(
-        (response) => {
-            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); // Logs an error if there was one
-        }
-    )
-      }
+    // function convertImageTobase64(){
+    //   imageToBase64(route.params.image) 
+    // .then(
+    //     (response) => {
+    //         setImage(response);
+    //         console.log(response); 
+    //     }
+    // )
+    // .catch(
+    //     (error) => {
+    //         console.log(error); 
+    //     }
+    // )
+    //   }
 
     // function convertImageTobase64(){
     //     ImgToBase64.getBase64String(route.params.image)
@@ -197,14 +199,27 @@ console.error('Error:', error);
 
     const [categories, setCategories ] = React.useState([]);
       useEffect(() => {
-              convertImageTobase64();
+              // convertImageTobase64();
+              // imageToBase64(route.params.image) // Path to the image
+              // .then(
+              //     (response) => {
+              //         setImage(response);
+              //         console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+              //     }
+              // )
+              // .catch(
+              //     (error) => {
+              //         console.log(error); // Logs an error if there was one
+              //     }
+              // )
+               console.log(selectedOption)
               let isMounted = true;               
               fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetSections/1')
               .then((response) => response.json())
               .then((json) => { if(isMounted) setCategories(json.response)})
               .catch((error) => console.error('Error:' + error))
               return () => { isMounted = false }; 
-            },[categories,image]);                               
+            },[categories,image,selectedOption]);                               
     
       // useEffect(()=>{
       //   console.log(selectedOption.id);

@@ -95,9 +95,8 @@ fetch('https://cashierapi.ibtikar-soft.sa/api/Store/NewProduct', {
 .then(result => {
   console.log('Success:', result);
   console.log(formData);
-  navigation.goBack();
-  
-  // navigation.goBack();
+  setBarcode(null)
+  navigation.navigate('ProductHome')
 })
 .catch(error => {
   console.error('Error:', error);
@@ -122,26 +121,24 @@ const TakePhoto = () => {
 
 }
 
-    const ChoosePhoto = () => {
-      const options = {
-        includeBase64: true
-      }
-      launchImageLibrary(options, response => {
-        if(response.didCancel){
-            console.log('cancelled')
-        } else {
-           setImage(response.assets[0].base64)
-          //  console.log("_________________________________________________")
-          //  console.log(response);
-          //  console.log("*****************************************************")
-       }
-
-        
-        
-       
-        // console.log(image)
-      })
+     
+   const ChoosePhoto = () => {
+    const options = {
+      includeBase64: true
+    }
+    launchImageLibrary(options, response => {
+      if(response.didCancel){
+        console.log('cancelled')
+      } else {
+       setImage(response.assets[0].base64)
+       console.log("_________________________________________________")
+       console.log(response);
+       console.log("*****************************************************")
    }
+
+      // console.log(image)
+    })
+ }
 
 
 
@@ -152,12 +149,15 @@ const TakePhoto = () => {
 
     const [categories, setCategories ] = React.useState([]);
       useEffect(async () => {
+              getData();
+            //  console.log(selectedOption)
+            //  console.log(image)
               let isMounted = true;               
              await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetSections/1')
               .then((response) => response.json())
               .then((json) => { if(isMounted) setCategories(json.response)})
               .catch((error) => console.error('Error:' + error))
-              return () => { isMounted = false }; 
+              return () => { isMounted = false; }; 
             },[categories,image,selectedOption]);                  
 
       // useEffect(()=> {
