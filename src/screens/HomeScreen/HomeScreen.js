@@ -45,13 +45,7 @@ async function getProducts() {
 //     .catch((error) => console.error(error))
 // }
 
-// async function getProducts() {
-//     await fetch('https://cashierapi.ibtikar-soft.sa/api/Store/GetProductsBySections/1')
-//     .then((response) => response.json())
-//     .then((json) => setProducts(json.response.productsList))
-//     .catch((error) => console.error(error))
-// }
-
+ 
     useEffect(() => {
        getProducts();
   }, []);

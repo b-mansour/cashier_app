@@ -9,7 +9,7 @@ import  AntDesign  from 'react-native-vector-icons/AntDesign';
    
     const [ id, setId] = React.useState(route.params.id);
     const [discountName, setDiscountName] = React.useState(route.params.name);
-    const [ DiscountValue, setDiscountValue] = React.useState(route.params.value);
+    const [ DiscountValue, setDiscountValue] = React.useState(npx );
 
 
     const discountTypes = [

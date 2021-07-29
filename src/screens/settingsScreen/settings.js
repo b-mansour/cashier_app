@@ -1,6 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Button, View, Text , FlatList, Pressable, StyleSheet } from 'react-native';
+import {View, Text,Pressable, StyleSheet } from 'react-native';
  
 
 
@@ -12,7 +11,7 @@ function Settings({navigation}) {
      <View> 
 
       <Pressable style={styles.pressable} onPress={() => navigation.navigate('Printer')}> 
-       <Text style={{fontSize:20}}>Printers</Text>
+       <Text style={{fontSize:20}}>الطابعة</Text>
       </Pressable>
 
       <Pressable style={styles.pressable} onPress = {() => navigation.navigate('QR')}> 
@@ -20,9 +19,9 @@ function Settings({navigation}) {
       </Pressable>
       
 
-      <Pressable style={styles.pressable} onPress={() => navigation.navigate('General')}> 
+      {/* <Pressable style={styles.pressable} onPress={() => navigation.navigate('General')}> 
        <Text style={{fontSize:20}}> General </Text>
-      </Pressable>
+      </Pressable> */}
 
 
       </View>

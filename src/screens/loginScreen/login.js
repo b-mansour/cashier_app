@@ -1,4 +1,5 @@
-import React, {useState, createRef, useEffect} from 'react';
+// import React, {useState, createRef, useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -12,7 +13,9 @@ import {
   ImageBackground
 } from 'react-native';
 import {cashierContext} from '../../../App';
-import {shopContext} from '../../../App';
+// import {shopContext} from '../../../App';
+// import FlashMessage from "react-native-flash-message";
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -30,7 +33,7 @@ const LoginScreen = ({navigation}) => {
       // const {shop} = React.useContext(shopContext);
       // const [ shopId , setShopId] = shop;
 
-      const [ shopId , setShopId] = useState()
+      const [shopId ,setShopId] = useState();
 
 
   // const passwordInputRef = createRef();
@@ -70,7 +73,15 @@ const getData = () => {
 
  useEffect(() => {
     getData();
+    showMessage({
+      message: "تمت الاضافة بنجاح",
+      description: "اهلا بك",
+      type: "success",
+      icon:'warning', 
+    });
+    console.log(shopId);
 },[shopId]);
+
 
   const handleSubmitPress = async () => {
     setErrortext('');
@@ -114,9 +125,9 @@ const getData = () => {
            console.log(responseJson.response.cashierDetail.shopId);
            console.log(responseJson.response.cashierDetail.no);
          
-          setShopId(responseJson.response.cashierDetail.shopId)
-          console.log(shopId)
-          setData()
+          setShopId(responseJson.response.cashierDetail.shopId);
+          console.log(shopId);
+          setData();
           navigation.replace('DrawerNavigationRoutes');
           
         } else {
@@ -157,12 +168,12 @@ const getData = () => {
                 }}
               />
             </View>
-            <View style={{bottom:130}}>
+            <View style={{bottom:130, alignItems:'center'}}>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={(UserEmail) => setCashierNo(UserEmail)}
-                placeholder="اسم المستخدم" //dummy@abc.com
+                placeholder="رقم الكاشير"
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="none"
                 keyboardType="email-address"
@@ -209,6 +220,7 @@ const getData = () => {
         </View>
       </ScrollView>
       </ImageBackground>
+      {/* <FlashMessage position="top" />  */}
     </View>
   );
 };
@@ -230,7 +242,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#34c9eb',
+    width:'50%',
+    backgroundColor: '#22305E',
     borderWidth: 0,
     color: '#FFFFFF',
     borderColor: '#7DE24E',
@@ -248,8 +261,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   inputStyle: {
-    flex: 1,
+    width:'70%',
+    // flex: 1,
     color: 'black',
+    textAlign: 'center',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,

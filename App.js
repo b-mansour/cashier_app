@@ -4,6 +4,8 @@ import DrawerNav from './src/router/DrawerNav/DrawerNav';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from './src/screens/loginScreen/login';
+import FlashMessage from "react-native-flash-message";
+
 const Stack = createStackNavigator();
  
 
@@ -124,7 +126,7 @@ async function getCategories() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-
+    <FlashMessage  position="top" /> 
         {/* <DrawerNav/> */}
 
     </barcodeContext.Provider>
